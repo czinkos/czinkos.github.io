@@ -2,7 +2,6 @@ name: czinkos
 description: Blogging about stuffs
 meta_description: "czinkos"
 
-markdown: redcarpet
 pygments: true
 logo: false
 paginate: 15
