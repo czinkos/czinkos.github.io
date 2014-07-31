@@ -1,6 +1,6 @@
-name: Your New Jekyll Site
+name: czinkos
 description: Blogging about stuffs
-meta_description: "Your New Jekyll Site, Blogging about stuffs"
+meta_description: "czinkos"
 
 markdown: redcarpet
 pygments: true
@@ -9,4 +9,4 @@ paginate: 15
 
 # Details for the RSS feed generator
 url:            'blog url'
-author:         'Your Name'
+author:         'czinkos'
