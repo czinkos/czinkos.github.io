@@ -63,9 +63,9 @@ window.onkeyup = function handleKeyUp(event) {
   }
 }
 
-window.onmouseup = function handleMouseUp(event) {
-  next()
-}
+//window.onmouseup = function handleMouseUp(event) {
+//  next()
+//}
 
 var current = 0
 var started = false;
