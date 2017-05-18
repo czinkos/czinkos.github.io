@@ -84,7 +84,6 @@ function d3Collision() {
   simulation.force('collide',
           d3.forceCollide((d) => d.radius).iterations(3))
   setTimeout(reheat, 3000)
-  //reheat()
 }
 
 function d3ChargeNodes(v) {
@@ -93,6 +92,7 @@ function d3ChargeNodes(v) {
 }
 
 function d3PullNodes() {
+  simulation.force('charge', null)
   simulation.force('pull', d3.forceManyBody().strength(120))
   reheat()
 }
