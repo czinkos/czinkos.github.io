@@ -54,9 +54,11 @@ window.onkeyup = function handleKeyUp(event) {
     case 'ArrowRight':
     case 'Space':
     case 'KeyN':
+    case 'PageDown':
       next()
       break
     case 'ArrowLeft':
+    case 'PageUp':
     case 'KeyP': prev()
   }
 }
