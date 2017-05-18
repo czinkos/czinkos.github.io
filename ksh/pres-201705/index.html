@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>presentation</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="pres.css">
+    <link rel="stylesheet" type="text/css" href="prism.css">
+    <style>
+  
+    </style>
+  </head>
+  <body>
+    <div id="content">
+      <canvas id="graph"></canvas>
+    </div>
+
+    <div id="time">
+      <div id="time_elapsed"></div>
+    </div>
+
+    <div id="logo">
+      <img src="img/ksh_w.png">
+    </div>
+
+    <div id="steps">
+      <section class="full align-center">
+        <p>Központi Statisztikai Hivatal</p>
+        <br>
+        <h1>Adatvizualizáció</h1>
+        <br>
+        <p>2017. május 18.</p>
+        <br>
+        <a href="mailto:zsolt.czinkos@ksh.hu">zsolt.czinkos@ksh.hu</a>    
+      </section>
+
+      <section class="full">
+        <div class="col-30">
+          <div class="img align-left">
+            <a href="http://www.ksh.hu/interaktiv_grafikonok" target="_blank">
+              <img src="img/ksh_interaktiv.png">
+            </a>
+          </div>
+        </div>
+        <div class="col-70">
+          <h1>Interaktiv grafikonok - KSH</h1>
+          <ul>
+            <li>20 féle interaktiv grafikon</li>
+            <li>Highcharts</li>
+            <li>SVG, D3, HTML, JavaScript</li>
+            <br>
+            <li>Eurostat együttműködés</li>
+            <br>
+            <li>Legnépszerűbb: <a href="http://www.ksh.hu/interaktiv_korfa" target="_blank">Interaktív korfa</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="full">
+        <div class="img align-center">
+          <a href="http://www.ksh.hu/interaktiv_korfa" target="_blank">
+            <img src="img/korfa_1890.png">
+          </a>
+        </div>
+      </section>
+
+     <section class="full">
+        <div class="img align-center">
+          <a href="http://www.ksh.hu/interaktiv_korfa" target="_blank">
+            <img src="img/korfa_1987.png">
+          </a>
+        </div>
+      </section>
+
+      <section class="full">
+        <div class="col-50">
+          <div class="img align-left">
+            <a href="http://www.ksh.hu/infografika/ja.html" target="_blank">
+              <img src="img/ja.png">
+            </a>
+          </div>
+        </div>
+        <div class="col-50">
+          <h1>Költészet Napja</h1>
+          <ul>
+            <li>Népszerűsítés</li>
+            <br>
+            <li>József Attila összes verse</li>
+            <li>Szavak - szótövek - főnevek</li>
+            <br>
+            <li>Morfológiai elemzőnk van (kereső)</li>
+            <li>POS-tagger nincs (ég - ég)</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="full">
+        <h1>Időmérleg</h1>
+        <ul>
+          <li>1963, Ferge Zsuzsa</li>
+          <li>Összesen 6 alkalommal Magyarországon</li>
+          <br>
+          <li>Legutóbbi: 2009-2010</li>
+          <li>Tegnapinterjú (kérdezőbiztos a következő napon)</li>
+          <li>10-84 évesek</li>
+          <li>~8000 napló, 24 óra azaz 1440 perc</li>
+        </ul>
+      </section>
+
+      <section class="full">
+        <pre><code class="language-json">[
+  [ 'férfi', 'nyugdíjas', 'Budapest', 'város', 73, 
+      'alvás', 0, 'étkezés', 240, 
+      'utazás', 300, 'munka', 330 ...],
+  [ 'nő', 'tanuló', 'Budapest', 'város', 18, 
+      'alvás', 0, 'étkezés', 340, 
+      'utazás', 360 ...],
+  ...
+]</code></pre>
+      </section>
+
+      <section class="full">
+        <div class="img align-center">
+          <img src="img/1977.png">
+        </div>
+      </section>
+      
+      <section class="full">
+        <div class="img align-center">
+          <a href="http://www.ksh.hu/interaktiv/idomerleg/grafikon.html"
+             target="_blank">
+            <img src="img/idomerleg_graf.png">
+          </a>
+        </div>
+      </section>
+      
+      <section class="full">
+        <p>Nathan Yau (<a href="http://flowingdata.com/" target="_blank">FlowingData</a>) ötlete nyomán:</p>
+        <div class="img align-center" style="height: 80%">
+          <a href="http://www.ksh.hu/interaktiv/idomerleg/animacio.html"
+             target="_blank">
+            <img src="img/idomerleg_anim.png">
+          </a>
+        </div>
+      </section>
+
+      <section class="right" data-fn="addPoints">
+        <h1>Fehér vászon</h1>
+        <ul>
+          <li>Canvas</li>
+          <li>(X, Y) koordináták</li>
+          <li>Bal felső sarok az origo</li>
+        </ul>
+      </section>
+
+      <section class="top" data-fn="addRandomPoints">
+        <pre style="font-size: 50%"><code class="language-js">nodes = d3.range(100).map((d) => {
+  return {
+    x: Math.random() * width,
+    y: Math.random() * height,
+    color: fill(Math.random() * 10),
+    radius: radius
+  }
+})</code></pre>
+      </section>
+
+      <section class="bottom">
+        <h1>Ütközzenek!</h1>
+      </section>
+
+      <section class="full">
+        
+        <div class="center">
+          <h1>D3</h1>
+          <ul>
+            <li>Data-Driven Documents - <a href="http://d3js.org" target="_blank">http://d3js.org</a></li>
+            <li>d3-force layout (simulation)</li>
+            <li>A bogyókra (node) ható erőket lehet megadni</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="bottom" data-fn="d3Collision">
+        <h1>Ütköznek a bogyók!</h1>
+<pre style="font-size: 75%"><code class="language-js">simulation.force('collide',
+          d3.forceCollide((d) => d.radius))
+</code></pre>        
+      </section>
+
+      <section class="bottom" data-fn="d3ChargeNodes">
+        <h1>Taszítani is tudják egymást.</h1>
+<pre style="font-size: 75%"><code class="language-js">simulation.force('charge',
+          d3.forceManyBody().strength(-50))
+</code></pre>        
+      </section>
+
+      <section class="bottom" data-fn="d3PullNodes">
+        <h1>Vonzani is.</h1>
+<pre style="font-size: 75%"><code class="language-js">simulation.force('pull', 
+          d3.forceManyBody().strength(120))
+</code></pre>        
+      </section>
+
+      <section class="bottom" data-fn="d3Activities">
+        <h1>6 ember 6 tevékenység.</h1>
+        <pre style="font-size: 75%"><code class="language-json">{ ... y: 300, act: i, ... }
+</code></pre>
+      </section>
+
+      <section class="bottom" data-fn="d3Activities">
+        <h1>Kéne valami erő!</h1>
+        <p>Például menjenek (X,Y) helyre!</p>
+      </section>
+
+      <section></section>
+
+      <section data-fn="d3ActivitiesMove">
+      </section>
+
+      <section data-fn="d3ActivitiesMoveBack">
+      </section>
+
+      <section class="bottom">
+        <pre style="font-size: 75%"><code class="language-js">simulation.force('x', 
+          d3.forceX().x((d) => d.x))
+simulation.force('y', 
+          d3.forceY().y((d) => 300))
+</code></pre>  
+      </section>
+
+      <section data-fn="d3Gravity">
+      </section>
+
+      <section class="top">
+        <h1>Szépen pattognak, de ...</h1>
+      </section>
+
+      <section data-fn="d3MoveToCenter">
+      </section>
+
+      <section data-fn="d3AddActNodes">
+      </section>
+
+
+      <section data-fn="d3MoveNodesToAct">
+      </section>
+
+      <section class="center">
+        <pre style="font-size: 75%"><code class="language-js">simulation.force('x', 
+          d3.forceX().x((d) => getActCenter(d.act).x))
+
+simulation.force('y', 
+          d3.forceY().y((d) => getActCenter(d.act).y))
+
+simulation.force('collide',
+          d3.forceCollide((d) => d.radius))
+</code></pre>        
+      </section>
+
+
+      <section data-fn="d3SplitNodes">
+      </section>
+
+      <section data-fn="d3StartAnim">
+      </section>
+
+      <section class="center align-center">
+        <h1>VÉGE</h1>
+        
+        <p>Köszönöm a figyelmet!</p>
+
+        <p>zsolt.czinkos@ksh.hu</p>
+      </section>
+    </div>
+
+    <script src="d3.min.js"></script>
+    <script src="graph.js"></script>
+    <script src="pres.js"></script>
+    <script src="prism.js"></script>
+  </body>
+</html>
