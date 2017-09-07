@@ -1,0 +1,387 @@
+country	sex	name	imageFile	player
+AF	M	Aamir		N
+AF	F	Aaqila		N
+AL	M	Klajdi	Europa_M_cut.png	I
+AL	F	Amelia	Europa_F_cut.png	I
+DZ	M	Mohamed	Afrika_M_cut.png	I
+DZ	F	Yasmine	Afrika_F_cut.png	I
+AD	M	Marc		N
+AD	F	Laia		N
+AO	M	Thierno		N
+AO	F	Nicinha		N
+AG	M	Jaco		N
+AG	F	Haimi		N
+AR	M	Mateo	D-Amerika_M_cut.png	I
+AR	F	Martina	D-Amerika_F_cut.png	I
+AM	M	Narek	Asia_M_cut.png	I
+AM	F	Milena 	Asia_F_cut.png	I
+AU	M	William		N
+AU	F	Sophie		N
+AT	M	Tobias		N
+AT	F	Marie		N
+AZ	M	Huseyn	Europa_M_cut.png	I
+AZ	F	Nuray	Europa_F_cut.png	I
+BS	M	Kendall		N
+BS	F	Marifer		N
+BH	M	Ali		N
+BH	F	Zainab		N
+BD	M	Sabbir	Asia_M_cut.png	I
+BD	F	Kwan	Asia_F_cut.png	I
+BB	M	Jordi		N
+BB	F	Neah		N
+BY	M	Maksim		N
+BY	F	Palina		N
+BE	M	Mathis		N
+BE	F	Elise		N
+BZ	M	Sadis	D-Amerika_M_cut.png	I
+BZ	F	Hannele	D-Amerika_F_cut.png	I
+BJ	M	Armel	Afrika_M_cut.png	I
+BJ	F	Eunice	Afrika_F_cut.png	I
+BT	M	Neten		N
+BT	F	Yeshey		N
+BO	M	Mauricio	D-Amerika_M_cut.png	I
+BO	F	Komani	D-Amerika_F_cut.png	I
+BA	M	Amar		N
+BA	F	Merjem		N
+BW	M	Azuel		N
+BW	F	Mingie		N
+BR	M	Miguel	D-Amerika_M_cut.png	I
+BR	F	Luiza	D-Amerika_F_cut.png	I
+BN	M	Kamito		N
+BN	F	Fatih		N
+BG	M	Dimitar	Europa_cut.png	I
+BG	F	Yoana	Europa_cut.png	I
+BF	M	Yacouba		N
+BF	F	Aida		N
+BI	M	Yves		N
+BI	F	Bélise		N
+CV	M	Daymon		N
+CV	F	Celina		N
+KH	M	Kong	Asia_M_cut.png	I
+KH	F	Chan	Asia_F_cut.png	I
+CM	M	Florent		N
+CM	F	Joaddan		N
+CA	M	Logan		N
+CA	F	Zoe		N
+CF	M	Odilon		N
+CF	F	Sorella		N
+TD	M	?bakar		N
+TD	F	Fadoul		N
+CL	M	Benjamín	Europa_M_cut.png	I
+CL	F	Isidora	Europa_F_cut.png	I
+CN	M	Cheng		N
+CN	F	Yan		N
+CO	M	Alejandro 	D-Amerika_M_cut.png	I
+CO	F	Salomé	D-Amerika_F_cut.png	I
+KM	M	Zaidou		N
+KM	F	Rafida		N
+CG	M	Ray		N
+CG	F	Divine		N
+CR	M	Victor	D-Amerika_M_cut.png	I
+CR	F	Jimena	D-Amerika_F_cut.png	I
+CI	M	Fabrice		N
+CI	F	Estelle		N
+HR	M	Luka	Europa_M_cut.png	I
+HR	F	Lana	Europa_F_cut.png	I
+CU	M	Javier		N
+CU	F	Dunia		N
+CY	M	Georgios 		N
+CY	F	Panagiota		N
+CZ	M	Tomáš		N
+CZ	F	Karolína		N
+KP	M	Kim		N
+KP	F	Minji		N
+CD	M	Rishi		N
+CD	F	Liu		N
+DK	M	Oliver		N
+DK	F	Freja		N
+DJ	M	Abdirahman		N
+DJ	F	Khadrita		N
+DM	M	Mervin		N
+DM	F	Donna		N
+DO	M	Roliver	D-Amerika_M_cut.png	I
+DO	F	Jhoka	D-Amerika_F_cut.png	I
+EC	M	Carlos		N
+EC	F	Helen		N
+EG	M	Youssef	Afrika_M_cut.png	I
+EG	F	Fatma	Afrika_F_cut.png	I
+SV	M	Santiago	D-Amerika_M_cut.png	I
+SV	F	Isela	D-Amerika_F_cut.png	I
+GQ	M	Manuel		N
+GQ	F	Milagrosa		N
+ER	M	Aman		N
+ER	F	Nurah		N
+EE	M	Rasmus	Europa_M_cut.png	I
+EE	F	Milana	Europa_F_cut.png	I
+ET	M	Jemal	Afrika_M_cut.png	I
+ET	F	Beza	Afrika_F_cut.png	I
+FJ	M	Vishal		N
+FJ	F	Selina		N
+FI	M	Väinö		N
+FI	F	Helmi		N
+FR	M	Raphaël		N
+FR	F	Jeanne		N
+GA	M	Eric		N
+GA	F	Oceane		N
+GM	M	Ebrima		N
+GM	F	Maimuna		N
+GE	M	Giorgi 		N
+GE	F	Anastasia		N
+DE	M	Paul		N
+DE	F	Lina		N
+GH	M	Samuel		N
+GH	F	Priscilla		N
+GR	M	Konstantinos		N
+GR	F	Dimitra		N
+GD	M	Angelus		N
+GD	F	Sahara		N
+GT	M	Modesto	D-Amerika_M_cut.png	I
+GT	F	Tania	D-Amerika_F_cut.png	I
+GN	M	Ibrahima		N
+GN	F	Fanta		N
+GW	M	Oumar		N
+GW	F	Simone		N
+GY	M	Kennard		N
+GY	F	Mourinda		N
+HT	M	Jameson		N
+HT	F	Widelene		N
+HN	M	Esau	D-Amerika_M_cut.png	I
+HN	F	Paola	D-Amerika_F_cut.png	I
+HU	M	Levente	Europa_M_cut.png	I
+HU	F	Boglárka	Europa_F_cut.png	I
+IS	M	Jón		N
+IS	F	Hekla		N
+IN	M	Aarav	Asia_M_cut.png	I
+IN	F	Diya	Asia_F_cut.png	I
+ID	M	Farel	Asia_M_cut.png	I
+ID	F	Intan	Asia_F_cut.png	I
+IR	M	Mahdi		N
+IR	F	Zahra		N
+IQ	M	Omar		N
+IQ	F	Sakineh		N
+IE	M	Sean		N
+IE	F	Ella		N
+IL	M	Eitan		N
+IL	F	Tamar		N
+IT	M	Alessandro		N
+IT	F	Giulia		N
+JM	M	Jayden	D-Amerika_M_cut.png	I
+JM	F	Tianna	D-Amerika_F_cut.png	I
+JP	M	Hinata		N
+JP	F	Sakura 		N
+JO	M	Khaled	Asia_M_cut.png	I
+JO	F	Rimas	Asia_F_cut.png	I
+KZ	M	Yerasyl		N
+KZ	F	Ayzere		N
+KE	M	Martin		N
+KE	F	Faith		N
+KI	M	Woong		N
+KI	F	Kylie		N
+KW	M	Fahad		N
+KW	F	Hussa		N
+KG	M	Hamid	Asia_M_cut.png	I
+KG	F	Cara	Asia_F_cut.png	I
+LA	M	Papep		N
+LA	F	Rina		N
+LV	M	Markuss	Europa_M_cut.png	I
+LV	F	Estere	Europa_F_cut.png	I
+LB	M	Elie 		N
+LB	F	Nour		N
+LS	M	Matsimela		N
+LS	F	Melly		N
+LR	M	Titus	Afrika_M_cut.png	I
+LR	F	Teta	Afrika_F_cut.png	I
+LY	M	Hamza		N
+LY	F	Nabila		N
+LI	M	Jonas		N
+LI	F	Noemi		N
+LT	M	Nojus	Europa_M_cut.png	I
+LT	F	Aust?ja	Europa_F_cut.png	I
+LU	M	Gabriel		N
+LU	F	Charlotte		N
+MG	M	Patrick	Afrika_M_cut.png	I
+MG	F	Miora	Afrika_F_cut.png	I
+MW	M	Davie		I
+MW	F	Melina		I
+MY	M	Umar		N
+MY	F	Nurul		N
+MV	M	Ahusan	Afrika_M_cut.png	I
+MV	F	Suha	Afrika_F_cut.png	I
+ML	M	Mamadou		N
+ML	F	Aminata		N
+MT	M	Zachary		N
+MT	F	Emma		N
+MH	M	Jack		N
+MH	F	Karen		N
+MR	M	Amadou		N
+MR	F	Maria		N
+MU	M	Jonathan		N
+MU	F	Aurelie		N
+MX	M	Ángel	D-Amerika_M_cut.png	I
+MX	F	Ximena	D-Amerika_F_cut.png	I
+FM	M	Hostino		N
+FM	F	Dee		N
+MC	M	Ethan		N
+MC	F	Chloé 		N
+MN	M	Ba?tar		N
+MN	F	Bayarmaa		N
+ME	M	Dragan		N
+ME	F	Milica		N
+MA	M	Rachid		N
+MA	F	Khadija		N
+MZ	M	Amos		N
+MZ	F	Hyacinta		N
+MM	M	Nakaji		N
+MM	F	Seng		N
+NA	M	Dinari		N
+NA	F	Hermien		N
+NR	M	Bacon		N
+NR	F	Elli		N
+NP	M	Bishal		N
+NP	F	Sunita		N
+NL	M	Max		N
+NL	F	Fenna		N
+NZ	M	Mason		N
+NZ	F	Emily		N
+NI	M	Jeremy	D-Amerika_M_cut.png	I
+NI	F	Cindy	D-Amerika_F_cut.png	I
+NE	M	Adamou		N
+NE	F	Cherifa		N
+NG	M	Emmanuel		N
+NG	F	Abigail		N
+NO	M	Aksel		N
+NO	F	Ingrid		N
+OM	M	Faheem		N
+OM	F	Nassra		N
+PK	M	Bilal		N
+PK	F	Fozia		N
+PW	M	Kayangel		N
+PW	F	Debu		N
+PA	M	Jose	D-Amerika_M_cut.png	I
+PA	F	Sara	D-Amerika_F_cut.png	I
+PG	M	Samson		N
+PG	F	Tabitha		N
+PY	M	Ramón	D-Amerika_M_cut.png	I
+PY	F	Beatriz	D-Amerika_F_cut.png	I
+PE	M	Jesús	D-Amerika_M_cut.png	I
+PE	F	Milagros	D-Amerika_F_cut.png	I
+PH	M	Renz	D-Amerika_M_cut.png	I
+PH	F	Kyla	D-Amerika_F_cut.png	I
+PL	M	Wojciech	Europa_M_cut.png	I
+PL	F	Natalia	Europa_F_cut.png	I
+PT	M	Jo?o		N
+PT	F	In?s 		N
+QA	M	Bharath		N
+QA	F	Krisha		N
+KR	M	Park		N
+KR	F	Jeong		N
+MD	M	Andrei	Europa_M_cut.png	I
+MD	F	Veronyka	Europa_F_cut.png	I
+RO	M	Mihai	Europa_M_cut.png	I
+RO	F	Elena	Europa_F_cut.png	I
+RU	M	Dmitry	Europa_M_cut.png	I
+RU	F	Olga	Europa_F_cut.png	I
+RW	M	Thierry	Afrika_M_cut.png	I
+RW	F	Sonia	Afrika_F_cut.png	I
+KN	M	Haniff		N
+KN	F	Kya		N
+LC	M	Melvin		N
+LC	F	Joan		N
+VC	M	Chris		N
+VC	F	Romara		N
+WS	M	Wesley		N
+WS	F	Amber		N
+SM	M	Antonio		N
+SM	F	Ilenia		N
+ST	M	Juan		N
+ST	F	Esperanza		N
+SA	M	Abdullah		N
+SA	F	Aisha		N
+SN	M	Babacar		N
+SN	F	Yacine		N
+RS	M	Nemanja	Afrika_M_cut.png	I
+RS	F	Jovana	Afrika_F_cut.png	I
+SC	M	François		N
+SC	F	Veronique		N
+SL	M	Ishmael		N
+SL	F	Yaema		N
+SG	M	Lee		N
+SG	F	Yi Ling		N
+SK	M	Matej		N
+SK	F	Nina		N
+SI	M	Jakob		N
+SI	F	Nika		N
+SB	M	Jim		N
+SB	F	Malisa		N
+SO	M	Abdul		N
+SO	F	Farhia		N
+ZA	M	Bandile 	Afrika_M_cut.png	I
+ZA	F	Amahle	Afrika_F_cut.png	I
+SS	M	Suleyman		N
+SS	F	Rayan		N
+ES	M	Pablo		N
+ES	F	Carmen		N
+LK	M	Kasun	Asia_M_cut.png	I
+LK	F	Hiruni	Asia_F_cut.png	I
+SD	M	Tharindu		N
+SD	F	Tharushi		N
+SR	M	Soerin		N
+SR	F	Isha		N
+SZ	M	Sambulo		N
+SZ	F	Senty		N
+SE	M	Elias		N
+SE	F	Elsa		N
+CH	M	Julien		N
+CH	F	Lara		N
+SY	M	Adnan		N
+SY	F	Aya		N
+TJ	M	Abdullo		N
+TJ	F	Sumayah		N
+TH	M	Tanawat	Asia_M_cut.png	I
+TH	F	Nan	Asia_F_cut.png	I
+MK	M	Zoran	Europa_M_cut.png	I
+MK	F	Biljana	Europa_F_cut.png	I
+TL	M	Ario		N
+TL	F	Francisca		N
+TG	M	Jean		N
+TG	F	Justine		N
+TO	M	Darío		N
+TO	F	Kiki		N
+TT	M	Zachary	D-Amerika_M_cut.png	I
+TT	F	Cherelle	D-Amerika_F_cut.png	I
+TN	M	Mehdi	Afrika_M_cut.png	I
+TN	F	Khawla	Afrika_F_cut.png	I
+TR	M	Mustafa	Europa_M_cut.png	I
+TR	F	Emine	Europa_F_cut.png	I
+TM	M	Ahmed		N
+TM	F	Irada		N
+TV	M	Niutao		N
+TV	F	Maalu		N
+UG	M	Isaac	D-Amerika_M_cut.png	I
+UG	F	Ritah	D-Amerika_F_cut.png	I
+UA	M	Mykyta	Europa_M_cut.png	I
+UA	F	Tetyana 	Europa_F_cut.png	I
+AE	M	Khalid		N
+AE	F	Ayesha		N
+GB	M	Alex		N
+GB	F	Megan		N
+TZ	M	Juma	Afrika_M_cut.png	I
+TZ	F	Farida	Afrika_F_cut.png	I
+US	M	Liam		N
+US	F	Mia		N
+UY	M	Rodrigo	D-Amerika_M_cut.png	I
+UY	F	Lucía	D-Amerika_F_cut.png	I
+UZ	M	Muzaffar		N
+UZ	F	Zulfizar		N
+VU	M	Jayz		N
+VU	F	Gina		N
+VE	M	Diego		N
+VE	F	Isabella		N
+VN	M	Hoang	Asia_M_cut.png	I
+VN	F	Linh	Asia_F_cut.png	I
+YE	M	Yasser	Asia_M_cut.png	I
+YE	F	Selam	Asia_F_cut.png	I
+ZM	M	Abdrazak	Afrika_M_cut.png	I
+ZM	F	Kitana	Afrika_F_cut.png	I
+ZW	M	Tatenda		N
+ZW	F	Rutendo		N

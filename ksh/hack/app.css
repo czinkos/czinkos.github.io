@@ -1,0 +1,126 @@
+body {
+  background-color: #333;
+  color: #CCC;
+  padding: 0px;
+  margin: 0px;
+}
+
+div {
+  border: 0px dotted white;
+}
+
+#question {
+  font-size: 30px;
+  width: 700px;
+  height: 80px;
+}
+
+#app {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 1800px;
+  height: 900px;
+}
+
+#game {
+  font-size: 200%;
+  font-weight: bold;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 200px;
+  width: 800px;
+}
+
+#gamePanel {
+  border: 1px solid white;
+  position: absolute;
+  top: 180px;
+  left: 20px;
+  width: 760px;
+  height: 850px;
+}
+
+#map {
+  position: absolute;
+  top: 20px;
+  left: 820px;
+  width: 900px;
+  height: 700px;
+}
+
+#countryName {
+  position: absolute;
+  top: 590px;
+  left: 840px;
+  z-index: 1000;
+  color: white;
+  font-size: 24px;
+}
+
+#chart {
+  position: absolute;
+  top: 740px;
+  left: 820px;
+  width: 900px;
+  height: 200px;
+}
+
+#chartSvg {
+  border: 1px solid white;
+}
+#map svg {
+  border: 1px solid white;
+}
+
+#notes {
+  opacity: 1;
+  z-index: 1000;
+  position: absolute;
+  top: 630px;
+  left: 820px;
+  border: 1px solid white;
+  min-width: 980px;
+  height: 80px;
+  color: #DDD;
+  padding: 10px;
+}
+
+.axis--x text {
+  stroke: #ddd;
+}
+
+.axis--x path {
+  display: none;
+}
+
+.axis--y * {
+  stroke: #766;
+  }
+
+.dec {
+  display: inline-block;
+  margin: 0px;
+  height: 20px;
+  width: 9%;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  border-right: 1px solid #AAA;
+  cursor: pointer;
+}
+
+.dec:first-child {
+    border-left: 1px solid #AAA;
+}
+
+#nextButton {
+  float: right;
+  margin-right: 40px;
+  background-color: blue;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: 2px solid white;
+  cursor: pointer;
+}

@@ -1,0 +1,499 @@
+country	sex	1	2	3	4	5
+AF	M				4	1
+AX	M					
+AS	M			7		5
+AD	M					
+AO	M	2			4	2
+AI	M			8	1	7
+AQ	M					
+AG	M			4	4	
+AW	M		3	3	3	8
+AU	M		7	7	10	
+AT	M		8	8	10	
+BS	M			5	3	
+BH	M			3	6	9
+BB	M			3	7	
+BY	M	10	7		10	10
+BE	M		5	3	9	
+BM	M		8	6	5	
+BT	M	7		8	4	4
+BQ	M					
+BA	M	10		1	7	8
+BW	M	5		7	5	4
+BV	M					
+IO	M					
+BN	M				6	8
+BF	M	2		10	2	1
+BI	M	1		10	2	3
+CM	M	4	9		4	3
+CA	M		5	5	8	
+CV	M	5		1	5	5
+KY	M			6		7
+CF	M	1			2	1
+TD	M	3			2	1
+CN	M	6			7	9
+CX	M					
+CC	M					
+KM	M	2			3	3
+CG	M	3			4	2
+CD	M	1			3	3
+CK	M			7	6	
+CI	M	3			3	1
+CU	M			10	6	10
+CW	M					
+CY	M		3	6	7	10
+CZ	M	10	9	5	9	
+DK	M		9	6	10	
+DJ	M	4			2	
+DM	M			2	2	
+EC	M	7	10	7		6
+GQ	M				2	5
+ER	M				1	4
+FK	M		10			
+FO	M			9		
+FJ	M	6		7	4	
+FI	M		6	4	10	
+FR	M		7	4	9	
+GF	M			1		
+PF	M			2		
+TF	M					
+GA	M	6		1	3	3
+GM	M	3			1	2
+GE	M	5		2	7	9
+DE	M		9	8	9	
+GH	M	4		5	5	3
+GI	M				1	
+GR	M		3	2	10	8
+GL	M					
+GD	M			3	8	
+GP	M			1		10
+GU	M			5		10
+GG	M					
+GN	M	2			4	1
+GW	M	2				2
+GY	M	5		4	3	4
+HT	M	1		6	1	2
+HM	M					
+VA	M					
+HK	M					
+IS	M		9	5	9	
+IR	M	8	2	4		6
+IQ	M	7			5	2
+IE	M		4	2	10	
+IM	M			8		
+IL	M		5	6	9	7
+IT	M		2	2	8	10
+JP	M		10	8	9	
+JE	M					
+KZ	M	10		9	7	9
+KE	M	2			2	2
+KI	M				1	
+KP	M					10
+KR	M		3		10	
+KW	M			7	5	8
+LA	M	3		9	5	4
+LB	M			3	7	7
+LS	M	1		2	3	2
+LY	M				9	10
+LI	M				8	
+LU	M		8	5	5	
+MO	M					
+MY	M	10	10	8		6
+ML	M	2	7		3	1
+MT	M		7	6	7	7
+MH	M				8	5
+MQ	M			1		10
+MR	M	4			2	1
+MU	M	9		4	7	6
+YT	M					
+FM	M	3				
+MC	M			9	1	
+MN	M		4	4	8	5
+ME	M	9			8	8
+MS	M				1	
+MA	M	7		3	6	4
+MZ	M	1	8		2	2
+MM	M				4	4
+	M	4		1	3	4
+NR	M				1	
+NP	M	4	9	10		4
+NL	M		10	8	10	
+NC	M					8
+NZ	M		8	5	10	
+NE	M	3		10	1	1
+NG	M	1		7	4	2
+NU	M			8	1	
+NF	M					
+MP	M			7		
+NO	M		9	7	9	
+OM	M				6	7
+PK	M	5		9	3	2
+PW	M				8	9
+PS	M	10	2			
+PG	M	3			1	1
+PN	M					
+PT	M		6	4	9	8
+PR	M			2	10	7
+QA	M		10	10	2	5
+RE	M		1	1		9
+BL	M					
+SH	M			3		
+KN	M				10	
+LC	M	4		1	4	
+MF	M					
+PM	M					8
+VC	M			2	1	
+WS	M		1	8	3	7
+SM	M				8	
+ST	M	2		10	4	5
+SA	M		8	3	9	8
+SN	M	3		7	3	2
+SC	M	9		5	1	6
+SL	M	1		9	1	2
+SG	M		5	8		10
+SX	M					
+SK	M	9	5	2	7	
+SI	M		7	6	10	9
+SB	M			1	1	3
+SO	M				2	
+GS	M					
+SS	M		1			1
+ES	M		3	1	10	9
+SD	M	4	2		5	1
+SR	M	5		3	3	6
+SJ	M					
+SZ	M	3		1	2	4
+SE	M		8	2	8	
+CH	M		8	9	9	
+SY	M	8		6	6	5
+TW	M					
+TJ	M	6	1		6	10
+TL	M	3			5	2
+TG	M	2	9		4	3
+TK	M				1	
+TO	M			8	2	8
+TM	M	4			3	9
+TC	M					
+TV	M				1	
+AE	M			9	4	8
+GB	M		7	4	8	
+US	M		4	4	10	
+UM	M					
+UZ	M				3	10
+VU	M				2	4
+VE	M	6	1	7		4
+VG	M			9		
+VI	M					
+WF	M					
+EH	M					
+ZW	M			9	2	3
+AF	F				2	1
+AX	F					
+AS	F			8		5
+AD	F					
+AO	F	2			3	2
+AI	F			6	1	6
+AQ	F					
+AG	F			5	6	
+AW	F		6	4	5	7
+AU	F		8	8	10	
+AT	F		9	9	10	
+BS	F			5	5	
+BH	F			2	7	9
+BB	F			3	10	
+BY	F	10	7		10	9
+BE	F		8	4	9	
+BM	F		10	9	6	
+BT	F	7		7	3	3
+BQ	F					
+BA	F	10		1	7	8
+BW	F	5		7	6	8
+BV	F					
+IO	F					
+BN	F				6	8
+BF	F	2		10	2	1
+BI	F	1		10	2	3
+CM	F	4	6		4	2
+CA	F		7	8	8	
+CV	F	5		2	5	5
+KY	F			7		5
+CF	F	1			1	1
+TD	F	3			1	1
+CN	F	6			6	8
+CX	F					
+CC	F					
+KM	F	2			3	3
+CG	F	3			3	2
+CD	F	1			2	2
+CK	F			5	10	
+CI	F	3			3	1
+CU	F			10	7	10
+CW	F					
+CY	F		7	6	8	10
+CZ	F	10	9	5	9	
+DK	F		10	8	10	
+DJ	F	4			2	
+DM	F			4	3	
+EC	F	7	10	6		6
+GQ	F				2	6
+ER	F				2	4
+FK	F		10			
+FO	F			8		
+FJ	F	6		6	4	
+FI	F		9	5	10	
+FR	F		9	4	8	
+GF	F			1		
+PF	F			2		
+TF	F					
+GA	F	6		2	3	3
+GM	F	3			2	2
+GE	F	5		2	7	9
+DE	F		9	9	8	
+GH	F	4		6	4	3
+GI	F				1	
+GR	F		5	2	10	8
+GL	F					
+GD	F			2	8	
+GP	F			1		10
+GU	F			6		10
+GG	F					
+GN	F	2			3	1
+GW	F	2				2
+GY	F	5		3	4	4
+HT	F	1		5	1	2
+HM	F					
+VA	F					
+HK	F					
+IS	F		10	7	10	
+IR	F	8	1	2		5
+IQ	F	7			4	2
+IE	F		7	5	9	
+IM	F			10		
+IL	F		6	7	9	5
+IT	F		5	3	9	10
+JP	F		10	9	8	
+JE	F					
+KZ	F	10		9	7	9
+KE	F	2			2	3
+KI	F				1	
+KP	F					10
+KR	F		5		9	
+KW	F			8	6	7
+LA	F	3		10	4	3
+LB	F			5	7	7
+LS	F	1		2	4	4
+LY	F				8	10
+LI	F				5	
+LU	F		10	8	5	
+MO	F					
+MY	F	10	10	8		5
+ML	F	2	6		2	1
+MT	F		7	8	7	8
+MH	F				6	5
+MQ	F			1		9
+MR	F	4			2	1
+MU	F	9		3	6	6
+YT	F					
+FM	F	3				
+MC	F			9	1	
+MN	F		6	5	9	6
+ME	F	9			8	6
+MS	F				1	
+MA	F	7		5	5	4
+MZ	F	1	8		2	2
+MM	F				4	4
+	F	4		1	4	4
+NR	F				1	
+NP	F	4	8	10		3
+NL	F		10	9	9	
+NC	F					9
+NZ	F		7	6	10	
+NE	F	3		10	1	1
+NG	F	1		4	3	1
+NU	F			9	1	
+NF	F					
+MP	F			10		
+NO	F		10	9	10	
+OM	F				6	6
+PK	F	5		8	4	2
+PW	F				9	9
+PS	F	10	2			
+PG	F	3			1	1
+PN	F					
+PT	F		8	4	8	8
+PR	F			4	10	6
+QA	F		3	9	7	9
+RE	F		4	1		10
+BL	F					
+SH	F			4		
+KN	F				9	
+LC	F	4		1	5	
+MF	F					
+PM	F					7
+VC	F			2	1	
+WS	F		2	7	3	8
+SM	F				8	
+ST	F	2		7	4	5
+SA	F		3	1	8	7
+SN	F	3		5	3	1
+SC	F	9		3	4	8
+SL	F	1		10	1	1
+SG	F		4	6		10
+SX	F					
+SK	F	9	7	3	8	
+SI	F		9	7	10	10
+SB	F			1	1	2
+SO	F				1	
+GS	F					
+SS	F		3			1
+ES	F		6	2	10	9
+SD	F	4	1		4	2
+SR	F	5		1	4	8
+SJ	F					
+SZ	F	3		1	2	4
+SE	F		9	4	9	
+CH	F		9	9	7	
+SY	F	8		2	6	4
+TW	F					
+TJ	F	6	1		5	10
+TL	F	3			4	3
+TG	F	2	8		3	2
+TK	F				1	
+TO	F			7	3	8
+TM	F	4			3	10
+TC	F					
+TV	F				1	
+AE	F			4	6	7
+GB	F		7	6	8	
+US	F		6	6	10	
+UM	F					
+UZ	F				3	10
+VU	F				2	4
+VE	F	6		6		5
+VG	F			9		
+VI	F					
+WF	F					
+EH	F					
+ZW	F			9	2	4
+AL	M	8	1	2	8	7
+DZ	M	6	6	1	6	5
+AR	M	8	5	4	9	7
+AM	M	7	1	1	7	9
+AZ	M	9	4	6	5	10
+BD	M	2	5	9	4	2
+BZ	M	5	3	6	5	3
+BJ	M	2	4	10	5	1
+BO	M	6	10	9	7	7
+BR	M	7	5	6	7	6
+BG	M	7	3	3	9	5
+KH	M	5	9	10	5	3
+CL	M	8	9	5	10	7
+CO	M	6	6	5	8	5
+CR	M	8	6	8	8	7
+HR	M	10	2	2	9	9
+DO	M	7	4	4	7	5
+EG	M	8	3	5	6	4
+SV	M	7	8	7	6	5
+EE	M	8	6	1	9	10
+ET	M	3	10	4	3	1
+GT	M	5	5	10	5	4
+HN	M	4	4	10	5	4
+HU	M	10	6	2	8	8
+IN	M	4	10	8	6	3
+ID	M	5	3	4	6	9
+JM	M	9	2	3	5	4
+JO	M	10	4	3	7	7
+KG	M	6	5	6	7	9
+LV	M	8	6	7	9	9
+LR	M	1	5	10	4	1
+LT	M	8	7	6	9	10
+MK	M	9	2	1	7	6
+MG	M	1	10	10	2	1
+MW	M	1	7	9	1	1
+MV	M	8	1	6	4	10
+MX	M	8	7	8	6	6
+MD	M	9	1	6	7	7
+NI	M	6	6	9	5	3
+PA	M	6	8	7	6	6
+PY	M	7	10	9	6	6
+PE	M	7	6	7	7	7
+PH	M	4	3	5	6	5
+PL	M	10	6	3	9	10
+RO	M	10	4	3	8	8
+RU	M	10	7	5	10	8
+RW	M	1	8	10	3	2
+RS	M	10	2	2	8	6
+ZA	M	5	1	1	4	6
+LK	M	6	3	5	5	6
+TZ	M	2	2	9	2	3
+TH	M	9	7	10	8	6
+TT	M	6	1	8	3	8
+TN	M	8	2	2	6	5
+TR	M	10	4	4	10	9
+UG	M	3	10	10	2	3
+UA	M	10	4	6	10	9
+UY	M	9	4	6	8	6
+VN	M	7	9	10	6	5
+YE	M	5	1	4	4	5
+ZM	M	1	2	3	1	3
+AL	F	8	3	3	9	6
+DZ	F	6	2	1	6	4
+AR	F	8	4	4	10	8
+AM	F	7	1	1	7	9
+AZ	F	9	5	7	5	10
+BD	F	2	1	7	4	3
+BZ	F	5	2	3	5	3
+BJ	F	2	4	10	3	1
+BO	F	6	6	8	6	6
+BR	F	7	4	4	7	7
+BG	F	7	5	5	9	5
+KH	F	5	9	10	4	4
+CL	F	8	6	5	10	7
+CO	F	6	3	3	7	6
+CR	F	8	5	7	7	7
+HR	F	10	6	2	9	9
+DO	F	7	4	1	8	5
+EG	F	8	2	1	5	4
+SV	F	7	10	9	5	5
+EE	F	8	8	3	10	10
+ET	F	3	10	3	2	2
+GT	F	5	1	10	5	4
+HN	F	4	1	8	5	5
+HU	F	10	7	4	8	8
+IN	F	4	1	8	5	3
+ID	F	5	3	4	6	9
+JM	F	9	3	2	6	6
+JO	F	10	2	1	7	7
+KG	F	6	3	6	7	9
+LV	F	8	7	6	9	9
+LR	F	1	6	9	3	1
+LT	F	8	8	7	9	10
+MK	F	9	4	2	7	5
+MG	F	1	9	10	2	1
+MW	F	1	4	9	1	2
+MV	F	8	1	3	4	8
+MX	F	8	3	8	5	6
+MD	F	9	4	7	7	7
+NI	F	6	2	8	5	4
+PA	F	6	4	5	7	5
+PY	F	7	5	6	6	8
+PE	F	7	5	6	6	6
+PH	F	4	3	5	6	6
+PL	F	10	8	4	9	10
+RO	F	10	5	4	8	7
+RU	F	10	7	6	9	9
+RW	F	1	8	10	3	3
+RS	F	10	5	2	8	5
+ZA	F	5	2	1	5	7
+LK	F	6	2	3	5	7
+TZ	F	2	1	8	2	3
+TH	F	9	6	10	8	6
+TT	F	6	1	7	4	8
+TN	F	8	3	3	7	4
+TR	F	10	2	4	8	7
+UG	F	3	9	10	2	3
+UA	F	10	5	7	10	9
+UY	F	9	4	4	9	7
+VN	F	7	8	10	6	5
+YE	F	5	1	7	3	2
+ZM	F	1	2	5	1	3
