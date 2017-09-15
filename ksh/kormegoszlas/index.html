@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Kormegoszlás</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="app.css" rel="stylesheet">
+  </head>
+  <body>
+    <div id="app">
+      <h1>A népesség korösszetételének alakulása</h1>
+      <div id="chartContainer">
+        <table id="tooltip"></table>
+        <svg id="chart"></svg>
+      </div>
+      <div id="legend"></div>
+      <div id="text">
+        <p></p>
+        <button id="nextButton">Tovább</button>
+      </div>
+    </div>
+    <div id="logo">
+      <a href="https://www.ksh.hu">
+        <img src="http://www.ksh.hu/images/logos/kshlogo_wm_60.png" alt="KSH">
+      </a>
+    </div>
+    <script src="d3.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
