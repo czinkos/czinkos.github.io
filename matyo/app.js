@@ -9832,7 +9832,7 @@
       const { innerWidth, innerHeight } = window;
       const m2 = Math.min(innerHeight, innerWidth);
       const c2 = 0.04;
-      document.body.style.fontSize = Math.max(m2 * c2, 18) + "px";
+      document.body.style.fontSize = Math.max(m2 * c2, 20) + "px";
     };
     setFontSize();
     window.addEventListener("resize", setFontSize);

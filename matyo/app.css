@@ -240,7 +240,6 @@ div.story.hover .step.last > div {
 }
 .step.step-1 > div div.logo {
   min-height: 100%;
-  display: flex;
   align-items: center;
 }
 .step.step-1 > div div.logo img {
@@ -262,7 +261,12 @@ div.story.hover .step.last > div {
   .step {
     width: 100%;
     margin-left: 0;
+    margin-right: 0;
+    padding-left: 0em;
     padding-bottom: 80vh;
+  }
+  .step p {
+    padding-right: 0.5em;
   }
   .step.last {
     width: 100%;
