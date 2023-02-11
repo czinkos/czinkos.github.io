@@ -196,7 +196,6 @@ div.story.hover .step.last > div {
 }
 .step {
   width: 32vw;
-  opacity: 0.2;
   transition: opacity 1s;
   padding-bottom: 40vh;
   margin-left: 5vw;
@@ -215,10 +214,6 @@ div.story.hover .step.last > div {
   margin: 0;
   font-size: 0.8em;
   line-height: 150%;
-}
-.step.active {
-  opacity: 1;
-  transition: opacity 0.6s;
 }
 .step.step-1 {
   width: 100%;
