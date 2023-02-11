@@ -9626,6 +9626,7 @@
       const getIdsDown = getHierarchy("down");
       const getIdsUp = getHierarchy("up");
       const getIds = getHierarchy("all");
+      const xyf = 0.09 * Math.sqrt(m2 / 1e3);
       const forcesToCenter = (ids, links, c2, forces = {}) => {
         const includes = ids == "all" ? () => true : (id2) => ids.includes(id2);
         const radius = m2 / 2.6;
@@ -9641,7 +9642,6 @@
           }
           return 0;
         };
-        const xyf = 0.09 * Math.sqrt(m2 / 1e3);
         const defaultForces = {
           radial: radial_default(radius).x(width / 7.5).strength((d) => includes(d.id) ? 0 : 0.1),
           collision: collide_default().radius((d) => d.r).iterations(2),
@@ -9686,8 +9686,8 @@
       const allIds = this.nodes.map((d) => d.id);
       const centerForces = (nodeIds, links) => ({
         charge: manyBody_default().strength((d) => nodeIds.includes(d.id) ? d.mutato ? -10 : -60 : 0),
-        links: link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && 0.06 || d.dataset2dim && 0.06 || 0),
-        y: y_default2((d) => d.mutato && -200 || d.dataset && -100 || d.dimension && 50 || d.element && 200).strength((d) => nodeIds.includes(d.id) ? 0.1 : 0)
+        links: link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && xyf || d.dataset2dim && xyf || xyf),
+        y: y_default2((d) => d.mutato && -m2 / 5 || d.dataset && -m2 / 15 || d.dimension && m2 / 20 || d.element && m2 / 5).strength((d) => nodeIds.includes(d.id) ? xyf : 0)
       });
       return [
         center({ nodeIds: allIds, linkFilter: () => true, c: 2e-3, forces: { radial: null } }),
