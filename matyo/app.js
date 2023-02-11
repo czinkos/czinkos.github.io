@@ -9818,7 +9818,6 @@
     const { nodes, links } = await getData();
     const story = new NszMetaStory(".step", "canvas");
     story.create(nodes, links);
-    window.addEventListener("resize", () => window.location.href = "");
   }
 })();
 /**
