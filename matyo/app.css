@@ -223,6 +223,7 @@ div.story.hover .step.last > div {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 .step.step-1 > div div.title {
   line-height: 0.5%;
@@ -244,6 +245,7 @@ div.story.hover .step.last > div {
 }
 .step.step-1 > div div.logo img {
   width: 6em;
+  padding-top: 0.5em;
   margin-right: 1em;
 }
 .step.last {
