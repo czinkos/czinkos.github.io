@@ -9657,7 +9657,7 @@
           return 0;
         };
         const defaultForces = {
-          radial: radial_default(radius).x(width / 7.5).strength((d) => includes(d.id) ? 0 : 0.1),
+          radial: radial_default(radius).x(width > height ? width / 7.5 : 0).strength((d) => includes(d.id) ? 0 : 0.1),
           collision: collide_default().radius((d) => d.r).iterations(2),
           charge: manyBody_default().strength(chargeForceStrength(radius * c2)),
           x: x_default2().x(width > height ? width / 7.5 : 0).strength((d) => includes(d.id) ? xyf : 0),
