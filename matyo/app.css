@@ -248,9 +248,16 @@ div.story.hover .step.last > div {
   display: flex;
   align-items: center;
 }
+.step.step-1 > div div.logo img {
+  width: 6em;
+  margin-right: 1em;
+}
 .step.last {
   padding-bottom: 2em;
   width: 35vw;
+}
+.step.last img {
+  width: 8em;
 }
 .step.last a,
 .step.last a:visited {
