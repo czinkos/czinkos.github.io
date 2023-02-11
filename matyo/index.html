@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Népszámlálás 2011 adatkörök</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bigshot+One&display=swap">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <style>
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+        }
+
+        #control {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            z-index: 1000;
+        }
+
+        #canvas {
+            z-index: 10;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+        .story svg {
+            display: inline-block;
+            margin-left: 0.1em;
+            margin-right: 0.1em;
+        }
+       
+    </style>
+</head>
+<body class="matyo-2">
+    <div id="control">
+    </div>
+    <div id="app">
+    <div id="label"></div>
+    <div id="canvas"></div>
+    <div class="story">
+        <div class="step step-1" data-step="a">
+            <div>
+                <div class="title">
+                    <h1>A népszámlálás adatkörei</h1>
+                    <h2>A 2011-es népszámlálási adatbázis metaadat-gráfja</h2>
+                </div>
+                <div class="logo">
+                    <img src="kshlogo.svg" />
+                </div>
+            </div>
+        </div>
+        <div class="step" data-step="b">
+            <div>
+                <p>A színes pöttyök és
+                    a köztük húzódó vonalak
+                    a metaadatok alkotta
+                    gráfot jelenítik meg, képet
+                    adva az elérhető adatkörökről
+                    és azok tartalmáról.
+                </p>
+                <br>
+                <!-- <p class="eg">
+                    Az egyes adatkörökben milyen kérdésekre lehet választ találni?
+                </p> -->
+            </div>
+        </div>
+        <div class="step" data-step="b">
+            <div>
+                <p>A kék pöttyök jelenítik meg a <svg width="16" height="16"><circle cx="8" cy="8" r="8" fill="#053786" /></svg> mutatókat, azaz a 
+                    statisztikai mérőszámokat: 
+                    <ul>
+                        <li>népességszám (fő),</li>
+                        <li>lakásszám (darab).</li>
+                    </ul>
+                </p>
+            </div>
+        </div>
+        <div class="step" data-step="c">
+            <div>
+                <p>A "Hány fő?", "Hány darab?" típusú kérdésekre a megfelelő mutatót 
+                    tartalmazó <svg width="16" height="16"><circle cx="8" cy="8" r="8" fill="#ED6D93" /></svg> adatkörökben található válasz.
+                </p>
+            </div>
+        </div>
+        <div class="step" data-step="d">
+            <div>
+                <p>
+                    Az adatkörök előre meghatározott <svg width="16" height="16"><circle cx="8" cy="8" r="8" fill="#FECA10" /></svg> dimenziók,
+                    azaz jellemzők szerint összesített adatokat tartalmaznak.
+                </p>
+                <!-- <br>
+                <p class="eg">
+                    Hány nő él Veszprém megyében?
+                </p> -->
+            </div>
+        </div>
+        <div class="step" data-step="e">
+            <div>
+                <p>A dimenziók lehetséges értékeit az <svg width="16" height="16"><circle cx="8" cy="8" r="8" fill="#9D0E0E" /></svg> 
+                    elemek tartalmazzák.</p>
+                <br>
+                <p class="eg">
+                    Például a "Nemek" dimenzió három lehetséges értéke: nő, férfi, összesen.
+                </p>
+            </div>
+        </div>
+        <div class="step" data-step="f">
+            <div>
+                <p>Egy mutatóhoz több adatkör tartozik.</p>
+                <br>
+                <p class="eg">Például 
+                    a "Hány fő?" jellegű kérdésekre
+                    kilenc adatkörben található válasz.
+                </p>
+            </div>
+        </div>
+        <div class="step" data-step="g">
+            <div>
+                <p>Minden adatkörhöz több dimenzió tartozik.</p>
+                <br>
+                <p>Egy dimenzió több adatkörhöz is kapcsolódhat.</p>
+               
+                <!-- <br>
+                <p class="eg">Népességszám "nem" és "kor" szerint.</p> -->
+            </div>
+        </div>
+        <div class="step" data-step="g">
+            <div>
+                <p>
+                    A zöld vonallal jelölt kapcsolatok mentén a pöttyök vonzzák egymást, így
+                    a közös dimenziók közelítik egymáshoz a hasonló tartalmú adatköröket.
+                </p>
+                <!-- <br>
+                <p class="eg">Népességszám "nem" és "kor" szerint.</p> -->
+            </div>
+        </div>
+        <!-- <div class="step" data-step="g">
+            <div>
+                <p>A piros pöttyök a dimenziók lehetséges értékeit, a dimenzió elemeket jelölik.</p>
+                <br>
+                <p class="eg">Egy konkrét "nem" és "kor" szerinti kérdés: hány fő 25-30 év közötti nő él Magyarországon?</p>
+            </div>
+        </div> -->
+        <div class="step" data-step="g">
+            <div>
+                <p>Egyes dimenzió elemek hierarchiába rendeződnek.</p>
+            </div>
+        </div>
+        <div class="step" data-step="g">
+            <div>
+                <p>A teljes elemkészlet hozzáadásával felépül a népességszám mutatóhoz tartozó metaadatok gráfja.</p>
+            </div>
+        </div>
+        <div class="step last" data-step="g">
+            <div>
+                <h2>Kattintson a pöttyökre!</h2>
+                <p>Az ábrához a <a>matyó</a> hímzés színeit kölcsönöztük.</p>
+                <p>Nézze meg <a>mezőségi</a>, <a>színes ókalocsai</a> és <a>veszprémi</a> színezéssel is!</p>
+                <br>
+                <p>Az adatok a <a target="_blank" href="http://go.ksh.hu/111">Népszámlálási adatbázisban</a> érhetők el.</p>
+                <br><br>
+                <div id="copy">                    
+                    <a href="https://www.ksh.hu">
+                        <img src="kshlogo.svg" />
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+
+ <!-- <div id="legend">
+        <h2>Matyó Met(y)a Pöttyök</h2>
+        <div>
+            <p><em>A 2011-es Népszámlálás adatköreinek meta-adata</em></p>
+        </div>
+        <p>Kattintson a pöttyökre! Pötyörésszen!</p>
+        <div>
+            <p>Az ábra a 2011-es népszámlálás adatköreiben található két mutatóhoz,
+                a népesség- és lakásszámhoz tartozó meta-adatokat jeleníti meg.
+            </p>
+            <p>A kék pöttyök jelenítik meg a <svg width="12" height="12"><circle cx="6" cy="6" r="6" fill="#053786" /></svg> mutatókat ("fő" és "lakásszám"), azaz a 
+                mérés eredményeit. A sárgák az <svg width="12" height="12"><circle cx="6" cy="6" r="6" fill="#FECA10" /></svg> adatkörök, amelyek adott ismérvek, más
+                néven dimenziók szerint aggregált adatokat tartalmaznak (pl. népesség iskolázottsági jellemzők szerint). 
+            </p>
+            <p>A <svg width="12" height="12"><circle cx="6" cy="6" r="6" fill="#ED6D93" /></svg> dimenziókat (pl. "nem", "korév") rózsaszínű pöttyök jelzik. A piros pöttyök a 
+                dimenziók <svg width="12" height="12"><circle cx="6" cy="6" r="6" fill="#9D0E0E" /></svg> elemei (pl. nem -> férfi, nő)</p>
+            </div>
+        <div id="copy">
+            <p><small>Központi Statisztikai Hivatal, 2022</small></p>
+            <a href="https://www.ksh.hu">
+                <img src="kshlogo.svg" />
+            </a>
+        </div>
+    </div> -->
+
+</html>

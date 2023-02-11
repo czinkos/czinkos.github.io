@@ -1,0 +1,268 @@
+/* src/app.scss */
+#label .label {
+  position: fixed;
+  border-left: 0px solid #888;
+  z-index: 10000;
+  bottom: auto;
+  width: auto;
+  max-width: 20em;
+  font-size: 0.8em;
+  color: #aaa;
+}
+#label .label > .type {
+  font-size: 0.6em;
+}
+#label .label > .name {
+  font-size: 0.6em;
+}
+#label .label.measure > .type {
+  color: #053786;
+}
+#label .label.dataset > .type {
+  color: #ED6D93;
+}
+#label .label.dimension > .type {
+  color: #FECA10;
+}
+#label .label.element > .type {
+  color: #9D0E0E;
+}
+#label.withBg .label {
+  padding: 0.4em;
+  background-color: white;
+  color: black;
+}
+:root {
+  --background-color: black;
+  --measure-color: #053786;
+  --dataset-color: #FECA10;
+  --dimension-color: #ED6D93;
+  --element-color: #9D0E0E;
+  --line-color: #4FB958;
+  --measure-stroke-width: 0px;
+  --dataset-stroke-width: 0px;
+  --dimension-stroke-width: 0px;
+  --element-stroke-width: 0px;
+  --line-stroke-width: 1px;
+  --measure-stroke-color: white;
+  --dataset-stroke-color: white;
+  --dimension-stroke-color: white;
+  --element-stroke-color: white;
+  --transition: 1s;
+  --selected-node: green;
+}
+body.matyo-2 {
+  --background-color: black;
+  --measure-color: #053786;
+  --measure-stroke-color: white;
+  --dataset-color: #ED6D93;
+  --dimension-color: #FECA10;
+  --element-color: #9D0E0E;
+  --line-color: #4FB958;
+  --measure-stroke-width: 0px;
+  --dataset-stroke-width: 0px;
+  --dimension-stroke-width: 0px;
+  --element-stroke-width: 0px;
+  --line-stroke-width: 1px;
+  --measure-stroke-color: white;
+  --dataset-stroke-color: white;
+  --dimension-stroke-color: white;
+  --element-stroke-color: white;
+  --selected-node: green;
+}
+body.white {
+  --background-color: black;
+  --measure-color: white;
+  --dataset-color: white;
+  --dimension-color: black;
+  --element-color: white;
+  --line-color: white;
+  --measure-stroke-color: white;
+  --dataset-stroke-color: white;
+  --dimension-stroke-color: white;
+  --element-stroke-color: white;
+  --measure-stroke-width: 0px;
+  --dataset-stroke-width: 0px;
+  --dimension-stroke-width: 2px;
+  --element-stroke-width: 0px;
+  --line-stroke-width: 1px;
+  --selected-node: green;
+}
+body.turkiz {
+  --background-color: #fafafa;
+  --measure-color: #005f5f;
+  --dataset-color: #5bc4bf;
+  --dimension-color: #bfe5e2;
+  --element-color: #00a0a0;
+  --line-color: #80cec8;
+  --measure-stroke-color: white;
+  --dataset-stroke-color: white;
+  --dimension-stroke-color: white;
+  --element-stroke-color: white;
+  --measure-stroke-width: 0px;
+  --dataset-stroke-width: 0px;
+  --dimension-stroke-width: 0px;
+  --element-stroke-width: 0px;
+  --line-stroke-width: 1px;
+  --selected-node: green;
+}
+body.dim line {
+  --transition: 1s;
+  --line-color: black;
+  --line-stroke-width: 0px;
+}
+body.dim circle {
+  --transition: 1s;
+  --measure-color: #222;
+  --dataset-color: #222;
+  --dimension-color: #222;
+  --element-color: #222;
+}
+body.dim circle.highlighted {
+  --transition: 2s;
+  --measure-color: #053786;
+  --measure-stroke-color: white;
+  --dataset-color: #ED6D93;
+  --dimension-color: #FECA10;
+  --element-color: #9D0E0E;
+}
+body.dim line.highlighted {
+  --transition: 3.5s;
+  --line-color: #4FB958;
+  --line-stroke-width: 1px;
+}
+body.sub circle,
+body.sub line {
+  --transition: 0.4s;
+  --line-stroke-width: 0px;
+}
+body.sub circle.highlighted,
+body.sub line.highlighted {
+  --transition: 0.4s;
+  --line-stroke-width: 1px;
+}
+body {
+  transition: background-color var(--transition);
+  background-color: var(--background-color);
+}
+body circle.measure {
+  transition: fill var(--transition);
+  fill: var(--measure-color);
+  stroke: var(--measure-stroke-color);
+  stroke-width: var(--measure-stroke-width);
+}
+body circle.dataset {
+  transition: fill var(--transition);
+  fill: var(--dataset-color);
+  stroke: var(--dataset-stroke-color);
+  stroke-width: var(--dataset-stroke-width);
+}
+body circle.dimension {
+  transition: fill var(--transition), stroke-width var(--transition);
+  fill: var(--dimension-color);
+  stroke: var(--dimension-stroke-color);
+  stroke-width: var(--dimension-stroke-width);
+}
+body circle.element {
+  transition: fill var(--transition);
+  fill: var(--element-color);
+  stroke: var(--element-stroke-color);
+  stroke-width: var(--element-stroke-width);
+}
+body circle.selected {
+  fill: var(--selected-node);
+}
+body line {
+  transition: stroke var(--transition), stroke-width var(--transition);
+  stroke: var(--line-color);
+  stroke-width: var(--line-stroke-width);
+}
+
+/* src/story.scss */
+div.story {
+  color: white;
+  z-index: 100;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding-top: 50vh;
+}
+div.story.hover {
+  pointer-events: none;
+}
+div.story.hover .step.last > div {
+  pointer-events: all;
+}
+.step {
+  width: 32vw;
+  opacity: 0.2;
+  transition: opacity 1s;
+  padding-bottom: 40vh;
+  margin-left: 5vw;
+  font-size: 0.8em;
+}
+.step > div {
+  padding: 1em 1em;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ccc;
+  font-size: 1em;
+  backdrop-filter: blur(2px);
+  font-weight: 400;
+}
+.step p,
+.step ul {
+  margin: 0;
+  font-size: 0.8em;
+  line-height: 150%;
+}
+.step.active {
+  opacity: 1;
+  transition: opacity 0.6s;
+}
+.step.step-1 {
+  width: 100%;
+  margin-left: 0;
+}
+.step.step-1 > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.step.step-1 > div div.title {
+  line-height: 0.5%;
+}
+.step.step-1 > div div.title h1 {
+  font-size: 1.3em;
+  color: white;
+  margin-bottom: 1em;
+}
+.step.step-1 > div div.title h2 {
+  font-size: 0.7em;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 600;
+  color: #afafaf;
+}
+.step.step-1 > div div.logo {
+  min-height: 100%;
+  display: flex;
+  align-items: center;
+}
+.step.last {
+  padding-bottom: 2em;
+  width: 35vw;
+}
+.step.last a,
+.step.last a:visited {
+  color: white;
+}
+@media (orientation: portrait) {
+  .step {
+    width: 100%;
+    margin-left: 0;
+    padding-bottom: 80vh;
+  }
+  .step.last {
+    width: 100%;
+  }
+}
