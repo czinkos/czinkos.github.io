@@ -9660,7 +9660,7 @@
           radial: radial_default(radius).x(width / 7.5).strength((d) => includes(d.id) ? 0 : 0.1),
           collision: collide_default().radius((d) => d.r).iterations(2),
           charge: manyBody_default().strength(chargeForceStrength(radius * c2)),
-          x: x_default2().x(width / 7.5).strength((d) => includes(d.id) ? xyf : 0),
+          x: x_default2().x(width > height ? width / 7.5 : 0).strength((d) => includes(d.id) ? xyf : 0),
           y: y_default2().y(0).strength((d) => includes(d.id) ? xyf : 0),
           links: link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && 0.29 || d.dataset2dim && 0.12 || 0.16)
         };
@@ -9829,7 +9829,10 @@
   app();
   async function app() {
     const setFontSize = () => {
-      document.body.style.fontSize = Math.min(window.innerHeight, window.innerWidth) * 0.04 + "px";
+      const { innerWidth, innerHeight } = window;
+      const m2 = Math.min(innerHeight, innerWidth);
+      const c2 = 0.04;
+      document.body.style.fontSize = Math.max(m2 * c2, 18) + "px";
     };
     setFontSize();
     window.addEventListener("resize", setFontSize);
