@@ -32515,9 +32515,8 @@ ${e}`);
       this.updateSize();
     }
     updateSize() {
-      const scale = window.devicePixelRatio;
-      this.width = Math.floor(this.parent.offsetWidth * scale);
-      this.height = Math.floor(this.parent.offsetHeight * scale);
+      this.width = this.app.view.width;
+      this.height = this.app.view.height;
       this.halfWidth = this.width / 2;
       this.halfHeight = this.height / 2;
     }
