@@ -32551,9 +32551,6 @@ ${e}`);
       this.app.stage.addChild(graphics);
       this.labelElements.style("left", (d) => d.x + this.halfWidth + d.r + 5 + "px").style("top", (d) => d.y + this.halfHeight + "px");
     }
-    draw({ nodes, links, labeledNodes = [] }) {
-      this.drawLabels(labeledNodes);
-    }
     drawLabels(labeledNodes, className = "") {
       this.labelParent.attr("class", className);
       this.labelElements = select_default2("#label").selectAll("div.label").data(labeledNodes, (d) => d.id).join("div").attr("class", (d) => "label " + d.class).style("display", "block");
@@ -32695,8 +32692,9 @@ ${e}`);
         const activeLinks = links.filter(linkFilter);
         const linkIds = activeLinks.map((l) => l.id);
         const newForces = forcesToCenter(nodeIds, activeLinks, c2, forces);
-        this.simulation.updateSim({ nodes, forces: newForces });
         const labeledNodes = labelFilter ? nodes.filter(labelFilter) : [];
+        this.simulation.drawLabels(labeledNodes);
+        this.simulation.updateSim({ nodes, forces: newForces });
         const color2 = (n) => {
           return n.mutato && 341894 || n.dataset && 15560083 || n.dimension && 16697872 || n.element && 10292750 || 3355443;
         };
@@ -32706,7 +32704,6 @@ ${e}`);
         for (const [i, link] of links.entries()) {
           link.color = linkIds.includes(link.id) ? 5224792 : 0;
         }
-        this.simulation.draw({ nodes, links, labeledNodes });
         select_default2("div.story").classed("hover", false);
         select_default2("body").attr("class", "matyo-2 dim");
         if (postFn)
