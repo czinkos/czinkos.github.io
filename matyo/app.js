@@ -32514,8 +32514,9 @@ ${e}`);
       this.updateSize();
     }
     updateSize() {
-      this.width = this.parent.offsetWidth;
-      this.height = this.parent.offsetHeight;
+      const scale = window.devicePixelRatio;
+      this.width = Math.floor(this.parent.offsetWidth * scale);
+      this.height = Math.floor(this.parent.offsetHeight * scale);
       this.halfWidth = this.width / 2;
       this.halfHeight = this.height / 2;
     }
@@ -32535,9 +32536,9 @@ ${e}`);
       const graphics = this.graphics;
       graphics.clear();
       const scale = window.devicePixelRatio;
-      const fx = (x3) => (x3 + this.halfWidth) / scale;
-      const fy = (y3) => (y3 + this.halfHeight) / scale;
-      const lineWidth = 1;
+      const fx = (x3) => x3 * scale;
+      const fy = (y3) => y3 * scale;
+      const lineWidth = 1 * scale;
       for (const [i, link] of links.entries()) {
         graphics.lineStyle({ width: link.color === 0 ? 0 : lineWidth, color: link.color, alignment: 0 });
         graphics.moveTo(fx(link.source.x), fy(link.source.y));
@@ -32547,11 +32548,11 @@ ${e}`);
       for (const [i, node] of nodes.entries()) {
         graphics.lineStyle(0);
         graphics.beginFill(node.color, 1);
-        graphics.drawCircle(fx(node.x), fy(node.y), node.r / scale);
+        graphics.drawCircle(fx(node.x), fy(node.y), node.r * scale);
         graphics.endFill();
       }
       this.app.stage.addChild(graphics);
-      this.labelElements.style("left", (d) => d.x + this.halfWidth + d.r + 5 + "px").style("top", (d) => d.y + this.halfHeight + "px");
+      this.labelElements.style("left", (d) => fx(d.x) + d.r * scale + 5 + "px").style("top", (d) => fy(d.y) + "px");
     }
     drawLabels(labeledNodes, className = "") {
       this.labelParent.attr("class", className);
