@@ -32520,7 +32520,7 @@ ${e}`);
       this.halfHeight = this.height / 2;
     }
     create(nodes, links, forces) {
-      this.simulation = simulation_default(nodes).alphaDecay(1e-3).velocityDecay(0.4);
+      this.simulation = simulation_default(nodes).alphaDecay(5e-3).velocityDecay(0.5);
       this.updateSim({ nodes, forces });
       this.simulation.on("tick", () => this.tick({ nodes, links }));
     }
