@@ -32537,7 +32537,7 @@ ${e}`);
       const scale = window.devicePixelRatio;
       const fx = (x3) => (x3 + this.halfWidth) / scale;
       const fy = (y3) => (y3 + this.halfHeight) / scale;
-      const lineWidth = 1 / scale;
+      const lineWidth = 1;
       for (const [i, link] of links.entries()) {
         graphics.lineStyle({ width: link.color === 0 ? 0 : lineWidth, color: link.color });
         graphics.moveTo(fx(link.source.x), fy(link.source.y));
