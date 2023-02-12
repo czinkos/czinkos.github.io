@@ -32508,13 +32508,14 @@ ${e}`);
       this.parent = document.getElementById(parentElementId);
       if (!this.parent)
         throw new Error("Parent element is missing.");
-      this.app = new Application({ antialias: true, resizeTo: parent, resolution: window.devicePixelRatio });
+      this.app = new Application({ antialias: true, autoDensity: true, resizeTo: parent, resolution: window.devicePixelRatio });
       this.parent.appendChild(this.app.view);
       this.graphics = new Graphics();
+      console.log(window.devicePixelRatio, this.graphics.scale);
       this.updateSize();
     }
     updateSize() {
-      const scale = 1;
+      const scale = window.devicePixelRatio;
       this.width = Math.floor(this.parent.offsetWidth * scale);
       this.height = Math.floor(this.parent.offsetHeight * scale);
       this.halfWidth = this.width / 2;
@@ -32552,7 +32553,7 @@ ${e}`);
         graphics.endFill();
       }
       this.app.stage.addChild(graphics);
-      this.labelElements.style("left", (d) => fx(d.x) * scale + d.r * scale + 5 + "px").style("top", (d) => fy(d.y) * scale + "px");
+      this.labelElements.style("left", (d) => fx(d.x) + d.r + 5 + "px").style("top", (d) => fy(d.y) + "px");
     }
     drawLabels(labeledNodes, className = "") {
       this.labelParent.attr("class", className);
@@ -32677,7 +32678,7 @@ ${e}`);
           charge: manyBody_default().strength(chargeForceStrength(radius * c2)),
           x: x_default2().x(width > height ? width / 7.5 : 0).strength((d) => includes(d.id) ? xyf : 0),
           y: y_default2().y(0).strength((d) => includes(d.id) ? xyf : 0),
-          links: link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && 0.29 || d.dataset2dim && 0.12 || 0.16)
+          links: link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && 0.29 || d.dataset2dim && 0.12 || 0.1)
         };
         const newForces = __spreadValues(__spreadValues({}, defaultForces), forces);
         return Object.keys(newForces).map((name) => f(name, newForces[name]));
