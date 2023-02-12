@@ -32514,7 +32514,7 @@ ${e}`);
       this.updateSize();
     }
     updateSize() {
-      const scale = window.devicePixelRatio;
+      const scale = 1;
       this.width = Math.floor(this.parent.offsetWidth * scale);
       this.height = Math.floor(this.parent.offsetHeight * scale);
       this.halfWidth = this.width / 2;
@@ -32536,8 +32536,8 @@ ${e}`);
       const graphics = this.graphics;
       graphics.clear();
       const scale = window.devicePixelRatio;
-      const fx = (x3) => x3 * scale;
-      const fy = (y3) => y3 * scale;
+      const fx = (x3) => (x3 + this.halfWidth) / scale;
+      const fy = (y3) => (y3 + this.halfHeight) / scale;
       const lineWidth = 1 * scale;
       for (const [i, link] of links.entries()) {
         graphics.lineStyle({ width: link.color === 0 ? 0 : lineWidth, color: link.color, alignment: 0 });
@@ -32548,11 +32548,11 @@ ${e}`);
       for (const [i, node] of nodes.entries()) {
         graphics.lineStyle(0);
         graphics.beginFill(node.color, 1);
-        graphics.drawCircle(fx(node.x), fy(node.y), node.r * scale);
+        graphics.drawCircle(fx(node.x), fy(node.y), node.r / scale);
         graphics.endFill();
       }
       this.app.stage.addChild(graphics);
-      this.labelElements.style("left", (d) => fx(d.x) + d.r * scale + 5 + "px").style("top", (d) => fy(d.y) + "px");
+      this.labelElements.style("left", (d) => fx(d.x) * scale + d.r * scale + 5 + "px").style("top", (d) => fy(d.y) * scale + "px");
     }
     drawLabels(labeledNodes, className = "") {
       this.labelParent.attr("class", className);
