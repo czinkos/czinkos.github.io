@@ -32534,10 +32534,12 @@ ${e}`);
     tick({ nodes, links }) {
       const graphics = this.graphics;
       graphics.clear();
-      const fx = (x3) => x3 + this.halfWidth;
-      const fy = (y3) => y3 + this.halfHeight;
+      const scale = window.devicePixelRatio;
+      const fx = (x3) => (x3 + this.halfWidth) / scale;
+      const fy = (y3) => (y3 + this.halfHeight) / scale;
+      const lineWidth = 1 / scale;
       for (const [i, link] of links.entries()) {
-        graphics.lineStyle({ width: 1, color: link.color });
+        graphics.lineStyle({ width: link.color === 0 ? 0 : lineWidth, color: link.color });
         graphics.moveTo(fx(link.source.x), fy(link.source.y));
         graphics.lineTo(fx(link.target.x), fy(link.target.y));
         graphics.endFill();
@@ -32545,7 +32547,7 @@ ${e}`);
       for (const [i, node] of nodes.entries()) {
         graphics.lineStyle(0);
         graphics.beginFill(node.color, 1);
-        graphics.drawCircle(fx(node.x), fy(node.y), node.r);
+        graphics.drawCircle(fx(node.x), fy(node.y), node.r / scale);
         graphics.endFill();
       }
       this.app.stage.addChild(graphics);
