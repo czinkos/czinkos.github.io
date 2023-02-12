@@ -32508,7 +32508,7 @@ ${e}`);
       this.parent = document.getElementById(parentElementId);
       if (!this.parent)
         throw new Error("Parent element is missing.");
-      this.app = new Application({ antialias: true, resizeTo: parent });
+      this.app = new Application({ antialias: true, resizeTo: parent, resolution: window.devicePixelRatio });
       this.parent.appendChild(this.app.view);
       this.graphics = new Graphics();
       this.updateSize();
@@ -32520,7 +32520,7 @@ ${e}`);
       this.halfHeight = this.height / 2;
     }
     create(nodes, links, forces) {
-      this.simulation = simulation_default(nodes).alphaDecay(5e-3).velocityDecay(0.5);
+      this.simulation = simulation_default(nodes).alphaDecay(1e-3).velocityDecay(0.55);
       this.updateSim({ nodes, forces });
       this.simulation.on("tick", () => this.tick({ nodes, links }));
     }
@@ -32570,9 +32570,6 @@ ${e}`);
     restart() {
       this.simulation.velocityDecay();
       this.simulation.alpha(1).restart();
-    }
-    getSvg() {
-      return this.svg;
     }
   };
 
@@ -32829,19 +32826,7 @@ ${e}`);
     }
     create(nodes, links) {
       const f = (name, f2) => ({ name, f: f2 });
-      const forces = [
-        f("collision", collide_default((d) => d.size * 2 || 2).strength(1)),
-        f(
-          "links",
-          link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && 0.09 || d.dataset2dim && 0.07 || 0.05)
-        ),
-        f(
-          "charge",
-          manyBody_default().strength((d) => d.dataset || d.mutato ? -550 : d.dimension ? -100 : -10)
-        ),
-        f("x", x_default2().x(this.simulation.width / 7.5)),
-        f("y", y_default2())
-      ];
+      const forces = [];
       this.initSim(nodes, links, forces);
       this.steps = this.createSteps(forces);
     }
