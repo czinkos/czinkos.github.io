@@ -32539,7 +32539,7 @@ ${e}`);
       const fy = (y3) => (y3 + this.halfHeight) / scale;
       const lineWidth = 1;
       for (const [i, link] of links.entries()) {
-        graphics.lineStyle({ width: link.color === 0 ? 0 : lineWidth, color: link.color });
+        graphics.lineStyle({ width: link.color === 0 ? 0 : lineWidth, color: link.color, alignment: 0 });
         graphics.moveTo(fx(link.source.x), fy(link.source.y));
         graphics.lineTo(fx(link.target.x), fy(link.target.y));
         graphics.endFill();
