@@ -32786,7 +32786,6 @@ ${e}`);
             select_default2("body").attr("class", "matyo-2 dim sub");
             select_default2("div.story").classed("hover", true);
             const { nodeElements, linkElements, links, simulation } = this;
-            simulation.getSvg().on("click", deselect);
             let selectedNode;
             nodeElements.on("mousemove", (e, d) => {
               simulation.drawLabels([d], "withBg");
