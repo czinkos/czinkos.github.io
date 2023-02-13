@@ -32623,7 +32623,7 @@ ${e}`);
         width = this.simulation.width;
         height = this.simulation.height;
         m2 = Math.min(width, height, 1e3);
-        xyf = 0.02 * Math.sqrt(m2 / 1e3);
+        xyf = 0.07 * Math.sqrt(m2 / 1e3);
         const nodeRadius = (d) => d.mutato && m2 / 25 || d.dataset && m2 / 45 || d.dimension && m2 / 85 || Math.max(m2 / 190, 3);
         this.nodes.forEach((n) => n.r = nodeRadius(n));
         radius = m2 / 2.6;
