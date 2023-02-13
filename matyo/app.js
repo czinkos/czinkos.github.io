@@ -32623,7 +32623,7 @@ ${e}`);
         width = this.simulation.width;
         height = this.simulation.height;
         m2 = Math.min(width, height);
-        xyf = 0.07 / s * Math.sqrt(m2 / 1e3);
+        xyf = 0.07 * Math.sqrt(m2 / 1e3);
         const nodeRadius = (d) => d.mutato && m2 / 25 || d.dataset && m2 / 45 || d.dimension && m2 / 85 || Math.max(m2 / 190, 3);
         this.nodes.forEach((n) => n.r = nodeRadius(n));
         radius = m2 / 2.6;
@@ -32678,7 +32678,7 @@ ${e}`);
           charge: manyBody_default().strength(chargeForceStrength(radius * c2)),
           x: x_default2().x(width > height ? width / 7.5 : 0).strength((d) => includes(d.id) ? xyf : 0),
           y: y_default2().y(0).strength((d) => includes(d.id) ? xyf : 0),
-          links: link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && 0.29 || d.dataset2dim && 0.12 || 0.1)
+          links: link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && 0.29 / s || d.dataset2dim && 0.12 / s || 0.1 / s)
         };
         const newForces = __spreadValues(__spreadValues({}, defaultForces), forces);
         return Object.keys(newForces).map((name) => f(name, newForces[name]));
