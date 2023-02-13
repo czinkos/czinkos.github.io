@@ -32678,7 +32678,7 @@ ${e}`);
           charge: manyBody_default().strength(chargeForceStrength(radius * c2)),
           x: x_default2().x(width > height ? width / 7.5 : 0).strength((d) => includes(d.id) ? xyf : 0),
           y: y_default2().y(0).strength((d) => includes(d.id) ? xyf : 0),
-          links: link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && 0.29 / s || d.dataset2dim && 0.12 / s || 0.1 / s)
+          links: link_default(links).id((d) => d.id).strength((d) => (d.elem2elem || d.dim2elem) && 0.29 || d.dataset2dim && 0.12 || 0.1)
         };
         const newForces = __spreadValues(__spreadValues({}, defaultForces), forces);
         return Object.keys(newForces).map((name) => f(name, newForces[name]));
