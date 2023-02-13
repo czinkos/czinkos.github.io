@@ -32511,7 +32511,6 @@ ${e}`);
       this.app = new Application({ antialias: true, autoDensity: true, resizeTo: parent, resolution: window.devicePixelRatio });
       this.parent.appendChild(this.app.view);
       this.graphics = new Graphics();
-      console.log(window.devicePixelRatio, this.graphics.scale);
       this.updateSize();
     }
     updateSize() {
@@ -32553,7 +32552,7 @@ ${e}`);
         graphics.endFill();
       }
       this.app.stage.addChild(graphics);
-      this.labelElements.style("left", (d) => fx(d.x) + d.r + 5 + "px").style("top", (d) => fy(d.y) + "px");
+      this.labelElements.style("left", (d) => fx(d.x) + d.r / scale + 5 + "px").style("top", (d) => fy(d.y) + "px");
     }
     drawLabels(labeledNodes, className = "") {
       this.labelParent.attr("class", className);
@@ -32614,6 +32613,7 @@ ${e}`);
   var NszMetaStory = class extends SimulationStory {
     createSteps(initForces) {
       const f = (name, f2) => ({ name, f: f2 });
+      const s = window.devicePixelRatio;
       let xyf;
       let radius;
       let height, width;
@@ -32623,7 +32623,7 @@ ${e}`);
         width = this.simulation.width;
         height = this.simulation.height;
         m2 = Math.min(width, height);
-        xyf = 0.07 * Math.sqrt(m2 / 1e3);
+        xyf = 0.07 / s * Math.sqrt(m2 / 1e3);
         const nodeRadius = (d) => d.mutato && m2 / 25 || d.dataset && m2 / 45 || d.dimension && m2 / 85 || Math.max(m2 / 190, 3);
         this.nodes.forEach((n) => n.r = nodeRadius(n));
         radius = m2 / 2.6;
