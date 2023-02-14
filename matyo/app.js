@@ -32544,19 +32544,7 @@ ${e}`);
           postFn: () => {
             select_default2("div.story").classed("hover", true);
             const sim = this.simulation;
-            sim.on("mousemove", (n) => {
-              n === void 0 ? sim.drawLabels([]) : sim.drawLabels([n], "withBg");
-            });
-            sim.on("click", (n) => {
-              if (n === void 0) {
-                sim.drawLabels([]);
-                alert("kak");
-              } else {
-                sim.drawLabels([n], "withBg");
-                console.log(n);
-                alert("kaka");
-              }
-            });
+            select_default2("canvas").on("click", () => select_default2(".story").style("background-color", "red"));
           }
         })
       ];
