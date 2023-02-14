@@ -32545,6 +32545,16 @@ ${e}`);
           postFn: () => {
             select_default2("div.story").classed("hover", true);
             const sim = this.simulation;
+            sim.on("mousemove", (n) => {
+              n === void 0 ? sim.drawLabels([]) : sim.drawLabels([n], "withBg");
+            });
+            sim.on("click", (n) => {
+              if (n === void 0) {
+                sim.drawLabels([]);
+              } else {
+                sim.drawLabels([n], "withBg");
+              }
+            });
           }
         })
       ];
