@@ -32268,7 +32268,6 @@ ${e}`);
       const fx = (x3) => x3 * scale - this.halfWidth;
       const fy = (y3) => y3 * scale - this.halfHeight;
       this.app.view.addEventListener(eventName, (e) => {
-        console.log(e);
         const x3 = e.type === "touchstart" ? e.touches[0].clientX : e.x;
         const y3 = e.type === "touchstart" ? e.touches[0].clientY : e.y;
         const n = this.simulation.find(fx(x3), fy(y3), 30 * scale);
@@ -32548,6 +32547,9 @@ ${e}`);
             select_default2("div.story").classed("hover", true);
             const sim = this.simulation;
             sim.on("touchstart", (n) => {
+              n === void 0 ? sim.drawLabels([]) : sim.drawLabels([n], "withBg");
+            });
+            sim.on("mousemove", (n) => {
               n === void 0 ? sim.drawLabels([]) : sim.drawLabels([n], "withBg");
             });
             sim.on("click", (n) => {
