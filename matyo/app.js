@@ -8315,256 +8315,6 @@
     return typeof selector === "string" ? new Selection([[document.querySelector(selector)]], [document.documentElement]) : new Selection([[selector]], root);
   }
 
-  // node_modules/d3-selection/src/sourceEvent.js
-  function sourceEvent_default(event) {
-    let sourceEvent;
-    while (sourceEvent = event.sourceEvent)
-      event = sourceEvent;
-    return event;
-  }
-
-  // node_modules/d3-selection/src/pointer.js
-  function pointer_default(event, node) {
-    event = sourceEvent_default(event);
-    if (node === void 0)
-      node = event.currentTarget;
-    if (node) {
-      var svg = node.ownerSVGElement || node;
-      if (svg.createSVGPoint) {
-        var point = svg.createSVGPoint();
-        point.x = event.clientX, point.y = event.clientY;
-        point = point.matrixTransform(node.getScreenCTM().inverse());
-        return [point.x, point.y];
-      }
-      if (node.getBoundingClientRect) {
-        var rect = node.getBoundingClientRect();
-        return [event.clientX - rect.left - node.clientLeft, event.clientY - rect.top - node.clientTop];
-      }
-    }
-    return [event.pageX, event.pageY];
-  }
-
-  // node_modules/d3-drag/src/noevent.js
-  var nonpassive = { passive: false };
-  var nonpassivecapture = { capture: true, passive: false };
-  function nopropagation(event) {
-    event.stopImmediatePropagation();
-  }
-  function noevent_default(event) {
-    event.preventDefault();
-    event.stopImmediatePropagation();
-  }
-
-  // node_modules/d3-drag/src/nodrag.js
-  function nodrag_default(view) {
-    var root2 = view.document.documentElement, selection2 = select_default2(view).on("dragstart.drag", noevent_default, nonpassivecapture);
-    if ("onselectstart" in root2) {
-      selection2.on("selectstart.drag", noevent_default, nonpassivecapture);
-    } else {
-      root2.__noselect = root2.style.MozUserSelect;
-      root2.style.MozUserSelect = "none";
-    }
-  }
-  function yesdrag(view, noclick) {
-    var root2 = view.document.documentElement, selection2 = select_default2(view).on("dragstart.drag", null);
-    if (noclick) {
-      selection2.on("click.drag", noevent_default, nonpassivecapture);
-      setTimeout(function() {
-        selection2.on("click.drag", null);
-      }, 0);
-    }
-    if ("onselectstart" in root2) {
-      selection2.on("selectstart.drag", null);
-    } else {
-      root2.style.MozUserSelect = root2.__noselect;
-      delete root2.__noselect;
-    }
-  }
-
-  // node_modules/d3-drag/src/constant.js
-  var constant_default2 = (x3) => () => x3;
-
-  // node_modules/d3-drag/src/event.js
-  function DragEvent(type2, {
-    sourceEvent,
-    subject,
-    target,
-    identifier,
-    active,
-    x: x3,
-    y: y3,
-    dx,
-    dy,
-    dispatch: dispatch2
-  }) {
-    Object.defineProperties(this, {
-      type: { value: type2, enumerable: true, configurable: true },
-      sourceEvent: { value: sourceEvent, enumerable: true, configurable: true },
-      subject: { value: subject, enumerable: true, configurable: true },
-      target: { value: target, enumerable: true, configurable: true },
-      identifier: { value: identifier, enumerable: true, configurable: true },
-      active: { value: active, enumerable: true, configurable: true },
-      x: { value: x3, enumerable: true, configurable: true },
-      y: { value: y3, enumerable: true, configurable: true },
-      dx: { value: dx, enumerable: true, configurable: true },
-      dy: { value: dy, enumerable: true, configurable: true },
-      _: { value: dispatch2 }
-    });
-  }
-  DragEvent.prototype.on = function() {
-    var value = this._.on.apply(this._, arguments);
-    return value === this._ ? this : value;
-  };
-
-  // node_modules/d3-drag/src/drag.js
-  function defaultFilter(event) {
-    return !event.ctrlKey && !event.button;
-  }
-  function defaultContainer() {
-    return this.parentNode;
-  }
-  function defaultSubject(event, d) {
-    return d == null ? { x: event.x, y: event.y } : d;
-  }
-  function defaultTouchable() {
-    return navigator.maxTouchPoints || "ontouchstart" in this;
-  }
-  function drag_default() {
-    var filter2 = defaultFilter, container = defaultContainer, subject = defaultSubject, touchable = defaultTouchable, gestures = {}, listeners = dispatch_default("start", "drag", "end"), active = 0, mousedownx, mousedowny, mousemoving, touchending, clickDistance2 = 0;
-    function drag(selection2) {
-      selection2.on("mousedown.drag", mousedowned).filter(touchable).on("touchstart.drag", touchstarted).on("touchmove.drag", touchmoved, nonpassive).on("touchend.drag touchcancel.drag", touchended).style("touch-action", "none").style("-webkit-tap-highlight-color", "rgba(0,0,0,0)");
-    }
-    function mousedowned(event, d) {
-      if (touchending || !filter2.call(this, event, d))
-        return;
-      var gesture = beforestart(this, container.call(this, event, d), event, d, "mouse");
-      if (!gesture)
-        return;
-      select_default2(event.view).on("mousemove.drag", mousemoved, nonpassivecapture).on("mouseup.drag", mouseupped, nonpassivecapture);
-      nodrag_default(event.view);
-      nopropagation(event);
-      mousemoving = false;
-      mousedownx = event.clientX;
-      mousedowny = event.clientY;
-      gesture("start", event);
-    }
-    function mousemoved(event) {
-      noevent_default(event);
-      if (!mousemoving) {
-        var dx = event.clientX - mousedownx, dy = event.clientY - mousedowny;
-        mousemoving = dx * dx + dy * dy > clickDistance2;
-      }
-      gestures.mouse("drag", event);
-    }
-    function mouseupped(event) {
-      select_default2(event.view).on("mousemove.drag mouseup.drag", null);
-      yesdrag(event.view, mousemoving);
-      noevent_default(event);
-      gestures.mouse("end", event);
-    }
-    function touchstarted(event, d) {
-      if (!filter2.call(this, event, d))
-        return;
-      var touches = event.changedTouches, c2 = container.call(this, event, d), n = touches.length, i, gesture;
-      for (i = 0; i < n; ++i) {
-        if (gesture = beforestart(this, c2, event, d, touches[i].identifier, touches[i])) {
-          nopropagation(event);
-          gesture("start", event, touches[i]);
-        }
-      }
-    }
-    function touchmoved(event) {
-      var touches = event.changedTouches, n = touches.length, i, gesture;
-      for (i = 0; i < n; ++i) {
-        if (gesture = gestures[touches[i].identifier]) {
-          noevent_default(event);
-          gesture("drag", event, touches[i]);
-        }
-      }
-    }
-    function touchended(event) {
-      var touches = event.changedTouches, n = touches.length, i, gesture;
-      if (touchending)
-        clearTimeout(touchending);
-      touchending = setTimeout(function() {
-        touchending = null;
-      }, 500);
-      for (i = 0; i < n; ++i) {
-        if (gesture = gestures[touches[i].identifier]) {
-          nopropagation(event);
-          gesture("end", event, touches[i]);
-        }
-      }
-    }
-    function beforestart(that, container2, event, d, identifier, touch) {
-      var dispatch2 = listeners.copy(), p = pointer_default(touch || event, container2), dx, dy, s;
-      if ((s = subject.call(that, new DragEvent("beforestart", {
-        sourceEvent: event,
-        target: drag,
-        identifier,
-        active,
-        x: p[0],
-        y: p[1],
-        dx: 0,
-        dy: 0,
-        dispatch: dispatch2
-      }), d)) == null)
-        return;
-      dx = s.x - p[0] || 0;
-      dy = s.y - p[1] || 0;
-      return function gesture(type2, event2, touch2) {
-        var p0 = p, n;
-        switch (type2) {
-          case "start":
-            gestures[identifier] = gesture, n = active++;
-            break;
-          case "end":
-            delete gestures[identifier], --active;
-          case "drag":
-            p = pointer_default(touch2 || event2, container2), n = active;
-            break;
-        }
-        dispatch2.call(
-          type2,
-          that,
-          new DragEvent(type2, {
-            sourceEvent: event2,
-            subject: s,
-            target: drag,
-            identifier,
-            active: n,
-            x: p[0] + dx,
-            y: p[1] + dy,
-            dx: p[0] - p0[0],
-            dy: p[1] - p0[1],
-            dispatch: dispatch2
-          }),
-          d
-        );
-      };
-    }
-    drag.filter = function(_2) {
-      return arguments.length ? (filter2 = typeof _2 === "function" ? _2 : constant_default2(!!_2), drag) : filter2;
-    };
-    drag.container = function(_2) {
-      return arguments.length ? (container = typeof _2 === "function" ? _2 : constant_default2(_2), drag) : container;
-    };
-    drag.subject = function(_2) {
-      return arguments.length ? (subject = typeof _2 === "function" ? _2 : constant_default2(_2), drag) : subject;
-    };
-    drag.touchable = function(_2) {
-      return arguments.length ? (touchable = typeof _2 === "function" ? _2 : constant_default2(!!_2), drag) : touchable;
-    };
-    drag.on = function() {
-      var value = listeners.on.apply(listeners, arguments);
-      return value === listeners ? drag : value;
-    };
-    drag.clickDistance = function(_2) {
-      return arguments.length ? (clickDistance2 = (_2 = +_2) * _2, drag) : Math.sqrt(clickDistance2);
-    };
-    return drag;
-  }
-
   // node_modules/d3-color/src/define.js
   function define_default(constructor, factory, prototype) {
     constructor.prototype = factory.prototype = prototype;
@@ -8948,7 +8698,7 @@
   }
 
   // node_modules/d3-interpolate/src/constant.js
-  var constant_default3 = (x3) => () => x3;
+  var constant_default2 = (x3) => () => x3;
 
   // node_modules/d3-interpolate/src/color.js
   function linear(a2, d) {
@@ -8963,12 +8713,12 @@
   }
   function gamma(y3) {
     return (y3 = +y3) === 1 ? nogamma : function(a2, b) {
-      return b - a2 ? exponential(a2, b, y3) : constant_default3(isNaN(a2) ? b : a2);
+      return b - a2 ? exponential(a2, b, y3) : constant_default2(isNaN(a2) ? b : a2);
     };
   }
   function nogamma(a2, b) {
     var d = b - a2;
-    return d ? linear(a2, d) : constant_default3(isNaN(a2) ? b : a2);
+    return d ? linear(a2, d) : constant_default2(isNaN(a2) ? b : a2);
   }
 
   // node_modules/d3-interpolate/src/rgb.js
@@ -10428,7 +10178,7 @@
   treeProto.y = y_default;
 
   // node_modules/d3-force/src/constant.js
-  function constant_default5(x3) {
+  function constant_default4(x3) {
     return function() {
       return x3;
     };
@@ -10449,7 +10199,7 @@
   function collide_default(radius) {
     var nodes, radii, random, strength = 1, iterations = 1;
     if (typeof radius !== "function")
-      radius = constant_default5(radius == null ? 1 : +radius);
+      radius = constant_default4(radius == null ? 1 : +radius);
     function force() {
       var i, n = nodes.length, tree, node, xi, yi, ri, ri2;
       for (var k = 0; k < iterations; ++k) {
@@ -10513,7 +10263,7 @@
       return arguments.length ? (strength = +_2, force) : strength;
     };
     force.radius = function(_2) {
-      return arguments.length ? (radius = typeof _2 === "function" ? _2 : constant_default5(+_2), initialize(), force) : radius;
+      return arguments.length ? (radius = typeof _2 === "function" ? _2 : constant_default4(+_2), initialize(), force) : radius;
     };
     return force;
   }
@@ -10529,7 +10279,7 @@
     return node;
   }
   function link_default(links) {
-    var id2 = index, strength = defaultStrength, strengths, distance = constant_default5(30), distances, nodes, count, bias, random, iterations = 1;
+    var id2 = index, strength = defaultStrength, strengths, distance = constant_default4(30), distances, nodes, count, bias, random, iterations = 1;
     if (links == null)
       links = [];
     function defaultStrength(link) {
@@ -10599,10 +10349,10 @@
       return arguments.length ? (iterations = +_2, force) : iterations;
     };
     force.strength = function(_2) {
-      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default5(+_2), initializeStrength(), force) : strength;
+      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default4(+_2), initializeStrength(), force) : strength;
     };
     force.distance = function(_2) {
-      return arguments.length ? (distance = typeof _2 === "function" ? _2 : constant_default5(+_2), initializeDistance(), force) : distance;
+      return arguments.length ? (distance = typeof _2 === "function" ? _2 : constant_default4(+_2), initializeDistance(), force) : distance;
     };
     return force;
   }
@@ -10739,7 +10489,7 @@
 
   // node_modules/d3-force/src/manyBody.js
   function manyBody_default() {
-    var nodes, node, random, alpha, strength = constant_default5(-30), strengths, distanceMin2 = 1, distanceMax2 = Infinity, theta2 = 0.81;
+    var nodes, node, random, alpha, strength = constant_default4(-30), strengths, distanceMin2 = 1, distanceMax2 = Infinity, theta2 = 0.81;
     function force(_2) {
       var i, n = nodes.length, tree = quadtree(nodes, x2, y2).visitAfter(accumulate);
       for (alpha = _2, i = 0; i < n; ++i)
@@ -10813,7 +10563,7 @@
       initialize();
     };
     force.strength = function(_2) {
-      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default5(+_2), initialize(), force) : strength;
+      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default4(+_2), initialize(), force) : strength;
     };
     force.distanceMin = function(_2) {
       return arguments.length ? (distanceMin2 = _2 * _2, force) : Math.sqrt(distanceMin2);
@@ -10829,9 +10579,9 @@
 
   // node_modules/d3-force/src/radial.js
   function radial_default(radius, x3, y3) {
-    var nodes, strength = constant_default5(0.1), strengths, radiuses;
+    var nodes, strength = constant_default4(0.1), strengths, radiuses;
     if (typeof radius !== "function")
-      radius = constant_default5(+radius);
+      radius = constant_default4(+radius);
     if (x3 == null)
       x3 = 0;
     if (y3 == null)
@@ -10858,10 +10608,10 @@
       nodes = _2, initialize();
     };
     force.strength = function(_2) {
-      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default5(+_2), initialize(), force) : strength;
+      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default4(+_2), initialize(), force) : strength;
     };
     force.radius = function(_2) {
-      return arguments.length ? (radius = typeof _2 === "function" ? _2 : constant_default5(+_2), initialize(), force) : radius;
+      return arguments.length ? (radius = typeof _2 === "function" ? _2 : constant_default4(+_2), initialize(), force) : radius;
     };
     force.x = function(_2) {
       return arguments.length ? (x3 = +_2, force) : x3;
@@ -10874,9 +10624,9 @@
 
   // node_modules/d3-force/src/x.js
   function x_default2(x3) {
-    var strength = constant_default5(0.1), nodes, strengths, xz;
+    var strength = constant_default4(0.1), nodes, strengths, xz;
     if (typeof x3 !== "function")
-      x3 = constant_default5(x3 == null ? 0 : +x3);
+      x3 = constant_default4(x3 == null ? 0 : +x3);
     function force(alpha) {
       for (var i = 0, n = nodes.length, node; i < n; ++i) {
         node = nodes[i], node.vx += (xz[i] - node.x) * strengths[i] * alpha;
@@ -10897,19 +10647,19 @@
       initialize();
     };
     force.strength = function(_2) {
-      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default5(+_2), initialize(), force) : strength;
+      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default4(+_2), initialize(), force) : strength;
     };
     force.x = function(_2) {
-      return arguments.length ? (x3 = typeof _2 === "function" ? _2 : constant_default5(+_2), initialize(), force) : x3;
+      return arguments.length ? (x3 = typeof _2 === "function" ? _2 : constant_default4(+_2), initialize(), force) : x3;
     };
     return force;
   }
 
   // node_modules/d3-force/src/y.js
   function y_default2(y3) {
-    var strength = constant_default5(0.1), nodes, strengths, yz;
+    var strength = constant_default4(0.1), nodes, strengths, yz;
     if (typeof y3 !== "function")
-      y3 = constant_default5(y3 == null ? 0 : +y3);
+      y3 = constant_default4(y3 == null ? 0 : +y3);
     function force(alpha) {
       for (var i = 0, n = nodes.length, node; i < n; ++i) {
         node = nodes[i], node.vy += (yz[i] - node.y) * strengths[i] * alpha;
@@ -10930,10 +10680,10 @@
       initialize();
     };
     force.strength = function(_2) {
-      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default5(+_2), initialize(), force) : strength;
+      return arguments.length ? (strength = typeof _2 === "function" ? _2 : constant_default4(+_2), initialize(), force) : strength;
     };
     force.y = function(_2) {
-      return arguments.length ? (y3 = typeof _2 === "function" ? _2 : constant_default5(+_2), initialize(), force) : y3;
+      return arguments.length ? (y3 = typeof _2 === "function" ? _2 : constant_default4(+_2), initialize(), force) : y3;
     };
     return force;
   }
@@ -32511,6 +32261,16 @@ ${e}`);
       this.app = new Application({ antialias: true, autoDensity: true, resizeTo: parent, resolution: window.devicePixelRatio });
       this.parent.appendChild(this.app.view);
       this.graphics = new Graphics();
+      const onclick = (e) => {
+        console.log(e);
+        const scale = window.devicePixelRatio;
+        const fx = (x3) => x3 * scale - this.halfWidth;
+        const fy = (y3) => y3 * scale - this.halfHeight;
+        const n = this.simulation.find(fx(e.x), fy(e.y), 30 * scale);
+        console.log(n);
+      };
+      this.app.view.addEventListener("mousemove", onclick);
+      this.app.view.addEventListener("click", onclick);
       this.updateSize();
     }
     updateSize() {
@@ -32783,46 +32543,7 @@ ${e}`);
           c: 2e-3,
           forces: { radial: null },
           postFn: () => {
-            select_default2("body").attr("class", "matyo-2 dim sub");
             select_default2("div.story").classed("hover", true);
-            const { nodeElements, linkElements, links, simulation } = this;
-            let selectedNode;
-            nodeElements.on("mousemove", (e, d) => {
-              simulation.drawLabels([d], "withBg");
-            });
-            nodeElements.on("mouseleave", () => {
-              simulation.drawLabels([]);
-            });
-            nodeElements.on("click", (e, d) => {
-              if (selectedNode === d.id) {
-                deselect();
-              } else {
-                const [nodeIds, linkIds] = getIds(links, d.id, 100);
-                nodeElements.classed("highlighted", (d2) => nodeIds.includes(d2.id));
-                linkElements.classed("highlighted", (d2) => linkIds.includes(d2.id));
-                selectedNode = d.id;
-              }
-              e.stopPropagation();
-            });
-            function deselect() {
-              nodeElements.classed("highlighted", true);
-              linkElements.classed("highlighted", true);
-              selectedNode = null;
-            }
-            const drag = drag_default().on("drag", dragged);
-            this.nodeElements.call(drag).on("dblclick", dblclick);
-            function dblclick(e, d) {
-              delete d.fx;
-              delete d.fy;
-              simulation.restart();
-            }
-            function dragstart() {
-            }
-            function dragged(event, d) {
-              d.fx = event.x;
-              d.fy = event.y;
-              simulation.restart();
-            }
           }
         })
       ];
