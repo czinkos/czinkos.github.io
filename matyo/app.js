@@ -32268,8 +32268,11 @@ ${e}`);
       const fx = (x3) => x3 * scale - this.halfWidth;
       const fy = (y3) => y3 * scale - this.halfHeight;
       this.app.view.addEventListener(eventName, (e) => {
-        const n = this.simulation.find(fx(e.x), fy(e.y), 30 * scale);
-        fn(n, e.x, e.y);
+        console.log(e);
+        const x3 = e.type === "touchstart" ? e.touches[0].clientX : e.x;
+        const y3 = e.type === "touchstart" ? e.touches[0].clientY : e.y;
+        const n = this.simulation.find(fx(x3), fy(y3), 30 * scale);
+        fn(n, x3, y3);
       });
     }
     updateSize() {
@@ -32544,7 +32547,16 @@ ${e}`);
           postFn: () => {
             select_default2("div.story").classed("hover", true);
             const sim = this.simulation;
-            select_default2("canvas").on("click", () => select_default2(".story").style("background-color", "red"));
+            sim.on("touchstart", (n) => {
+              n === void 0 ? sim.drawLabels([]) : sim.drawLabels([n], "withBg");
+            });
+            sim.on("click", (n) => {
+              if (n === void 0) {
+                sim.drawLabels([]);
+              } else {
+                sim.drawLabels([n], "withBg");
+              }
+            });
           }
         })
       ];
