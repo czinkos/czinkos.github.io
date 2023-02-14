@@ -32261,17 +32261,16 @@ ${e}`);
       this.app = new Application({ antialias: true, autoDensity: true, resizeTo: parent, resolution: window.devicePixelRatio });
       this.parent.appendChild(this.app.view);
       this.graphics = new Graphics();
-      const onclick = (e) => {
-        console.log(e);
-        const scale = window.devicePixelRatio;
-        const fx = (x3) => x3 * scale - this.halfWidth;
-        const fy = (y3) => y3 * scale - this.halfHeight;
-        const n = this.simulation.find(fx(e.x), fy(e.y), 30 * scale);
-        console.log(n);
-      };
-      this.app.view.addEventListener("mousemove", onclick);
-      this.app.view.addEventListener("click", onclick);
       this.updateSize();
+    }
+    on(eventName, fn) {
+      const scale = window.devicePixelRatio;
+      const fx = (x3) => x3 * scale - this.halfWidth;
+      const fy = (y3) => y3 * scale - this.halfHeight;
+      this.app.view.addEventListener(eventName, (e) => {
+        const n = this.simulation.find(fx(e.x), fy(e.y), 30 * scale);
+        return fn(n, e.x, e.y);
+      });
     }
     updateSize() {
       this.app.resize();
@@ -32544,6 +32543,16 @@ ${e}`);
           forces: { radial: null },
           postFn: () => {
             select_default2("div.story").classed("hover", true);
+            const sim = this.simulation;
+            sim.on("mousemove", (n) => {
+              n === void 0 ? sim.drawLabels([]) : sim.drawLabels([n], "withBg");
+            });
+            sim.on("click", (n) => {
+              if (n === void 0) {
+                sim.drawLabels([]);
+              } else {
+              }
+            });
           }
         })
       ];
