@@ -32,26 +32,10 @@
   background-color: white;
   color: black;
 }
-:root {
-  --background-color: black;
-  --measure-color: #053786;
-  --dataset-color: #FECA10;
-  --dimension-color: #ED6D93;
-  --element-color: #9D0E0E;
-  --line-color: #4FB958;
-  --measure-stroke-width: 0px;
-  --dataset-stroke-width: 0px;
-  --dimension-stroke-width: 0px;
-  --element-stroke-width: 0px;
-  --line-stroke-width: 1px;
-  --measure-stroke-color: white;
-  --dataset-stroke-color: white;
-  --dimension-stroke-color: white;
-  --element-stroke-color: white;
-  --transition: 1s;
-  --selected-node: green;
+.variant:hover {
+  cursor: pointer;
 }
-body.matyo-2 {
+:root {
   --background-color: black;
   --measure-color: #053786;
   --measure-stroke-color: white;
@@ -70,7 +54,50 @@ body.matyo-2 {
   --element-stroke-color: white;
   --selected-node: green;
 }
-body.white {
+body.matyo.dim circle.highlighted {
+  --measure-color: #053786;
+  --measure-stroke-color: white;
+  --dataset-color: #ED6D93;
+  --dimension-color: #FECA10;
+  --element-color: #9D0E0E;
+}
+body.matyo.dim line.highlighted {
+  --transition: 3.5s;
+  --line-color: #4FB958;
+  --line-stroke-width: 1px;
+}
+body.okalocsai {
+  --background-color: black;
+  --measure-color: #BC312A;
+  --measure-stroke-color: #BC312A;
+  --dataset-color: #BC312A;
+  --dimension-color: #BC312A;
+  --element-color: #BC312A;
+  --line-color: #5181F8;
+  --measure-stroke-width: 0px;
+  --dataset-stroke-width: 0px;
+  --dimension-stroke-width: 0px;
+  --element-stroke-width: 0px;
+  --line-stroke-width: 1px;
+  --measure-stroke-color: white;
+  --dataset-stroke-color: white;
+  --dimension-stroke-color: white;
+  --element-stroke-color: white;
+  --selected-node: green;
+}
+body.okalocsai.dim circle.highlighted {
+  --measure-color: #BC312A;
+  --measure-stroke-color: #BC312A;
+  --dataset-color: #BC312A;
+  --dimension-color: #BC312A;
+  --element-color: #BC312A;
+}
+body.okalocsai.dim line.highlighted {
+  --transition: 3.5s;
+  --line-color: #5181F8;
+  --line-stroke-width: 1px;
+}
+body.veszpremi {
   --background-color: black;
   --measure-color: white;
   --dataset-color: white;
@@ -88,13 +115,25 @@ body.white {
   --line-stroke-width: 1px;
   --selected-node: green;
 }
-body.turkiz {
-  --background-color: #fafafa;
-  --measure-color: #005f5f;
-  --dataset-color: #5bc4bf;
-  --dimension-color: #bfe5e2;
-  --element-color: #00a0a0;
-  --line-color: #80cec8;
+body.veszpremi.dim circle.highlighted {
+  --measure-color: white;
+  --dataset-color: white;
+  --dimension-color: black;
+  --element-color: white;
+  --dimension-stroke-color: white;
+}
+body.veszpremi.dim line.highlighted {
+  --transition: 3.5s;
+  --line-color: white;
+  --line-stroke-width: 1px;
+}
+body.mezosegi {
+  --background-color: #0B324C;
+  --measure-color: #FA9774;
+  --dataset-color: #FA9774;
+  --dimension-color: #FA9774;
+  --element-color: #FA9774;
+  --line-color: #FA9774;
   --measure-stroke-color: white;
   --dataset-stroke-color: white;
   --dimension-stroke-color: white;
@@ -105,6 +144,17 @@ body.turkiz {
   --element-stroke-width: 0px;
   --line-stroke-width: 1px;
   --selected-node: green;
+}
+body.mezosegi.dim circle.highlighted {
+  --measure-color: #FA9774;
+  --dataset-color: #FA9774;
+  --dimension-color: #FA9774;
+  --element-color: #FA9774;
+}
+body.mezosegi.dim line.highlighted {
+  --transition: 3.5s;
+  --line-color: #FA9774;
+  --line-stroke-width: 1px;
 }
 body.dim line {
   --transition: 1s;
@@ -117,19 +167,7 @@ body.dim circle {
   --dataset-color: #222;
   --dimension-color: #222;
   --element-color: #222;
-}
-body.dim circle.highlighted {
-  --transition: 2s;
-  --measure-color: #053786;
-  --measure-stroke-color: white;
-  --dataset-color: #ED6D93;
-  --dimension-color: #FECA10;
-  --element-color: #9D0E0E;
-}
-body.dim line.highlighted {
-  --transition: 3.5s;
-  --line-color: #4FB958;
-  --line-stroke-width: 1px;
+  --dimension-stroke-color: #222;
 }
 body.sub circle,
 body.sub line {
@@ -201,6 +239,9 @@ div.story.hover .step.last > div {
   margin-left: 5vw;
   font-size: 0.8em;
 }
+body.mezosegi .step > div {
+  background-color: #0B324C;
+}
 .step > div {
   padding: 1em 1em;
   background-color: rgba(0, 0, 0, 0.7);
@@ -235,7 +276,7 @@ div.story.hover .step.last > div {
   margin-bottom: 1em;
 }
 .step.step-1 > div div.title h2 {
-  font-size: 0.7em;
+  font-size: 0.6em;
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
   color: #afafaf;
