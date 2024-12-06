@@ -1,6 +1,21 @@
-<!DOCTYPE html>
 <html>
     <head>
+    <style>
+    h1 {
+    font-family:arial;
+    font-size:300%;
+    }
+    form {
+    font-family:arial;
+    font-size:160%;
+    }
+    input {
+    font-family:arial;
+    font-size:100%;
+    border: 1.2px solid white;
+    border-radius:18px
+    }
+    </style>
         <meta charset="utf-8">
         
         <title></title>
@@ -8,14 +23,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
     </head>
-    <body>
-        <h1>Add meg az adatokat:</h1>
-        <form method="GET" action="index.html">
-            Kék: <input type="number" name="k" /><br /><br />
-            Kürkiz: <input type="number" name="t" /><br /><br />
-            Sárga: <input type="number" name="s" /><br /><br />
-            Piros: <input type="number" name="p" /><br /><br />
-            <input type="submit" value="Mehet" />
+    <body  style="background-color:#080744; padding-left:64px; padding-top:48px;">
+ 
+        <h1 style="color:white;">Add meg az adatokat: </h1>
+        <form style="color:white; font-family:arial;" method="GET" action="index.html">
+            Kék: <input style="background-color:#25238A; color:white; padding:8px;" type="number" name="k" /><br /><br />
+            Zöld: <input style="background-color:#25238A; color:white; padding:8px;" type="number" name="t" /><br /><br />
+            Arany: <input style="background-color:#25238A; color:white; padding:8px;" type="number" name="s" /><br /><br />
+            Rózsaszín: <input style="background-color:#25238A; color:white; padding:8px;" type="number" name="p" /><br /><br />
+            <input style="background-color:#080744; color:white; font-family:arial; padding:16px;" type="submit" value="Mehet" />
         </form>
     </body>
 </html>
