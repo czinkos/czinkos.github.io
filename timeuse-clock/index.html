@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeuse Packed Circle Visualization</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #020617;
+            --text-color: #f8fafc;
+            --accent-color: #38bdf8;
+            --card-bg: rgba(15, 23, 42, 0.8);
+            --border-color: rgba(51, 65, 85, 0.3);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Outfit', sans-serif;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #viz-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+        }
+
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ui-overlay {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            z-index: 10;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            padding: 28px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid var(--border-color);
+            max-width: 340px;
+        }
+
+        h1 {
+            margin: 0 0 4px 0;
+            font-size: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #64748b;
+        }
+
+        .time-display {
+            font-size: 4rem;
+            font-weight: 700;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 8px;
+            letter-spacing: -3px;
+            background: linear-gradient(to bottom, #fff, #94a3b8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stats {
+            font-size: 0.9rem;
+            color: #64748b;
+            font-weight: 400;
+        }
+
+        .clock-face {
+            stroke: rgba(255, 255, 255, 0.1);
+            stroke-width: 1.5;
+            fill: #0f172a;
+            /* Deep slate solid background */
+        }
+
+        .clock-hand {
+            stroke-linecap: round;
+        }
+
+        .hour-hand {
+            stroke: #fff;
+            stroke-width: 5;
+            filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.4));
+        }
+
+        .minute-hand {
+            stroke: #fff;
+            stroke-width: 2.5;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+        }
+
+        .activity-circle {
+            fill: none;
+            stroke: #f97316;
+            /* Medium orange */
+            stroke-width: 1.5;
+            filter: drop-shadow(0 0 4px rgba(249, 115, 22, 0.4));
+        }
+
+        .activity-text {
+            font-size: 10px;
+            font-weight: 500;
+            text-anchor: middle;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            pointer-events: none;
+            fill: #94a3b8;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .activity-text.visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="viz-container">
+        <svg id="svg-viz"></svg>
+
+        <div class="ui-overlay">
+            <h1>Rhythm of Life</h1>
+            <div id="clock-txt" class="time-display">06:00</div>
+            <div id="status-txt" class="stats">Analyzing temporal patterns...</div>
+            <div
+                style="margin-top: 20px; font-size: 0.75rem; opacity: 0.5; line-height: 1.6; border-top: 1px solid var(--border-color); padding-top: 16px;">
+                Dynamic simulation with collision detection representing population distribution across 16
+                activities.<br>
+                1 real minute = 24 biological hours.
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const config = {
+            realDurationMs: 60000, // 24h = 1 minute
+            sampleSize: 3000,
+            baseForceStrength: 0.08,
+            collisionPadding: 4
+        };
+
+        const svg = d3.select('#svg-viz');
+        let width, height, clockRadius;
+
+        let people = [];
+        let activities = [];
+        let startTime = Date.now();
+        let currentClockMinutes = 0;
+        let nodes = [];
+        let simulation;
+
+        const colors = [
+            "#38bdf8", "#818cf8", "#c084fc", "#e879f9", "#fb7185",
+            "#f472b6", "#fb923c", "#fbbf24", "#fcd34d", "#4ade80",
+            "#2dd4bf", "#22d3ee", "#94a3b8", "#cbd5e1", "#f1f5f9", "#ffffff"
+        ];
+        const colorScale = d3.scaleOrdinal().range(colors);
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            svg.attr('viewBox', [0, 0, width, height]);
+
+            clockRadius = Math.min(width, height) * 0.42;
+
+            if (activities.length > 0) {
+                renderClockBase();
+                if (simulation) {
+                    simulation.force("center", d3.forceCenter(0, 0));
+                    simulation.alpha(1).restart();
+                }
+            }
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        async function init() {
+            try {
+                const [activitiesData, timeuseData] = await Promise.all([
+                    d3.json('activities_en.json'),
+                    d3.json('idomerleg2010.json')
+                ]);
+
+                activities = activitiesData;
+
+                // Sample data
+                const sampledData = d3.shuffle(timeuseData).slice(0, config.sampleSize);
+
+                people = sampledData.map((d, i) => ({
+                    id: i,
+                    activities: d.activities,
+                    minutes: d.minutes
+                }));
+
+                // Initialize nodes for force simulation
+                nodes = activities.map(a => ({
+                    id: a.id,
+                    name: a.name,
+                    x: (Math.random() - 0.5) * 100,
+                    y: (Math.random() - 0.5) * 100,
+                    r: 5,
+                    targetR: 10,
+                    value: 0
+                }));
+
+                setupForceSimulation();
+                document.getElementById('status-txt').innerText = `Proportional area encoding for ${people.length} lives`;
+
+                renderClockBase();
+                animate();
+            } catch (err) {
+                console.error(err);
+                document.getElementById('status-txt').innerText = "Data stream interrupted";
+            }
+        }
+
+        function setupForceSimulation() {
+            simulation = d3.forceSimulation(nodes)
+                .force("center", d3.forceCenter(0, 0))
+                .force("collide", d3.forceCollide().radius(d => d.r + config.collisionPadding).iterations(3))
+                .force("charge", d3.forceManyBody().strength(5))
+                .force("x", d3.forceX().strength(d => {
+                    // Bigger circles have a stronger pull to the center to keep the mass centered
+                    return config.baseForceStrength * (0.5 + (d.r / 100));
+                }))
+                .force("y", d3.forceY().strength(d => {
+                    return config.baseForceStrength * (0.5 + (d.r / 100));
+                }))
+                .on("tick", ticked);
+        }
+
+        function ticked() {
+            const packingLayer = svg.select('.packing-layer');
+            if (!packingLayer.node()) return;
+
+            const join = packingLayer.selectAll('.node-group')
+                .data(nodes, d => d.id);
+
+            const enter = join.enter().append('g')
+                .attr('class', 'node-group');
+
+            enter.append('circle')
+                .attr('class', 'activity-circle')
+                .style('stroke-opacity', 0.8);
+
+            enter.append('text')
+                .attr('class', 'activity-text');
+
+            const update = enter.merge(join);
+
+            update.attr('transform', d => `translate(${d.x}, ${d.y})`);
+
+            // Boundary containment: force nodes to stay within the clock face
+            nodes.forEach(node => {
+                const dist = Math.sqrt(node.x * node.x + node.y * node.y);
+                const buffer = 20; // Safe distance from ticks
+                const maxDist = Math.max(0, clockRadius - node.r - buffer);
+                if (dist > maxDist) {
+                    const angle = Math.atan2(node.y, node.x);
+                    node.x = Math.cos(angle) * maxDist;
+                    node.y = Math.sin(angle) * maxDist;
+                }
+            });
+
+            update.select('circle')
+                .attr('r', d => d.r);
+            // stroke-width is now fixed in CSS
+
+            update.select('text')
+                .attr('class', d => `activity-text ${d.r > 20 ? 'visible' : ''}`)
+                .attr('dy', '0.35em')
+                .text(d => d.name);
+        }
+
+
+        function renderClockBase() {
+            svg.selectAll('.clock-layer').remove();
+
+            const g = svg.append('g').attr('class', 'clock-layer')
+                .attr('transform', `translate(${width / 2}, ${height / 2})`);
+
+            // Outer glow ring
+            g.append('circle')
+                .attr('r', clockRadius + 2)
+                .attr('fill', 'none')
+                .attr('stroke', 'rgba(249, 115, 22, 0.1)')
+                .attr('stroke-width', 4)
+                .style('filter', 'blur(4px)');
+
+            // Outer ring
+            g.append('circle')
+                .attr('r', clockRadius)
+                .attr('class', 'clock-face');
+
+            // Ticks
+            for (let i = 0; i < 60; i++) {
+                const angle = (i / 60) * 2 * Math.PI;
+                const isHour = i % 5 === 0;
+                g.append('line')
+                    .attr('x1', Math.cos(angle) * (clockRadius - (isHour ? 15 : 6)))
+                    .attr('y1', Math.sin(angle) * (clockRadius - (isHour ? 15 : 6)))
+                    .attr('x2', Math.cos(angle) * clockRadius)
+                    .attr('y2', Math.sin(angle) * clockRadius)
+                    .attr('stroke', isHour ? '#475569' : '#1e293b')
+                    .attr('stroke-width', isHour ? 2 : 1);
+
+                // Add numbers 12, 3, 6, 9
+                if (i % 15 === 0) {
+                    const number = i === 0 ? 12 : (i / 5);
+                    g.append('text')
+                        .attr('x', Math.cos(angle - Math.PI / 2) * (clockRadius - 35))
+                        .attr('y', Math.sin(angle - Math.PI / 2) * (clockRadius - 35))
+                        .attr('text-anchor', 'middle')
+                        .attr('alignment-baseline', 'middle')
+                        .attr('fill', '#64748b')
+                        .attr('font-size', '14px')
+                        .attr('font-weight', '600')
+                        .text(number);
+                }
+            }
+
+            // Hands layer
+            const handsG = g.append('g').attr('class', 'hands-layer');
+            handsG.append('line').attr('id', 'hour-hand').attr('class', 'clock-hand hour-hand');
+            handsG.append('line').attr('id', 'minute-hand').attr('class', 'clock-hand minute-hand');
+            handsG.append('circle').attr('r', 5).attr('fill', '#fff');
+
+            // Packing container
+            if (!svg.select('.packing-layer').node()) {
+                svg.append('g').attr('class', 'packing-layer')
+                    .attr('transform', `translate(${width / 2}, ${height / 2})`);
+            }
+        }
+
+        function updateSimulation() {
+            const elapsedMs = (Date.now() - startTime) % config.realDurationMs;
+            const dayFraction = elapsedMs / config.realDurationMs;
+            currentClockMinutes = dayFraction * 1440;
+
+            const totalMins = (6 * 60 + currentClockMinutes) % 1440;
+            const hours = Math.floor(totalMins / 60);
+            const mins = Math.floor(totalMins % 60);
+
+            document.getElementById('clock-txt').innerText =
+                `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}`;
+
+            // Clock Hands
+            const hourAngle = (totalMins / 720) * 2 * Math.PI - Math.PI / 2;
+            const minAngle = (totalMins / 60) * 2 * Math.PI - Math.PI / 2;
+
+            d3.select('#hour-hand')
+                .attr('x1', 0).attr('y1', 0)
+                .attr('x2', Math.cos(hourAngle) * (clockRadius * 0.55))
+                .attr('y2', Math.sin(hourAngle) * (clockRadius * 0.55));
+
+            d3.select('#minute-hand')
+                .attr('x1', 0).attr('y1', 0)
+                .attr('x2', Math.cos(minAngle) * (clockRadius * 0.8))
+                .attr('y2', Math.sin(minAngle) * (clockRadius * 0.8));
+
+            // Aggregate population counts
+            const counts = new Map(activities.map(a => [a.id, 0]));
+            people.forEach(p => {
+                let activityIdx = 0;
+                for (let i = 0; i < p.minutes.length; i++) {
+                    if (p.minutes[i] <= currentClockMinutes) {
+                        activityIdx = i;
+                    } else break;
+                }
+                const actId = p.activities[activityIdx];
+                counts.set(actId.toString(), (counts.get(actId.toString()) || 0) + 1);
+            });
+
+            // Update node target radii based on count (area proportional to population)
+            const totalArea = Math.PI * Math.pow(clockRadius * 0.45, 2);
+            const factor = totalArea / config.sampleSize;
+
+            nodes.forEach(node => {
+                const count = counts.get(node.id) || 0;
+                node.value = count;
+                node.targetR = Math.sqrt((count * factor) / Math.PI);
+                // Smoothen the radius transition
+                node.r += (node.targetR - node.r) * 0.1;
+            });
+
+            // Update force collision with new radii
+            if (simulation) {
+                simulation.force("collide").radius(d => d.r + config.collisionPadding);
+
+                // Containment logic: keep nodes inside the clock face
+                nodes.forEach(node => {
+                    const dist = Math.sqrt(node.x * node.x + node.y * node.y);
+                    const buffer = 15; // Padding from the edge ticks
+                    const maxDist = clockRadius - node.r - buffer;
+                    if (dist > maxDist) {
+                        const angle = Math.atan2(node.y, node.x);
+                        node.x = Math.cos(angle) * maxDist;
+                        node.y = Math.sin(angle) * maxDist;
+                    }
+                });
+
+                simulation.alphaTarget(0.1).restart();
+            }
+        }
+
+        function animate() {
+            updateSimulation();
+            requestAnimationFrame(animate);
+        }
+
+        init();
+    </script>
+</body>
+
+</html>

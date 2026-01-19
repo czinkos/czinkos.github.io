@@ -1,0 +1,66 @@
+[
+    {
+        "id": "1",
+        "name": "Sleep"
+    },
+    {
+        "id": "2",
+        "name": "Eating"
+    },
+    {
+        "id": "3",
+        "name": "Paid Work"
+    },
+    {
+        "id": "4",
+        "name": "Studying"
+    },
+    {
+        "id": "5",
+        "name": "Personal Care"
+    },
+    {
+        "id": "6",
+        "name": "Shopping"
+    },
+    {
+        "id": "7",
+        "name": "Housework"
+    },
+    {
+        "id": "8",
+        "name": "Care"
+    },
+    {
+        "id": "9",
+        "name": "Work for Other Households"
+    },
+    {
+        "id": "10",
+        "name": "Volunteer Work"
+    },
+    {
+        "id": "11",
+        "name": "Religious Practice"
+    },
+    {
+        "id": "12",
+        "name": "Leisure"
+    },
+    {
+        "id": "13",
+        "name": "TV and Radio"
+    },
+    {
+        "id": "14",
+        "name": "Sports"
+    },
+    {
+        "id": "15",
+        "name": "Transport"
+    },
+    {
+        "id": "16",
+        "name": "Other"
+    }
+]
