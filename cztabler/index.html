@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OLAP Table Viewer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-primary: #0f1117;
+      --bg-secondary: #1a1d27;
+      --bg-tertiary: #242836;
+      --bg-hover: #2d3245;
+      --border: #353a4d;
+      --border-active: #5b6eae;
+      --text-primary: #e8eaf0;
+      --text-secondary: #9da3b4;
+      --text-muted: #6b7280;
+      --accent-blue: #4f8ef7;
+      --accent-purple: #8b5cf6;
+      --accent-teal: #14b8a6;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      --accent-emerald: #10b981;
+      --drop-zone-bg: rgba(79, 142, 247, 0.06);
+      --drop-zone-border: rgba(79, 142, 247, 0.25);
+      --drop-zone-active: rgba(79, 142, 247, 0.15);
+      --glass-bg: rgba(255, 255, 255, 0.03);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+      --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    .app {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 24px 32px;
+    }
+
+    /* ── Header ── */
+    .app-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .app-header svg {
+      width: 28px;
+      height: 28px;
+      color: var(--accent-blue);
+    }
+
+    .app-header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .app-header .subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-left: auto;
+    }
+
+    /* ── Dimension Chips Bar ── */
+    .dimensions-bar {
+      background: var(--bg-secondary);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 100;
+    }
+
+    .dimensions-bar-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .dimensions-bar-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 38px;
+      align-items: center;
+    }
+
+    .dimensions-bar-chips.empty-hint::after {
+      content: 'All dimensions are placed on the table';
+      color: var(--text-muted);
+      font-size: 13px;
+      font-style: italic;
+    }
+
+    /* ── Dimension Chip ── */
+    .dim-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: grab;
+      user-select: none;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      position: relative;
+    }
+
+    .dim-chip:active {
+      cursor: grabbing;
+    }
+
+    .dim-chip:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .dim-chip.dragging {
+      opacity: 0.4;
+      transform: scale(0.95);
+    }
+
+    .dim-chip[data-color="blue"] {
+      background: rgba(79, 142, 247, 0.15);
+      color: #7ab4ff;
+      border-color: rgba(79, 142, 247, 0.25);
+    }
+
+    .dim-chip[data-color="purple"] {
+      background: rgba(139, 92, 246, 0.15);
+      color: #b794f6;
+      border-color: rgba(139, 92, 246, 0.25);
+    }
+
+    .dim-chip[data-color="teal"] {
+      background: rgba(20, 184, 166, 0.15);
+      color: #5eead4;
+      border-color: rgba(20, 184, 166, 0.25);
+    }
+
+    .dim-chip[data-color="amber"] {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+
+    .dim-chip[data-color="rose"] {
+      background: rgba(244, 63, 94, 0.15);
+      color: #fb7185;
+      border-color: rgba(244, 63, 94, 0.25);
+    }
+
+    .dim-chip[data-color="emerald"] {
+      background: rgba(16, 185, 129, 0.15);
+      color: #6ee7b7;
+      border-color: rgba(16, 185, 129, 0.25);
+    }
+
+    .dim-chip .chip-icon {
+      width: 14px;
+      height: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .dim-chip .chip-icon svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .dim-chip .filter-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: inherit;
+      cursor: pointer;
+      transition: background 0.15s;
+      padding: 0;
+    }
+
+    .dim-chip .filter-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .dim-chip .filter-btn svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    .dim-chip .filter-btn.has-filter::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--accent-rose);
+      border: 1.5px solid var(--bg-secondary);
+    }
+
+    .dim-chip .filter-btn {
+      position: relative;
+    }
+
+    .dim-chip .remove-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: inherit;
+      cursor: pointer;
+      transition: background 0.15s;
+      padding: 0;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .dim-chip .remove-btn:hover {
+      background: rgba(244, 63, 94, 0.3);
+    }
+
+    .dim-chip.in-zone .remove-btn {
+      display: flex;
+    }
+
+    /* ── Filter Dropdown ── */
+    .filter-dropdown {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      background: var(--bg-tertiary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 8px 0;
+      min-width: 200px;
+      box-shadow: var(--shadow-lg);
+      z-index: 9999;
+      display: none;
+    }
+
+    .drop-zone,
+    .dimensions-bar-chips {
+      overflow: visible;
+    }
+
+    .filter-dropdown.open {
+      display: block;
+    }
+
+    .filter-dropdown .filter-header {
+      padding: 6px 14px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .filter-dropdown .filter-header .filter-actions {
+      display: flex;
+      gap: 8px;
+      font-size: 11px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .filter-dropdown .filter-header .filter-actions button {
+      background: none;
+      border: none;
+      color: var(--accent-blue);
+      cursor: pointer;
+      font-size: 11px;
+      font-family: inherit;
+    }
+
+    .filter-dropdown .filter-header .filter-actions button:hover {
+      text-decoration: underline;
+    }
+
+    .filter-dropdown label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .filter-dropdown label:hover {
+      background: var(--bg-hover);
+    }
+
+    .filter-dropdown input[type="checkbox"] {
+      accent-color: var(--accent-blue);
+      width: 15px;
+      height: 15px;
+    }
+
+    /* ── Table Layout ── */
+    .table-layout {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 0;
+    }
+
+    .corner-cell {
+      grid-row: 1;
+      grid-column: 1;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md) 0 0 0;
+      min-width: 60px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .transpose-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      background: var(--bg-tertiary);
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+      padding: 0;
+    }
+
+    .transpose-btn:hover {
+      background: var(--bg-hover);
+      color: var(--accent-blue);
+      border-color: var(--accent-blue);
+      transform: rotate(90deg);
+    }
+
+    .transpose-btn:active {
+      transform: rotate(90deg) scale(0.92);
+    }
+
+    .transpose-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* ── Reorder drop indicator ── */
+    .drop-indicator {
+      width: 3px;
+      height: 28px;
+      border-radius: 2px;
+      background: var(--accent-blue);
+      flex-shrink: 0;
+      transition: opacity 0.15s;
+      pointer-events: none;
+    }
+
+    /* ── Drop Zones ── */
+    .drop-zone {
+      min-height: 46px;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      transition: all 0.25s ease;
+      position: relative;
+      z-index: 10;
+    }
+
+    .drop-zone.drag-over {
+      background: var(--drop-zone-active) !important;
+      border-color: var(--accent-blue) !important;
+    }
+
+    .drop-zone .placeholder {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-style: italic;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .drop-zone .placeholder svg {
+      width: 14px;
+      height: 14px;
+      opacity: 0.5;
+    }
+
+    .col-drop-zone {
+      grid-row: 1;
+      grid-column: 2;
+      background: var(--drop-zone-bg);
+      border: 1px dashed var(--drop-zone-border);
+      border-radius: 0 var(--radius-md) 0 0;
+    }
+
+    .row-drop-zone {
+      grid-row: 2;
+      grid-column: 1;
+      background: var(--drop-zone-bg);
+      border: 1px dashed var(--drop-zone-border);
+      border-radius: 0 0 0 var(--radius-md);
+      flex-direction: column;
+      align-items: flex-start;
+      min-width: 120px;
+    }
+
+    /* ── Data Table ── */
+    .table-container {
+      grid-row: 2;
+      grid-column: 2;
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: 0 0 var(--radius-md) 0;
+      background: var(--bg-secondary);
+      position: relative;
+      z-index: 1;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .data-table th,
+    .data-table td {
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .data-table thead th {
+      background: var(--bg-tertiary);
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    .data-table tbody .row-header {
+      background: var(--bg-tertiary);
+      font-weight: 500;
+      color: var(--text-secondary);
+      text-align: left;
+      position: sticky;
+      left: 0;
+      z-index: 1;
+    }
+
+    .data-table tbody td:not(.row-header) {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      color: var(--text-primary);
+    }
+
+    .data-table tbody tr:hover td:not(.row-header) {
+      background: rgba(79, 142, 247, 0.05);
+    }
+
+    .empty-table-message {
+      grid-row: 2;
+      grid-column: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+      border: 1px solid var(--border);
+      border-radius: 0 0 var(--radius-md) 0;
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      font-size: 14px;
+      gap: 10px;
+    }
+
+    .empty-table-message svg {
+      width: 40px;
+      height: 40px;
+      opacity: 0.3;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg-secondary);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--text-muted);
+    }
+
+    /* ── Drag ghost ── */
+    .drag-ghost {
+      position: absolute;
+      top: -9999px;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .data-table {
+      animation: fadeIn 0.25s ease;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <!-- Header -->
+    <div class="app-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" rx="1" />
+        <rect x="14" y="3" width="7" height="7" rx="1" />
+        <rect x="3" y="14" width="7" height="7" rx="1" />
+        <rect x="14" y="14" width="7" height="7" rx="1" />
+      </svg>
+      <h1>OLAP Table Viewer</h1>
+      <span class="subtitle">Drag dimensions to build your pivot table</span>
+    </div>
+
+    <!-- Dimensions Bar -->
+    <div class="dimensions-bar">
+      <div class="dimensions-bar-label">Available Dimensions</div>
+      <div class="dimensions-bar-chips" id="dimensionsBar"></div>
+    </div>
+
+    <!-- Table Layout -->
+    <div class="table-layout" id="tableLayout">
+      <div class="corner-cell" id="cornerCell">
+        <button class="transpose-btn" id="transposeBtn" title="Transpose rows ↔ columns">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M7 16V4m0 0L3 8m4-4l4 4M17 8v12m0 0l4-4m-4 4l-4-4" />
+          </svg>
+        </button>
+      </div>
+      <div class="drop-zone col-drop-zone" id="colDropZone">
+        <span class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          Drop column dimensions here
+        </span>
+      </div>
+      <div class="drop-zone row-drop-zone" id="rowDropZone">
+        <span class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          Drop row dimensions here
+        </span>
+      </div>
+      <div class="empty-table-message" id="emptyMessage">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M3 10h18M3 14h18M8 4v16M16 4v16M3 6a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6z" />
+        </svg>
+        <span>Drag dimensions to the column and row headers to build a table</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ────────────────────────────────────────
+    // MOCK DATA
+    // ────────────────────────────────────────
+    const COLORS = ['blue', 'purple', 'teal', 'amber', 'rose', 'emerald'];
+
+    const dimensions = [
+      {
+        id: 'year',
+        name: 'Year',
+        elements: ['2020', '2021', '2022', '2023', '2024'],
+        activeElements: [],
+        color: COLORS[0],
+      },
+      {
+        id: 'region',
+        name: 'Region',
+        elements: ['Budapest', 'Pest', 'Baranya', 'Győr-Moson-Sopron', 'Borsod-Abaúj-Zemplén'],
+        activeElements: [],
+        color: COLORS[1],
+      },
+      {
+        id: 'indicator',
+        name: 'Indicator',
+        elements: ['Population (thousands)', 'GDP (billion HUF)', 'Employment rate (%)'],
+        activeElements: [],
+        color: COLORS[2],
+      },
+      {
+        id: 'sex',
+        name: 'Sex',
+        elements: ['Male', 'Female', 'Total'],
+        activeElements: [],
+        color: COLORS[3],
+      },
+    ];
+
+    // Generate pseudo-random but deterministic data
+    function generateValue(keys) {
+      let hash = 0;
+      const str = keys.join('|');
+      for (let i = 0; i < str.length; i++) {
+        hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0;
+      }
+      return Math.abs(hash);
+    }
+
+    function getMeasure(dimValues) {
+      // dimValues is an object like { year: '2020', region: 'Budapest', ... }
+      const indicator = dimValues['indicator'] || 'Population (thousands)';
+      const keys = Object.entries(dimValues).sort((a, b) => a[0].localeCompare(b[0])).map(e => e.join(':'));
+      const raw = generateValue(keys);
+
+      if (indicator.startsWith('Population')) return (raw % 2000) + 100;
+      if (indicator.startsWith('GDP')) return (raw % 15000) + 500;
+      if (indicator.startsWith('Employment')) return 40 + (raw % 45) + (raw % 100) / 100;
+      return raw % 10000;
+    }
+
+    // ────────────────────────────────────────
+    // STATE
+    // ────────────────────────────────────────
+    let colDims = [];  // dimension ids in col axis
+    let rowDims = [];  // dimension ids in row axis
+    let draggedDimId = null;
+    let dragSourceZone = null; // 'bar', 'col', 'row'
+    let openFilterId = null;
+
+    function getDim(id) { return dimensions.find(d => d.id === id); }
+
+    // Returns effective elements for rendering: empty or full activeElements means "no filter" (show all)
+    function getEffectiveElements(dim) {
+      if (dim.activeElements.length === 0 || dim.activeElements.length === dim.elements.length) {
+        return dim.elements;
+      }
+      return dim.activeElements;
+    }
+
+    function isFiltered(dim) {
+      return dim.activeElements.length > 0 && dim.activeElements.length < dim.elements.length;
+    }
+
+    function unplacedDims() {
+      return dimensions.filter(d => !colDims.includes(d.id) && !rowDims.includes(d.id));
+    }
+
+    // ────────────────────────────────────────
+    // RENDERING
+    // ────────────────────────────────────────
+    function createChipEl(dim, zone) {
+      const chip = document.createElement('div');
+      chip.className = 'dim-chip' + (zone !== 'bar' ? ' in-zone' : '');
+      chip.dataset.color = dim.color;
+      chip.dataset.dimId = dim.id;
+      chip.draggable = true;
+
+      // Drag icon
+      chip.innerHTML = `
+        <span class="chip-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="9" cy="6" r="1.5"/><circle cx="15" cy="6" r="1.5"/><circle cx="9" cy="12" r="1.5"/><circle cx="15" cy="12" r="1.5"/><circle cx="9" cy="18" r="1.5"/><circle cx="15" cy="18" r="1.5"/></svg>
+        </span>
+        <span class="chip-name">${dim.name}</span>
+        <button class="filter-btn${isFiltered(dim) ? ' has-filter' : ''}" title="Filter elements">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"/></svg>
+        </button>
+        <button class="remove-btn" title="Remove from axis">×</button>
+      `;
+
+      // Drag events
+      chip.addEventListener('dragstart', (e) => {
+        draggedDimId = dim.id;
+        dragSourceZone = zone;
+        chip.classList.add('dragging');
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData('text/plain', dim.id);
+      });
+      chip.addEventListener('dragend', () => {
+        chip.classList.remove('dragging');
+        draggedDimId = null;
+        dragSourceZone = null;
+      });
+
+      // Filter button
+      chip.querySelector('.filter-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleFilter(dim.id, chip);
+      });
+
+      // Remove button
+      chip.querySelector('.remove-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        colDims = colDims.filter(id => id !== dim.id);
+        rowDims = rowDims.filter(id => id !== dim.id);
+        render();
+      });
+
+      return chip;
+    }
+
+    function toggleFilter(dimId, anchorEl) {
+      // Close if same
+      if (openFilterId === dimId) {
+        closeAllFilters();
+        return;
+      }
+      closeAllFilters();
+      openFilterId = dimId;
+
+      const dim = getDim(dimId);
+      const dd = document.createElement('div');
+      dd.className = 'filter-dropdown open';
+      dd.innerHTML = `
+        <div class="filter-header">
+          <span>Filter: ${dim.name}</span>
+          <span class="filter-actions">
+            <button data-action="all">All</button>
+            <button data-action="none">None</button>
+          </span>
+        </div>
+      `;
+
+      dim.elements.forEach(el => {
+        const label = document.createElement('label');
+        const checked = dim.activeElements.includes(el);
+        label.innerHTML = `<input type="checkbox" value="${el}" ${checked ? 'checked' : ''}> ${el}`;
+        label.querySelector('input').addEventListener('change', (e) => {
+          if (e.target.checked) {
+            if (!dim.activeElements.includes(el)) dim.activeElements.push(el);
+          } else {
+            dim.activeElements = dim.activeElements.filter(a => a !== el);
+          }
+          render();
+        });
+        dd.appendChild(label);
+      });
+
+      dd.querySelector('[data-action="all"]').addEventListener('click', () => {
+        dim.activeElements = [...dim.elements];
+        dd.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = true);
+        render();
+      });
+      dd.querySelector('[data-action="none"]').addEventListener('click', () => {
+        dim.activeElements = [];
+        dd.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.checked = false);
+        render();
+      });
+
+      // Stop clicks inside from closing
+      dd.addEventListener('click', e => e.stopPropagation());
+
+      anchorEl.style.position = 'relative';
+      anchorEl.appendChild(dd);
+    }
+
+    function closeAllFilters() {
+      openFilterId = null;
+      document.querySelectorAll('.filter-dropdown').forEach(d => d.remove());
+    }
+
+    // Close filter when clicking outside
+    document.addEventListener('click', () => closeAllFilters());
+
+    function getDropIndex(zoneEl, e, axis) {
+      // Find which chip the cursor is closest to and determine insert index
+      const chips = [...zoneEl.querySelectorAll('.dim-chip')];
+      if (chips.length === 0) return 0;
+
+      for (let i = 0; i < chips.length; i++) {
+        const rect = chips[i].getBoundingClientRect();
+        if (axis === 'row') {
+          // Vertical layout
+          const midY = rect.top + rect.height / 2;
+          if (e.clientY < midY) return i;
+        } else {
+          // Horizontal layout
+          const midX = rect.left + rect.width / 2;
+          if (e.clientX < midX) return i;
+        }
+      }
+      return chips.length;
+    }
+
+    function clearDropIndicators(zoneEl) {
+      zoneEl.querySelectorAll('.drop-indicator').forEach(ind => ind.remove());
+    }
+
+    function showDropIndicator(zoneEl, index, axis) {
+      clearDropIndicators(zoneEl);
+      const chips = [...zoneEl.querySelectorAll('.dim-chip')];
+      const indicator = document.createElement('div');
+      indicator.className = 'drop-indicator';
+      if (axis === 'row') {
+        indicator.style.width = '28px';
+        indicator.style.height = '3px';
+      }
+      if (index < chips.length) {
+        zoneEl.insertBefore(indicator, chips[index]);
+      } else {
+        zoneEl.appendChild(indicator);
+      }
+    }
+
+    function setupDropZone(el, axis) {
+      el.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        el.classList.add('drag-over');
+        if (axis === 'col' || axis === 'row') {
+          const idx = getDropIndex(el, e, axis);
+          showDropIndicator(el, idx, axis);
+        }
+      });
+      el.addEventListener('dragleave', (e) => {
+        // Only remove if truly leaving the zone (not entering a child)
+        if (!el.contains(e.relatedTarget)) {
+          el.classList.remove('drag-over');
+          clearDropIndicators(el);
+        }
+      });
+      el.addEventListener('drop', (e) => {
+        e.preventDefault();
+        el.classList.remove('drag-over');
+        clearDropIndicators(el);
+        if (!draggedDimId) return;
+
+        const insertIdx = getDropIndex(el, e, axis);
+
+        // Remove from previous location
+        colDims = colDims.filter(id => id !== draggedDimId);
+        rowDims = rowDims.filter(id => id !== draggedDimId);
+
+        // Add to new axis at the determined position
+        if (axis === 'col') colDims.splice(insertIdx, 0, draggedDimId);
+        else if (axis === 'row') rowDims.splice(insertIdx, 0, draggedDimId);
+        // 'bar' means just remove (already done)
+
+        draggedDimId = null;
+        dragSourceZone = null;
+        render();
+      });
+    }
+
+    function renderDimensionsBar() {
+      const bar = document.getElementById('dimensionsBar');
+      bar.innerHTML = '';
+      const unplaced = unplacedDims();
+      bar.classList.toggle('empty-hint', unplaced.length === 0);
+      unplaced.forEach(dim => bar.appendChild(createChipEl(dim, 'bar')));
+    }
+
+    function renderDropZones() {
+      const colZone = document.getElementById('colDropZone');
+      const rowZone = document.getElementById('rowDropZone');
+
+      // Preserve drop zone events by clearing only children
+      colZone.innerHTML = '';
+      rowZone.innerHTML = '';
+
+      if (colDims.length === 0) {
+        colZone.innerHTML = `<span class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Drop column dimensions here</span>`;
+      } else {
+        colDims.forEach(id => colZone.appendChild(createChipEl(getDim(id), 'col')));
+      }
+
+      if (rowDims.length === 0) {
+        rowZone.innerHTML = `<span class="placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Drop row dimensions here</span>`;
+      } else {
+        rowDims.forEach(id => rowZone.appendChild(createChipEl(getDim(id), 'row')));
+      }
+    }
+
+    function cartesian(arrays) {
+      if (arrays.length === 0) return [[]];
+      return arrays.reduce((a, b) =>
+        a.flatMap(x => b.map(y => [...x, y])), [[]]
+      );
+    }
+
+    function renderTable() {
+      // Remove existing table or empty message
+      const existing = document.querySelector('.table-container');
+      if (existing) existing.remove();
+      const emptyMsg = document.getElementById('emptyMessage');
+
+      const hasContent = colDims.length > 0 || rowDims.length > 0;
+
+      if (!hasContent) {
+        if (!emptyMsg) {
+          const msg = document.createElement('div');
+          msg.className = 'empty-table-message';
+          msg.id = 'emptyMessage';
+          msg.innerHTML = `
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 10h18M3 14h18M8 4v16M16 4v16M3 6a2 2 0 012-2h14a2 2 0 012 2v12a2 2 0 01-2 2H5a2 2 0 01-2-2V6z"/>
+            </svg>
+            <span>Drag dimensions to the column and row headers to build a table</span>
+          `;
+          document.getElementById('tableLayout').appendChild(msg);
+        }
+        return;
+      }
+
+      if (emptyMsg) emptyMsg.remove();
+
+      // Build column and row tuples
+      const colArrays = colDims.map(id => getEffectiveElements(getDim(id)));
+      const rowArrays = rowDims.map(id => getEffectiveElements(getDim(id)));
+
+      const colTuples = cartesian(colArrays);
+      const rowTuples = cartesian(rowArrays);
+
+      // If one axis is empty, use a single empty tuple
+      const effectiveColTuples = colTuples.length > 0 && colTuples[0].length > 0 ? colTuples : [[]];
+      const effectiveRowTuples = rowTuples.length > 0 && rowTuples[0].length > 0 ? rowTuples : [[]];
+
+      const container = document.createElement('div');
+      container.className = 'table-container';
+
+      const table = document.createElement('table');
+      table.className = 'data-table';
+
+      // ── THEAD (column headers) ──
+      const thead = document.createElement('thead');
+      if (colDims.length > 0) {
+        for (let level = 0; level < colDims.length; level++) {
+          const tr = document.createElement('tr');
+
+          // Empty cells for row-header columns
+          if (rowDims.length > 0 && level === 0) {
+            const spacer = document.createElement('th');
+            spacer.rowSpan = colDims.length;
+            spacer.colSpan = rowDims.length;
+            spacer.style.background = 'var(--bg-secondary)';
+            spacer.style.borderColor = 'var(--border)';
+            tr.appendChild(spacer);
+          }
+
+          // Compute colspan: product of element counts of dimensions AFTER this level
+          const dimsAfter = colDims.slice(level + 1);
+          const colspan = dimsAfter.reduce((acc, id) => acc * getEffectiveElements(getDim(id)).length, 1);
+
+          // How many times to repeat this level's elements
+          const dimsBefore = colDims.slice(0, level);
+          const repeat = dimsBefore.reduce((acc, id) => acc * getEffectiveElements(getDim(id)).length, 1);
+
+          const dim = getDim(colDims[level]);
+          for (let r = 0; r < repeat; r++) {
+            getEffectiveElements(dim).forEach(el => {
+              const th = document.createElement('th');
+              th.textContent = el;
+              if (colspan > 1) th.colSpan = colspan;
+              tr.appendChild(th);
+            });
+          }
+          thead.appendChild(tr);
+        }
+      } else if (rowDims.length > 0) {
+        // No col dims, but we have row dims — add empty header row
+        const tr = document.createElement('tr');
+        const th = document.createElement('th');
+        th.colSpan = rowDims.length + 1;
+        th.textContent = 'Value';
+        tr.appendChild(th);
+        thead.appendChild(tr);
+      }
+      table.appendChild(thead);
+
+      // ── TBODY ──
+      const tbody = document.createElement('tbody');
+
+      effectiveRowTuples.forEach((rowTuple, rowIdx) => {
+        const tr = document.createElement('tr');
+
+        // Row header cells with rowspan for hierarchical grouping
+        if (rowDims.length > 0) {
+          for (let level = 0; level < rowDims.length; level++) {
+            // Check if we need to render this cell (rowspan grouping)
+            const dimsAfter = rowDims.slice(level + 1);
+            const groupSize = dimsAfter.reduce((acc, id) => acc * getEffectiveElements(getDim(id)).length, 1);
+
+            if (rowIdx % groupSize === 0) {
+              const td = document.createElement('td');
+              td.className = 'row-header';
+              td.textContent = rowTuple[level];
+              if (groupSize > 1) td.rowSpan = groupSize;
+              tr.appendChild(td);
+            }
+          }
+        }
+
+        // Data cells
+        effectiveColTuples.forEach(colTuple => {
+          const td = document.createElement('td');
+
+          // Build dimension values object
+          const dimValues = {};
+          rowDims.forEach((id, i) => { if (rowTuple[i] !== undefined) dimValues[id] = rowTuple[i]; });
+          colDims.forEach((id, i) => { if (colTuple[i] !== undefined) dimValues[id] = colTuple[i]; });
+
+          const val = getMeasure(dimValues);
+          td.textContent = typeof val === 'number' ? val.toLocaleString('en-US', { maximumFractionDigits: 1 }) : val;
+          tr.appendChild(td);
+        });
+
+        tbody.appendChild(tr);
+      });
+
+      table.appendChild(tbody);
+      container.appendChild(table);
+      document.getElementById('tableLayout').appendChild(container);
+    }
+
+    function render() {
+      closeAllFilters();
+      renderDimensionsBar();
+      renderDropZones();
+      renderTable();
+    }
+
+    // ────────────────────────────────────────
+    // INIT
+    // ────────────────────────────────────────
+    setupDropZone(document.getElementById('colDropZone'), 'col');
+    setupDropZone(document.getElementById('rowDropZone'), 'row');
+    // Also allow dropping back to the dimension bar
+    setupDropZone(document.getElementById('dimensionsBar'), 'bar');
+
+    // Transpose button
+    document.getElementById('transposeBtn').addEventListener('click', () => {
+      const tmp = colDims;
+      colDims = rowDims;
+      rowDims = tmp;
+      render();
+    });
+
+    render();
+  </script>
+</body>
+
+</html>
