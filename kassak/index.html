@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kassák Lajos - Digitális Kritikai Kiadások</title>
-  <link rel="stylesheet" href="/styles/main.css">
-  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
-  <script src="/pagefind/pagefind-ui.js"></script>
+  <link rel="stylesheet" href="./styles/main.css">
+  <link href="./pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="./pagefind/pagefind-ui.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap');
     body { font-family: 'Inter', sans-serif; }
   </style>
+  <script>
+    window.KASSAK_ROOT = "./";
+  </script>
 </head>
 <body class="bg-white text-black min-h-screen flex flex-col">
   <div class="h-2 w-full flex">
@@ -23,17 +26,16 @@
 
   <header class="border-b-8 border-black py-10 px-6 mb-16" data-pagefind-ignore>
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-      <h1 class="text-3xl font-black uppercase tracking-tighter"><a href="/">Kassák<span class="text-gray-400">.</span>Levelezés</a></h1>
+      <h1 class="text-3xl font-black uppercase tracking-tighter"><a href="./index.html">Kassák<span class="text-gray-400">.</span>Levelezés</a></h1>
       <nav>
         <ul class="flex gap-8 text-[10px] uppercase tracking-[0.2em] font-black">
-          <li><a href="/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-red">Főoldal</a></li>
-          <li><a href="/entitas-tar/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-yellow">Entitás tár</a></li>
-          <li><a href="/impresszum/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-blue">Impresszum</a></li>
+          <li><a href="./index.html" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-red">Főoldal</a></li>
+          <li><a href="./entitas-tar/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-yellow">Entitás tár</a></li>
+          <li><a href="./impresszum/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-blue">Impresszum</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
 
   <main id="main-content" class="container mx-auto px-6 flex-grow" tabindex="-1">
     
@@ -47,7 +49,7 @@
         mi pedig ültünk a kávéházak teraszain és ittuk a sárga limonádékat”
       </p>
       <div class="flex flex-col gap-6">
-        <form action="/search/" method="get" class="relative group">
+        <form action="./search/" method="get" class="relative group">
           <input type="text" name="q" placeholder="Keresés a teljes archívumban..." 
                  class="w-full border-4 border-black p-4 font-bold text-xl focus:outline-none focus:bg-black focus:text-white transition-all placeholder:text-gray-300">
           <button type="submit" class="absolute right-4 top-1/2 -translate-y-1/2 font-black uppercase tracking-[0.2em] text-[10px] group-focus-within:text-white hover:underline">Keresés</button>
@@ -59,12 +61,12 @@
       </div>
       </section>
 
-  <!-- Collections Grid -->
-  <section class="space-y-12">
-    <h2 class="text-4xl font-black uppercase border-b-4 border-black pb-4">Gyűjtemények</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Collections Grid -->
+      <section class="space-y-12">
+      <h2 class="text-4xl font-black uppercase border-b-4 border-black pb-4">Gyűjtemények</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       
-      <a href="/collection-1/" class="catchy-card group">
+      <a href="./collection-1/" class="catchy-card group">
         <span class="block text-4xl font-black mb-4">01</span>
         <h3 class="text-xl font-bold uppercase mb-4">Kassák levelezése</h3>
         
@@ -72,7 +74,7 @@
         
       </a>
       
-      <a href="/collection-2/" class="catchy-card group">
+      <a href="./collection-2/" class="catchy-card group">
         <span class="block text-4xl font-black mb-4">02</span>
         <h3 class="text-xl font-bold uppercase mb-4">Levelezés II.</h3>
         
@@ -80,7 +82,7 @@
         
       </a>
       
-      <a href="/collection-3/" class="catchy-card group">
+      <a href="./collection-3/" class="catchy-card group">
         <span class="block text-4xl font-black mb-4">03</span>
         <h3 class="text-xl font-bold uppercase mb-4">Gyűjtemény III.</h3>
         
@@ -88,23 +90,22 @@
         
       </a>
       
-    </div>
-  </section>
+      </div>
+      </section>
 
-  <!-- Featured Grid -->
-  <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <a href="/entitas-tar/" class="catchy-card">
+      <!-- Featured Grid -->
+      <section class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <a href="./entitas-tar/" class="catchy-card">
       <span class="block text-4xl font-black mb-4">A</span>
       <h3 class="text-xl font-bold uppercase mb-4">Entitás tár</h3>
       <p class="text-sm opacity-70">A levelezés hálózata: személyek és helyszínek mutatója.</p>
-    </a>
-    <a href="/search/" class="catchy-card">
+      </a>
+      <a href="./search/" class="catchy-card">
       <span class="block text-4xl font-black mb-4">B</span>
       <h3 class="text-xl font-bold uppercase mb-4">Keresés</h3>
       <p class="text-sm opacity-70">Gyorskeresés a szövegekben és metaadatokban.</p>
-    </a>
-  </section>
-
+      </a>
+      </section>
   <!-- About Section -->
   <section class="max-w-4xl mx-auto space-y-12">
     <h2 class="text-4xl font-black uppercase border-b-4 border-black pb-4">A projektről</h2>

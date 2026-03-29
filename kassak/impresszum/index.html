@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Impresszum</title>
-  <link rel="stylesheet" href="/styles/main.css">
-  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
-  <script src="/pagefind/pagefind-ui.js"></script>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="../pagefind/pagefind-ui.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap');
     body { font-family: 'Inter', sans-serif; }
   </style>
+  <script>
+    window.KASSAK_ROOT = "../";
+  </script>
 </head>
 <body class="bg-white text-black min-h-screen flex flex-col">
   <div class="h-2 w-full flex">
@@ -23,17 +26,16 @@
 
   <header class="border-b-8 border-black py-10 px-6 mb-16" data-pagefind-ignore>
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-      <h1 class="text-3xl font-black uppercase tracking-tighter"><a href="/">Kassák<span class="text-gray-400">.</span>Levelezés</a></h1>
+      <h1 class="text-3xl font-black uppercase tracking-tighter"><a href="../index.html">Kassák<span class="text-gray-400">.</span>Levelezés</a></h1>
       <nav>
         <ul class="flex gap-8 text-[10px] uppercase tracking-[0.2em] font-black">
-          <li><a href="/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-red">Főoldal</a></li>
-          <li><a href="/entitas-tar/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-yellow">Entitás tár</a></li>
-          <li><a href="/impresszum/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-blue">Impresszum</a></li>
+          <li><a href="../index.html" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-red">Főoldal</a></li>
+          <li><a href="../entitas-tar/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-yellow">Entitás tár</a></li>
+          <li><a href="../impresszum/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-blue">Impresszum</a></li>
         </ul>
       </nav>
     </div>
   </header>
-
 
   <main id="main-content" class="container mx-auto px-6 flex-grow" tabindex="-1">
     

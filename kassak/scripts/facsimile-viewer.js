@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       viewer = OpenSeadragon({
         id: "osd-viewer",
-        prefixUrl: "/scripts/osd-images/",
+        prefixUrl: (window.KASSAK_ROOT || "/") + "scripts/osd-images/",
         tileSources: {
           type: 'image',
           url: facsimiles[0].url,
