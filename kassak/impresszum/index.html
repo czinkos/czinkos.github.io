@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impresszum</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-black min-h-screen flex flex-col">
+  <div class="h-2 w-full flex">
+    <div class="h-full w-1/4 bg-kassak-red"></div>
+    <div class="h-full w-1/4 bg-kassak-yellow"></div>
+    <div class="h-full w-1/4 bg-black"></div>
+    <div class="h-full w-1/4 bg-kassak-blue"></div>
+  </div>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-black text-white px-4 py-2 z-50">Ugrás a tartalomhoz</a>
+
+  <header class="border-b-8 border-black py-10 px-6 mb-16" data-pagefind-ignore>
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <h1 class="text-3xl font-black uppercase tracking-tighter"><a href="/">Kassák<span class="text-gray-400">.</span>Levelezés</a></h1>
+      <nav>
+        <ul class="flex gap-8 text-[10px] uppercase tracking-[0.2em] font-black">
+          <li><a href="/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-red">Főoldal</a></li>
+          <li><a href="/entitas-tar/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-yellow">Entitás tár</a></li>
+          <li><a href="/impresszum/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-blue">Impresszum</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <main id="main-content" class="container mx-auto px-6 flex-grow" tabindex="-1">
+    
+<section class="max-w-4xl mx-auto py-12">
+  <header class="mb-12 border-b-4 border-black pb-8">
+    <h2 class="text-4xl font-black uppercase tracking-tighter">Impresszum</h2>
+    <p class="text-sm text-gray-400 mt-2 uppercase tracking-widest font-bold">Kassák Lajos Levelezése — Digitális Kritikai Kiadás</p>
+  </header>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+    <div class="space-y-12">
+      <section>
+        <h3 class="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">Szerkesztőség</h3>
+        <ul class="space-y-4 text-sm font-bold uppercase tracking-tight">
+          <li>Dobó Gábor <span class="text-gray-400 font-normal italic">(szerkesztő)</span></li>
+          <li>Szeredi Merse Pál</li>
+          <li>Bagdi Sára</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3 class="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">Digitális filológia és fejlesztés</h3>
+        <ul class="space-y-4 text-sm font-bold uppercase tracking-tight">
+          <li>Mihály Eszter <span class="text-gray-400 font-normal italic">(TEI szakértő)</span></li>
+          <li>Czinkos Zsolt <span class="text-gray-400 font-normal italic">(technikai megvalósítás)</span></li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="space-y-12">
+      <section>
+        <h3 class="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">Kiadó</h3>
+        <div class="text-sm space-y-2">
+          <p class="font-black uppercase tracking-tight">Kassák Múzeum — Petőfi Irodalmi Múzeum</p>
+          <p class="text-gray-500">1033 Budapest, Fő tér 1.</p>
+          <p><a href="https://kassakmuzeum.hu" class="underline hover:no-underline transition-all">kassakmuzeum.hu</a></p>
+        </div>
+      </section>
+
+      <section>
+        <h3 class="text-xs font-black uppercase tracking-widest text-gray-400 mb-6">Licenc</h3>
+        <div class="text-xs leading-relaxed text-gray-600">
+          <p>A levelek szövege és a fakszimilék a Kassák Múzeum tulajdonát képezik. Felhasználásuk a CC-BY 4.0 licenc feltételei szerint engedélyezett.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+</section>
+
+  </main>
+
+  <footer class="mt-16 border-t border-black py-8 px-6 text-xs text-center" data-pagefind-ignore>
+    <p>&copy; 2026 Kassák Múzeum | Digitális kritikai kiadás</p>
+  </footer>
+</body>
+</html>

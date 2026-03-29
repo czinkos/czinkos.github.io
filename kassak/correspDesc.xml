@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Kassák Correspondence - CMIF Metadata</title>
+      </titleStmt>
+      <publicationStmt>
+        <publisher>Kassák Múzeum</publisher>
+        <date>2026-03-21</date>
+        <availability>
+          <licence target="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</licence>
+        </availability>
+        <idno type="URL">https://kassak-levelezes.hu/correspDesc.xml</idno>
+      </publicationStmt>
+      <sourceDesc>
+        <bibl type="online">Kassák Lajos Levelezése. Digitális kritikai kiadás. <ref target="https://kassak-levelezes.hu"/></bibl>
+      </sourceDesc>
+    </fileDesc>
+    <profileDesc>
+      
+      <correspDesc n="lev.2031.15_tei" ref="https://kassak-levelezes.hu/collection-1/lev.2031.15_tei/">
+        <correspAction type="sent">
+          <persName 
+            ref="https://resolver.pim.hu/auth/PIM60009"
+          >[Kassák Lajos]</persName>
+          <placeName 
+            ref="https://www.geonames.org/2761369"
+          >[Bécs]</placeName>
+          <date when="1925-08-20">1925-08-20</date>
+        </correspAction>
+        <correspAction type="received">
+          <persName
+            ref="https://resolver.pim.hu/auth/PIM86291"
+          >[Simon Jolán]</persName>
+        </correspAction>
+      </correspDesc>
+      
+      <correspDesc n="lev.2063.112_tei" ref="https://kassak-levelezes.hu/collection-2/lev.2063.112_tei/">
+        <correspAction type="sent">
+          <persName 
+            ref="https://resolver.pim.hu/auth/PIM86291"
+          >Simon Jolán</persName>
+          <placeName 
+            ref="https://www.geonames.org/3054643"
+          >[Budapest]</placeName>
+          <date when="">[1926-01-27–28 után]</date>
+        </correspAction>
+        <correspAction type="received">
+          <persName
+            
+          >Ismeretlen</persName>
+        </correspAction>
+      </correspDesc>
+      
+      <correspDesc n="lev.2063.116_tei" ref="https://kassak-levelezes.hu/collection-2/lev.2063.116_tei/">
+        <correspAction type="sent">
+          <persName 
+            ref="https://resolver.pim.hu/auth/PIM86291"
+          >[Simon Jolán]</persName>
+          <placeName 
+            ref="https://www.geonames.org/3054643"
+          >Budapest</placeName>
+          <date when="1926-02-01">1926-02-01</date>
+        </correspAction>
+        <correspAction type="received">
+          <persName
+            
+          >Ismeretlen</persName>
+        </correspAction>
+      </correspDesc>
+      
+    </profileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <p/>
+    </body>
+  </text>
+</TEI>

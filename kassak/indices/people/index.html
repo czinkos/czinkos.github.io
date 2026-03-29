@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Személyek mutatója</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-black min-h-screen flex flex-col">
+  <div class="h-2 w-full flex">
+    <div class="h-full w-1/4 bg-kassak-red"></div>
+    <div class="h-full w-1/4 bg-kassak-yellow"></div>
+    <div class="h-full w-1/4 bg-black"></div>
+    <div class="h-full w-1/4 bg-kassak-blue"></div>
+  </div>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-black text-white px-4 py-2 z-50">Ugrás a tartalomhoz</a>
+
+  <header class="border-b-8 border-black py-10 px-6 mb-16" data-pagefind-ignore>
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <h1 class="text-3xl font-black uppercase tracking-tighter"><a href="/">Kassák<span class="text-gray-400">.</span>Levelezés</a></h1>
+      <nav>
+        <ul class="flex gap-8 text-[10px] uppercase tracking-[0.2em] font-black">
+          <li><a href="/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-red">Főoldal</a></li>
+          <li><a href="/entitas-tar/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-yellow">Entitás tár</a></li>
+          <li><a href="/impresszum/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-blue">Impresszum</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <main id="main-content" class="container mx-auto px-6 flex-grow" tabindex="-1">
+    
+<section class="max-w-4xl mx-auto">
+  <header class="mb-12">
+    <h2 class="text-2xl font-bold uppercase tracking-widest border-b-2 border-black pb-2 mb-4">Személyek mutatója</h2>
+    <p class="text-sm text-gray-600 italic">A levelezésben érintett összes feladó és címzett.</p>
+  </header>
+
+  <div class="space-y-8">
+    
+    <div class="border-l-4 border-black pl-6 py-2">
+      <div class="flex items-baseline gap-4 mb-2">
+        <h3 class="text-lg font-bold">
+          <a href="/persons/kassak-lajos/" class="hover:underline">[Kassák Lajos]</a>
+        </h3>
+        
+        <div class="flex gap-2 text-xs uppercase tracking-tighter text-gray-500">
+          
+          <a href="https://resolver.pim.hu/auth/PIM60009" class="hover:text-black hover:underline" target="_blank" rel="noopener">PIM</a>
+          
+          
+          <a href="https://www.wikidata.org/wiki/Q736847" class="hover:text-black hover:underline" target="_blank" rel="noopener">Wikidata</a>
+          
+        </div>
+      </div>
+
+      <ul class="text-sm space-y-1">
+        
+        <li class="flex gap-4">
+          <span class="font-mono text-gray-400 w-24 shrink-0">1925-08-20</span>
+          <a href="/collection-1/lev.2031.15_tei/" class="hover:underline">
+            [Kassák Lajos] ➔ [Simon Jolán]
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+    
+    <div class="border-l-4 border-black pl-6 py-2">
+      <div class="flex items-baseline gap-4 mb-2">
+        <h3 class="text-lg font-bold">
+          <a href="/persons/simon-jolan/" class="hover:underline">[Simon Jolán]</a>
+        </h3>
+        
+        <div class="flex gap-2 text-xs uppercase tracking-tighter text-gray-500">
+          
+          <a href="https://resolver.pim.hu/auth/PIM86291" class="hover:text-black hover:underline" target="_blank" rel="noopener">PIM</a>
+          
+          
+          <a href="https://www.wikidata.org/wiki/Q1288621" class="hover:text-black hover:underline" target="_blank" rel="noopener">Wikidata</a>
+          
+        </div>
+      </div>
+
+      <ul class="text-sm space-y-1">
+        
+        <li class="flex gap-4">
+          <span class="font-mono text-gray-400 w-24 shrink-0">1925-08-20</span>
+          <a href="/collection-1/lev.2031.15_tei/" class="hover:underline">
+            [Kassák Lajos] ➔ [Simon Jolán]
+          </a>
+        </li>
+        
+        <li class="flex gap-4">
+          <span class="font-mono text-gray-400 w-24 shrink-0">[1926-01-27–28 után]</span>
+          <a href="/collection-2/lev.2063.112_tei/" class="hover:underline">
+            Simon Jolán ➔ Ismeretlen
+          </a>
+        </li>
+        
+        <li class="flex gap-4">
+          <span class="font-mono text-gray-400 w-24 shrink-0">1926-02-01</span>
+          <a href="/collection-2/lev.2063.116_tei/" class="hover:underline">
+            [Simon Jolán] ➔ Ismeretlen
+          </a>
+        </li>
+        
+      </ul>
+    </div>
+    
+  </div>
+</section>
+
+  </main>
+
+  <footer class="mt-16 border-t border-black py-8 px-6 text-xs text-center" data-pagefind-ignore>
+    <p>&copy; 2026 Kassák Múzeum | Digitális kritikai kiadás</p>
+  </footer>
+</body>
+</html>

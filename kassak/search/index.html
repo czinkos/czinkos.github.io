@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keresés a levelezésben</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+  </style>
+</head>
+<body class="bg-white text-black min-h-screen flex flex-col">
+  <div class="h-2 w-full flex">
+    <div class="h-full w-1/4 bg-kassak-red"></div>
+    <div class="h-full w-1/4 bg-kassak-yellow"></div>
+    <div class="h-full w-1/4 bg-black"></div>
+    <div class="h-full w-1/4 bg-kassak-blue"></div>
+  </div>
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-black text-white px-4 py-2 z-50">Ugrás a tartalomhoz</a>
+
+  <header class="border-b-8 border-black py-10 px-6 mb-16" data-pagefind-ignore>
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+      <h1 class="text-3xl font-black uppercase tracking-tighter"><a href="/">Kassák<span class="text-gray-400">.</span>Levelezés</a></h1>
+      <nav>
+        <ul class="flex gap-8 text-[10px] uppercase tracking-[0.2em] font-black">
+          <li><a href="/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-red">Főoldal</a></li>
+          <li><a href="/entitas-tar/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-yellow">Entitás tár</a></li>
+          <li><a href="/impresszum/" class="hover:bg-black hover:text-white px-2 py-1 transition-all border-b-2 border-transparent hover:border-kassak-blue">Impresszum</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+  <main id="main-content" class="container mx-auto px-6 flex-grow" tabindex="-1">
+    
+<section class="max-w-7xl mx-auto py-12 px-6">
+  <header class="mb-12 border-b-4 border-black pb-8">
+    <h1 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-4">Keresés</h1>
+    <p class="text-sm uppercase tracking-[0.2em] font-bold text-gray-400">Digitális filológiai publikációk</p>
+  </header>
+
+  <div class="mb-12">
+    <input type="text" id="search-input" placeholder="Keresés..." 
+           class="w-full border-4 border-black p-6 font-bold text-2xl focus:outline-none focus:bg-black focus:text-white transition-all placeholder:text-gray-300">
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-12">
+    <!-- Facets Sidebar -->
+    <aside id="facets-container" class="space-y-8">
+      <div class="animate-pulse space-y-4">
+        <div class="h-4 bg-gray-200 w-1/2"></div>
+        <div class="h-10 bg-gray-100 w-full"></div>
+      </div>
+    </aside>
+
+    <!-- Results Area -->
+    <main>
+      <div id="search-status" class="mb-6 text-sm font-bold uppercase tracking-widest text-gray-400"></div>
+      <div id="results-container" class="space-y-12">
+        <p class="italic text-gray-400">Kezdjen el gépelni a kereséshez...</p>
+      </div>
+      <button id="load-more" class="hidden mt-12 w-full border-4 border-black p-4 font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all">
+        További találatok betöltése
+      </button>
+    </main>
+  </div>
+</section>
+
+<script>
+  let pagefind;
+  let currentSearchId = 0;
+  let selectedFilters = {};
+  let allResults = [];
+  let displayedCount = 0;
+  const RESULTS_PER_PAGE = 10;
+
+  async function initPagefind() {
+    pagefind = await import("/pagefind/pagefind.js");
+    await pagefind.init();
+    
+    // Check for initial query in URL
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q');
+    if (q) {
+      document.getElementById('search-input').value = q;
+      performSearch(q);
+    } else {
+      // Show all filters even without search
+      updateFilters();
+    }
+  }
+
+  async function updateFilters(filtersData = null) {
+    // If no search-specific filters are provided, get the global ones
+    if (!filtersData || Object.keys(filtersData).length === 0) {
+      filtersData = await pagefind.filters();
+    }
+
+    const container = document.getElementById('facets-container');
+    container.innerHTML = '';
+
+    Object.entries(filtersData).forEach(([filterName, values]) => {
+      const section = document.createElement('div');
+      section.className = 'facet-group';
+      
+      const title = document.createElement('button');
+      title.className = 'facet-title w-full flex justify-between items-center border-b-2 border-black py-2 mb-4 font-black uppercase text-xs tracking-widest';
+      title.innerHTML = `<span>${filterName}</span><span class="toggle-icon">−</span>`;
+      
+      const list = document.createElement('div');
+      list.className = 'facet-list space-y-2';
+      
+      Object.entries(values).forEach(([value, count]) => {
+        const isChecked = selectedFilters[filterName]?.includes(value);
+        const item = document.createElement('label');
+        item.className = 'flex items-center gap-3 cursor-pointer group';
+        item.innerHTML = `
+          <input type="checkbox" class="w-4 h-4 border-2 border-black rounded-none checked:bg-black appearance-none" 
+                 ${isChecked ? 'checked' : ''} data-filter="${filterName}" data-value="${value}">
+          <span class="text-sm group-hover:underline">${value} <span class="text-gray-400 ml-1">(${count})</span></span>
+        `;
+        
+        item.querySelector('input').addEventListener('change', (e) => {
+          if (e.target.checked) {
+            selectedFilters[filterName] = selectedFilters[filterName] || [];
+            selectedFilters[filterName].push(value);
+          } else {
+            selectedFilters[filterName] = selectedFilters[filterName].filter(v => v !== value);
+            if (selectedFilters[filterName].length === 0) delete selectedFilters[filterName];
+          }
+          performSearch(document.getElementById('search-input').value);
+        });
+        
+        list.appendChild(item);
+      });
+
+      title.addEventListener('click', () => {
+        const isHidden = list.style.display === 'none';
+        list.style.display = isHidden ? 'block' : 'none';
+        title.querySelector('.toggle-icon').textContent = isHidden ? '−' : '+';
+      });
+
+      section.appendChild(title);
+      section.appendChild(list);
+      container.appendChild(section);
+    });
+  }
+
+  async function performSearch(term) {
+    const searchId = ++currentSearchId;
+    const resultsContainer = document.getElementById('results-container');
+    const statusContainer = document.getElementById('search-status');
+    const loadMoreBtn = document.getElementById('load-more');
+
+    if (!term && Object.keys(selectedFilters).length === 0) {
+      resultsContainer.innerHTML = '<p class="italic text-gray-400">Kezdjen el gépelni a kereséshez...</p>';
+      statusContainer.textContent = '';
+      loadMoreBtn.classList.add('hidden');
+      updateFilters();
+      return;
+    }
+
+    statusContainer.textContent = 'Keresés...';
+    
+    const searchResponse = await pagefind.search(term, {
+      filters: selectedFilters
+    });
+
+    if (searchId !== currentSearchId) return;
+
+    allResults = searchResponse.results;
+    displayedCount = 0;
+    resultsContainer.innerHTML = '';
+    
+    if (allResults.length === 0) {
+      resultsContainer.innerHTML = '<p class="text-xl font-bold">Nincs találat.</p>';
+      statusContainer.textContent = '0 találat';
+      loadMoreBtn.classList.add('hidden');
+    } else {
+      statusContainer.textContent = `${allResults.length} találat`;
+      renderMoreResults();
+    }
+
+    // Update filters based on search results
+    // pagefind.search() returns an object where filters is a property, not a function
+    updateFilters(searchResponse.filters);
+  }
+
+  async function renderMoreResults() {
+    const resultsContainer = document.getElementById('results-container');
+    const loadMoreBtn = document.getElementById('load-more');
+    const nextBatch = allResults.slice(displayedCount, displayedCount + RESULTS_PER_PAGE);
+    
+    const loadedBatch = await Promise.all(nextBatch.map(r => r.data()));
+    
+    loadedBatch.forEach(data => {
+      const result = document.createElement('article');
+      result.className = 'group border-b-2 border-black/10 pb-12';
+      result.innerHTML = `
+        <a href="${data.url}" class="block space-y-4">
+          <h2 class="text-2xl font-black uppercase tracking-tight group-hover:bg-black group-hover:text-white inline-block px-2 -mx-2 transition-all">
+            ${data.meta.title || 'Cím nélkül'}
+          </h2>
+          <p class="text-gray-600 leading-relaxed font-serif">
+            ${data.excerpt}
+          </p>
+          <div class="flex gap-4 text-[10px] font-black uppercase tracking-widest text-gray-400">
+             ${data.meta.collection ? `<span>Gyűjtemény: ${data.meta.collection}</span>` : ''}
+          </div>
+        </a>
+      `;
+      resultsContainer.appendChild(result);
+    });
+
+    displayedCount += nextBatch.length;
+    if (displayedCount < allResults.length) {
+      loadMoreBtn.classList.remove('hidden');
+    } else {
+      loadMoreBtn.classList.add('hidden');
+    }
+  }
+
+  // Debounced search
+  let debounceTimer;
+  document.getElementById('search-input').addEventListener('input', (e) => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      performSearch(e.target.value);
+    }, 300);
+  });
+
+  document.getElementById('load-more').addEventListener('click', renderMoreResults);
+
+  window.addEventListener('DOMContentLoaded', initPagefind);
+</script>
+
+<style>
+  input[type="checkbox"]:checked {
+    background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+</style>
+
+  </main>
+
+  <footer class="mt-16 border-t border-black py-8 px-6 text-xs text-center" data-pagefind-ignore>
+    <p>&copy; 2026 Kassák Múzeum | Digitális kritikai kiadás</p>
+  </footer>
+</body>
+</html>
