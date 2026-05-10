@@ -4,25 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Családnév Keresztnév – Családnév Keresztnév (ÉÉ-HH-NN)</title>
-  <link rel="stylesheet" href="/assets/style.css">
+  
+  <link rel="stylesheet" href="..&#x2f;../assets/style.css">
 </head>
 <body class="">
   <header>
     <nav>
       <div class="container">
         
-        <a href="/" class="brand">
-          <img src="/assets/logo.svg" alt="" style="height: 1.8rem; vertical-align: middle; margin-right: 0.5rem; margin-top: -4px;">
+        <a href="..&#x2f;../index.html" class="brand">
+          <img src="..&#x2f;../assets/logo.svg" alt="" style="height: 1.8rem; vertical-align: middle; margin-right: 0.5rem; margin-top: -4px;">
           Kassák<span>.</span>digital
         </a>
         
         <div class="nav-links">
-          <a href="/">Főoldal</a>
-          <a href="/corpora.html">Korpuszok</a>
-          <a href="/indices.html">Mutatók</a>
-          <a href="/about.html">A projektről</a>
-          <a href="/impressum.html">Impresszum</a>
-          <a href="/search.html">Keresés</a>
+          <a href="..&#x2f;../index.html">Főoldal</a>
+          <a href="..&#x2f;../corpora.html">Korpuszok</a>
+          <a href="..&#x2f;../indices.html">Mutatók</a>
+          <a href="..&#x2f;../about.html">A projektről</a>
+          <a href="..&#x2f;../impressum.html">Impresszum</a>
+          <a href="..&#x2f;../search.html">Keresés</a>
         </div>
 
       </div>
@@ -179,7 +180,7 @@
         <ul>
           
           <li id="Budapest">
-            <a href="/places.html?id=Budapest">Budapest</a>
+            <a href="..&#x2f;../places.html?id=Budapest">Budapest</a>
           </li>
           
         </ul>
@@ -192,12 +193,12 @@
         <ul>
           
           <li id="">
-            <a href="/organizations.html?id=">Kassák Múzeum – Petőfi Irodalmi Múzeum</a>
+            <a href="..&#x2f;../organizations.html?id=">Kassák Múzeum – Petőfi Irodalmi Múzeum</a>
             
           </li>
           
           <li id="">
-            <a href="/organizations.html?id=">Országos Széchényi Könyvtár</a>
+            <a href="..&#x2f;../organizations.html?id=">Országos Széchényi Könyvtár</a>
             
           </li>
           
@@ -217,8 +218,8 @@
   
   <div id="facs-viewer-col" style="display:none">
     <div id="facs-image-bar">
-      <a href="/" class="brand">
-        <img src="/assets/logo.svg" alt="" style="height:1.5rem;vertical-align:middle;margin-right:0.4rem;margin-top:-3px;">
+      <a href="..&#x2f;../index.html" class="brand">
+        <img src="..&#x2f;../assets/logo.svg" alt="" style="height:1.5rem;vertical-align:middle;margin-right:0.4rem;margin-top:-3px;">
         Kassák<span>.</span>digital
       </a>
       <nav id="facs-image-nav" aria-label="Dokumentumnavigáció"></nav>
@@ -237,11 +238,11 @@
 <script>
 (function () {
   const parts = location.pathname.split('/');
-  const corpusId = parts[2];
-  const docFile  = parts[3];
+  const corpusId = parts[parts.length - 2];
+  const docFile  = parts[parts.length - 1];
   const docId    = docFile ? docFile.replace(/\.html$/, '') : '';
   if (!corpusId || !docId) return;
-  fetch('/corpus/' + corpusId + '/doc_list.json')
+  fetch('..&#x2f;../corpus/' + corpusId + '/doc_list.json')
     .then(r => r.json())
     .then(data => {
       const list   = data.docs;
@@ -251,10 +252,10 @@
       const prev = idx > 0 ? list[idx - 1] : null;
       const next = idx < list.length - 1 ? list[idx + 1] : null;
       function navHtml() {
-        const prevLink = prev ? `<a href="/corpus/${corpusId}/${prev.id}.html" rel="prev" title="${prev.title}">← Előző</a>` : '';
-        const nextLink = next ? `<a href="/corpus/${corpusId}/${next.id}.html" rel="next" title="${next.title}">Következő →</a>` : '';
+        const prevLink = prev ? `<a href="..&#x2f;../corpus/${corpusId}/${prev.id}.html" rel="prev" title="${prev.title}">← Előző</a>` : '';
+        const nextLink = next ? `<a href="..&#x2f;../corpus/${corpusId}/${next.id}.html" rel="next" title="${next.title}">Következő →</a>` : '';
         return `<span class="doc-nav-prev">${prevLink}</span>`
-             + `<a class="doc-nav-corpus" href="${corpus.url}">${corpus.title}</a>`
+             + `<a class="doc-nav-corpus" href="..&#x2f;../${corpus.url.startsWith('/') ? corpus.url.slice(1) : corpus.url}">${corpus.title}</a>`
              + `<span class="doc-nav-next">${nextLink}</span>`;
       }
       function attachNav(nav) {
@@ -290,9 +291,9 @@
 <div id="facs-stripe"></div>
 <div id="facs-popup"></div>
 
-<script>window.FACS_DATA = [{"id":"facs_1","imageUrl":"/images/KKELKM@lev.300.2_a.jpg","width":4764,"height":2491,"zones":[{"id":"facs_1_line_1678978550966_2502","ulx":976,"uly":455,"lrx":1562,"lry":697},{"id":"facs_1_line_1678978552855_2507","ulx":1403,"uly":866,"lrx":3681,"lry":1117},{"id":"facs_1_line_1678978554244_2512","ulx":2424,"uly":1284,"lrx":3769,"lry":1577},{"id":"facs_1_line_1678978556681_2517","ulx":2394,"uly":1669,"lrx":4105,"lry":1904},{"id":"facs_1_line_1678978557906_2522","ulx":2924,"uly":1949,"lrx":3274,"lry":2089}]},{"id":"facs_2","imageUrl":"/images/KKELKM@lev.300.2_b.jpg","width":4709,"height":2510,"zones":[{"id":"facs_2_line_1678978599140_2549","ulx":1751,"uly":177,"lrx":3939,"lry":326}]},{"id":"facs_3","imageUrl":"/images/KKELKM@lev.300.2_c.jpg","width":4561,"height":4608,"zones":[{"id":"facs_3_region_1678978629158_2563_tl_1","ulx":465,"uly":407,"lrx":2390,"lry":622},{"id":"facs_3_TextRegion_1678978646788_2573_tl_1","ulx":2354,"uly":577,"lrx":4416,"lry":819},{"id":"facs_3_TextRegion_1678978646788_2573_tl_2","ulx":298,"uly":865,"lrx":4448,"lry":1124},{"id":"facs_3_line_1678978772656_2601","ulx":230,"uly":1087,"lrx":4199,"lry":1313},{"id":"facs_3_TextRegion_1678978646788_2573_tl_5","ulx":329,"uly":1376,"lrx":4333,"lry":1518},{"id":"facs_3_TextRegion_1678978646788_2573_tl_6","ulx":289,"uly":1621,"lrx":4133,"lry":1753},{"id":"facs_3_line_1678978818568_2635","ulx":262,"uly":1807,"lrx":4411,"lry":2043},{"id":"facs_3_TextRegion_1678978646788_2573_tl_10","ulx":283,"uly":2034,"lrx":2357,"lry":2210},{"id":"facs_3_region_1678978665572_2578_tl_1","ulx":1554,"uly":2326,"lrx":4328,"lry":2523},{"id":"facs_3_region_1678978665572_2578_tl_2","ulx":343,"uly":2580,"lrx":4380,"lry":2765},{"id":"facs_3_region_1678978665572_2578_tl_3","ulx":358,"uly":2822,"lrx":4400,"lry":3034},{"id":"facs_3_line_1678978848021_2644","ulx":319,"uly":3031,"lrx":4393,"lry":3249},{"id":"facs_3_line_1678978864589_2648","ulx":367,"uly":3234,"lrx":2677,"lry":3455},{"id":"facs_3_line_1678978872476_2652","ulx":1549,"uly":3489,"lrx":4024,"lry":3688},{"id":"facs_3_region_1678978668710_2584_tl_1","ulx":2820,"uly":3755,"lrx":3726,"lry":3947}]}];</script>
+<script>window.FACS_DATA = [{"id":"facs_1","imageUrl":"../../images/KKELKM@lev.300.2_a.jpg","width":4764,"height":2491,"zones":[{"id":"facs_1_line_1678978550966_2502","ulx":976,"uly":455,"lrx":1562,"lry":697},{"id":"facs_1_line_1678978552855_2507","ulx":1403,"uly":866,"lrx":3681,"lry":1117},{"id":"facs_1_line_1678978554244_2512","ulx":2424,"uly":1284,"lrx":3769,"lry":1577},{"id":"facs_1_line_1678978556681_2517","ulx":2394,"uly":1669,"lrx":4105,"lry":1904},{"id":"facs_1_line_1678978557906_2522","ulx":2924,"uly":1949,"lrx":3274,"lry":2089}]},{"id":"facs_2","imageUrl":"../../images/KKELKM@lev.300.2_b.jpg","width":4709,"height":2510,"zones":[{"id":"facs_2_line_1678978599140_2549","ulx":1751,"uly":177,"lrx":3939,"lry":326}]},{"id":"facs_3","imageUrl":"../../images/KKELKM@lev.300.2_c.jpg","width":4561,"height":4608,"zones":[{"id":"facs_3_region_1678978629158_2563_tl_1","ulx":465,"uly":407,"lrx":2390,"lry":622},{"id":"facs_3_TextRegion_1678978646788_2573_tl_1","ulx":2354,"uly":577,"lrx":4416,"lry":819},{"id":"facs_3_TextRegion_1678978646788_2573_tl_2","ulx":298,"uly":865,"lrx":4448,"lry":1124},{"id":"facs_3_line_1678978772656_2601","ulx":230,"uly":1087,"lrx":4199,"lry":1313},{"id":"facs_3_TextRegion_1678978646788_2573_tl_5","ulx":329,"uly":1376,"lrx":4333,"lry":1518},{"id":"facs_3_TextRegion_1678978646788_2573_tl_6","ulx":289,"uly":1621,"lrx":4133,"lry":1753},{"id":"facs_3_line_1678978818568_2635","ulx":262,"uly":1807,"lrx":4411,"lry":2043},{"id":"facs_3_TextRegion_1678978646788_2573_tl_10","ulx":283,"uly":2034,"lrx":2357,"lry":2210},{"id":"facs_3_region_1678978665572_2578_tl_1","ulx":1554,"uly":2326,"lrx":4328,"lry":2523},{"id":"facs_3_region_1678978665572_2578_tl_2","ulx":343,"uly":2580,"lrx":4380,"lry":2765},{"id":"facs_3_region_1678978665572_2578_tl_3","ulx":358,"uly":2822,"lrx":4400,"lry":3034},{"id":"facs_3_line_1678978848021_2644","ulx":319,"uly":3031,"lrx":4393,"lry":3249},{"id":"facs_3_line_1678978864589_2648","ulx":367,"uly":3234,"lrx":2677,"lry":3455},{"id":"facs_3_line_1678978872476_2652","ulx":1549,"uly":3489,"lrx":4024,"lry":3688},{"id":"facs_3_region_1678978668710_2584_tl_1","ulx":2820,"uly":3755,"lrx":3726,"lry":3947}]}];</script>
 <script src="https://cdn.jsdelivr.net/npm/openseadragon@5/build/openseadragon/openseadragon.min.js"></script>
-<script src="/assets/facsimile.js"></script>
+<script src="..&#x2f;../assets/facsimile.js"></script>
 
 
 <script>
@@ -363,10 +364,10 @@ window.ENTITY_DATA = {"persons":{},"places":{"Budapest":{"name":"Budapest","nymR
 
     let mutatoPath = '';
     switch(type) {
-        case 'persons': mutatoPath = '/persons.html'; break;
-        case 'places':  mutatoPath = '/places.html'; break;
-        case 'orgs':    mutatoPath = '/organizations.html'; break;
-        case 'works':   mutatoPath = '/works.html'; break;
+        case 'persons': mutatoPath = '..&#x2f;../persons.html'; break;
+        case 'places':  mutatoPath = '..&#x2f;../places.html'; break;
+        case 'orgs':    mutatoPath = '..&#x2f;../organizations.html'; break;
+        case 'works':   mutatoPath = '..&#x2f;../works.html'; break;
     }
 
     row.innerHTML = `

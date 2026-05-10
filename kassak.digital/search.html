@@ -4,25 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Keresés</title>
-  <link rel="stylesheet" href="/assets/style.css">
+  
+  <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body class="">
   <header>
     <nav>
       <div class="container">
         
-        <a href="/" class="brand">
-          <img src="/assets/logo.svg" alt="" style="height: 1.8rem; vertical-align: middle; margin-right: 0.5rem; margin-top: -4px;">
+        <a href="./index.html" class="brand">
+          <img src="./assets/logo.svg" alt="" style="height: 1.8rem; vertical-align: middle; margin-right: 0.5rem; margin-top: -4px;">
           Kassák<span>.</span>digital
         </a>
         
         <div class="nav-links">
-          <a href="/">Főoldal</a>
-          <a href="/corpora.html">Korpuszok</a>
-          <a href="/indices.html">Mutatók</a>
-          <a href="/about.html">A projektről</a>
-          <a href="/impressum.html">Impresszum</a>
-          <a href="/search.html">Keresés</a>
+          <a href="./index.html">Főoldal</a>
+          <a href="./corpora.html">Korpuszok</a>
+          <a href="./indices.html">Mutatók</a>
+          <a href="./about.html">A projektről</a>
+          <a href="./impressum.html">Impresszum</a>
+          <a href="./search.html">Keresés</a>
         </div>
 
       </div>
@@ -68,13 +69,13 @@
   </script>
   
 <script type="module">
-  import { init, search } from '/search/search.js';
+  import { init, search } from './search/search.js';
 
   const input   = document.getElementById('search-input');
   const status  = document.getElementById('status');
   const results = document.getElementById('results');
 
-  const ready = init('/search').then(() => {
+  const ready = init('./search').then(() => {
     status.textContent = '';
 
     // Handle query parameter from URL
@@ -101,7 +102,7 @@
     await ready;
     status.textContent = 'Keresés…';
 
-    const hits = await search(query, '/search');
+    const hits = await search(query, './search');
 
     if (!hits.length) {
       status.textContent = 'Nincs találat.';
@@ -111,7 +112,7 @@
 
     status.textContent = `${hits.length} találat`;
     results.innerHTML = hits.map(({ corpus_id, corpus_name, path, title, score }) => {
-      const href = `/corpus/${corpus_id}/${path.replace(/\.xml$/, '.html')}`;
+      const href = `./corpus/${corpus_id}/${path.replace(/\.xml$/, '.html')}`;
       const label = title || path.replace(/\\/g, '/').split('/').pop().replace(/\.xml$/, '').replace(/_tei$/, '');
       return `
         <li>
