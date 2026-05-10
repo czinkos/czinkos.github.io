@@ -62,6 +62,7 @@ nav .container {
   color: var(--color-text);
   text-transform: uppercase;
   margin-right: 2rem;
+  white-space: nowrap;
 }
 
 .brand span {
@@ -198,7 +199,6 @@ footer hr {
   margin: 0 0 1.5rem 0;
   line-height: 0.9;
   text-transform: uppercase;
-  word-break: break-word;
 }
 
 .hero-full h1 span {
@@ -571,7 +571,61 @@ hr {
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-  .hero h1 { font-size: 3rem; }
+  .page-home .hero-full {
+    height: auto;
+    min-height: 100vh;
+    padding: 8rem 0 4rem 0;
+    display: flex;
+    align-items: center;
+  }
+  .hero-full h1 { 
+    font-size: 4rem; 
+    line-height: 1;
+  }
+  .hero-description {
+    font-size: 1rem;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+  .hero-full .quote {
+    font-size: 1.2rem;
+    padding-left: 1rem;
+    border-left-width: 6px;
+    margin-bottom: 2rem;
+  }
+  .hero-search form {
+    flex-direction: column;
+  }
+  .hero-search input {
+    border-right: 4px solid var(--color-text);
+    border-bottom: none;
+  }
+  .hero-search button {
+    padding: 1rem;
+  }
+  .hero-corpora {
+    margin-top: 2rem;
+    gap: 1rem;
+  }
+  .hero-logo-bg {
+    width: 80px;
+    height: 80px;
+    top: 20px;
+    left: 20px;
+  }
+  .hero-full::before {
+    width: 120px;
+    height: 120px;
+    right: -20px;
+    top: -40px;
+  }
+  .hero-full::after {
+    width: 80px;
+    height: 80px;
+    left: -20px;
+    bottom: 20px;
+  }
+
   .brand { margin-bottom: 1rem; }
   .nav-links { gap: 1rem; }
 }
