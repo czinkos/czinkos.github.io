@@ -359,7 +359,7 @@
   const docFile  = parts[parts.length - 1];
   const docId    = docFile ? docFile.replace(/\.html$/, '') : '';
   if (!corpusId || !docId) return;
-  fetch('..&#x2f;../corpus/' + corpusId + '/doc_list.json')
+  fetch('doc_list.json')
     .then(r => r.json())
     .then(data => {
       const list   = data.docs;
@@ -369,10 +369,10 @@
       const prev = idx > 0 ? list[idx - 1] : null;
       const next = idx < list.length - 1 ? list[idx + 1] : null;
       function navHtml() {
-        const prevLink = prev ? `<a href="..&#x2f;../corpus/${corpusId}/${prev.id}.html" rel="prev" title="${prev.title}">← Előző</a>` : '';
-        const nextLink = next ? `<a href="..&#x2f;../corpus/${corpusId}/${next.id}.html" rel="next" title="${next.title}">Következő →</a>` : '';
+        const prevLink = prev ? `<a href="${prev.id}.html" rel="prev" title="${prev.title}">← Előző</a>` : '';
+        const nextLink = next ? `<a href="${next.id}.html" rel="next" title="${next.title}">Következő →</a>` : '';
         return `<span class="doc-nav-prev">${prevLink}</span>`
-             + `<a class="doc-nav-corpus" href="..&#x2f;../${corpus.url.startsWith('/') ? corpus.url.slice(1) : corpus.url}">${corpus.title}</a>`
+             + `<a class="doc-nav-corpus" href="index.html">${corpus.title}</a>`
              + `<span class="doc-nav-next">${nextLink}</span>`;
       }
       function attachNav(nav) {
