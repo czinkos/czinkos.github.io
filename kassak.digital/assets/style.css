@@ -93,16 +93,58 @@ main {
 }
 
 footer {
-  margin-top: 4rem;
-  padding-bottom: 2rem;
+  margin-top: 8rem;
+  padding-bottom: 0;
   font-size: 0.85rem;
   color: var(--color-gray-dark);
 }
 
+
 footer hr {
   border: 0;
   border-top: 1px solid var(--color-gray-mid);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-logos {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.footer-logos img {
+  height: 60px;
+  width: auto;
+  display: block;
+}
+
+.footer-info {
+  text-align: right;
+}
+
+.footer-info p {
+  margin: 0.2rem 0;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-logos {
+    justify-content: center;
+  }
+  .footer-info {
+    text-align: center;
+  }
 }
 
 /* --- Kiosk / Full-height Home Page --- */
@@ -148,47 +190,6 @@ footer hr {
   width: 100%;
 }
 
-.hero-logo-bg {
-  position: absolute;
-  top: 40px;
-  left: 40px;
-  width: 120px;
-  height: 120px;
-  opacity: 0.15;
-  z-index: 0;
-  filter: grayscale(1);
-  transform: rotate(-10deg);
-}
-
-.hero-logo-bg img {
-  width: 100%;
-  height: 100%;
-}
-
-.hero-full::before {
-  content: "";
-  position: absolute;
-  top: -40px;
-  right: 15%;
-  width: 180px;
-  height: 180px;
-  background: var(--color-accent-yellow);
-  z-index: 0;
-  transform: rotate(15deg);
-}
-
-.hero-full::after {
-  content: "";
-  position: absolute;
-  bottom: 40px;
-  left: 8%;
-  width: 120px;
-  height: 120px;
-  background: var(--color-accent-blue);
-  z-index: 0;
-  border-radius: 50%;
-}
-
 .hero-full .container {
   position: relative;
   z-index: 1;
@@ -199,6 +200,21 @@ footer hr {
   margin: 0 0 1.5rem 0;
   line-height: 0.9;
   text-transform: uppercase;
+  position: relative;
+}
+
+.hero-full h1::after {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  left: -2rem;
+  z-index: -1;
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  opacity: 0.25;
+  pointer-events: none;
 }
 
 .hero-full h1 span {
@@ -218,18 +234,6 @@ footer hr {
   font-size: 1.3rem;
   max-width: 900px;
   margin-bottom: 4rem;
-}
-
-.hero-full .quote {
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: 1.6rem;
-  max-width: 900px;
-  margin-bottom: 4rem;
-  line-height: 1.4;
-  color: var(--color-gray-dark);
-  border-left: 8px solid var(--color-accent);
-  padding-left: 2rem;
 }
 
 .hero-search {
@@ -582,15 +586,15 @@ hr {
     font-size: 4rem; 
     line-height: 1;
   }
+  .hero-full h1::after {
+    height: 20rem;
+    width: 20rem;
+    top: -2rem;
+    left: -4rem;
+  }
   .hero-description {
     font-size: 1rem;
     margin-top: 0;
-    margin-bottom: 2rem;
-  }
-  .hero-full .quote {
-    font-size: 1.2rem;
-    padding-left: 1rem;
-    border-left-width: 6px;
     margin-bottom: 2rem;
   }
   .hero-search form {
