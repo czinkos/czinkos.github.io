@@ -3780,6 +3780,11 @@
     <h3>B</h3>
     <ul>
       
+      <li id="Vienna">
+        <a href="..&#x2f;../places.html?id=Vienna">Bécs</a>
+        (135 levél)
+      </li>
+      
       <li id="Budapest">
         <a href="..&#x2f;../places.html?id=Budapest">Budapest</a>
         (141 levél)
@@ -3821,18 +3826,8 @@
     <ul>
       
       <li id="Paris">
-        <a href="..&#x2f;../places.html?id=Paris">Paris</a>
+        <a href="..&#x2f;../places.html?id=Paris">Párizs</a>
         (10 levél)
-      </li>
-      
-    </ul>
-    
-    <h3>V</h3>
-    <ul>
-      
-      <li id="Vienna">
-        <a href="..&#x2f;../places.html?id=Vienna">Vienna</a>
-        (135 levél)
       </li>
       
     </ul>
@@ -5971,8 +5966,11 @@
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

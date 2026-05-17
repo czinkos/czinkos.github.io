@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  (1926-05-22)
               </td>
             </tr>
@@ -170,11 +170,11 @@
 				megkaptam. Igazad van </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_3">angyalom, bizony mostanában, majdnem olyan </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_4">rendetlenül írtam, mint
 				te szoktál, de ígérem, </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_5">most hogy már nem kell a nyomdában élnem </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_6">még rajtad is túl
 				teszek. Utasításaid elolvas¬ </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_7">tam és mindenben ahoz fogom magam tartani. </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_8">Képzeld milyen baj, hogy
-				a <cite><a href="../../works.html?id=KL_mucim_0008" id="KL_mucim_0008" title="Tisztaság könyve" class="entity-mention" data-type="works" data-id="KL_mucim_0008">könyv</a></cite> pünkösdre </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_9">nem lett kész. <a href="../../events.html?id=KL_esemeny_0108" id="KL_esemeny_0108" title="KL_esemeny_0108" class="entity-mention" data-type="events" data-id="KL_esemeny_0108">A szociknak Szegeden dalos
+				a <cite><a href="../../works.html?id=KL_mucim_0008" id="KL_mucim_0008" title="Tisztaság könyve" class="entity-mention" data-type="works" data-id="KL_mucim_0008">könyv</a></cite> pünkösdre </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_9">nem lett kész. <a href="../../events.html?id=KL_esemeny_0108" id="KL_esemeny_0108" title="A magyarországi munkásdalegyletek országos dalosünnepe" class="entity-mention" data-type="events" data-id="KL_esemeny_0108">A szociknak Szegeden dalos
 								<br>versenyük lesz </a> és engem is elvittek volna. Ha </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_11">a <cite><a href="../../works.html?id=KL_mucim_0008" id="KL_mucim_0008" title="Tisztaság könyve" class="entity-mention" data-type="works" data-id="KL_mucim_0008">könyv</a></cite> készen lett volna elfogadtam volna a </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_12">meghívást, mert itt
 				egészen bizonyosan, egy csomó </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_13">könyvet eltudtam volna adni. A méreg majd </div><div class="tei-line" data-facs="facs_5_region_1681906074167_1609_tl_14">meg esz, emiatt a
 				csirkefogó <a href="../../persons.html?id=KL_szemely_0169" id="KL_szemely_0169" title="Krausz Jakab" class="entity-mention" data-type="persons" data-id="KL_szemely_0169">Krausz</a>
-				miatt. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_5_region_1681906078509_1612_tl_1"><a href="../../events.html?id=KL_esemeny_0007" id="KL_esemeny_0007" title="KL_esemeny_0007" class="entity-mention" data-type="events" data-id="KL_esemeny_0007">19 én 3 versed szavaltam a
+				miatt. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_5_region_1681906078509_1612_tl_1"><a href="../../events.html?id=KL_esemeny_0007" id="KL_esemeny_0007" title="Ismeretlen" class="entity-mention" data-type="events" data-id="KL_esemeny_0007">19 én 3 versed szavaltam a
 							pártszervezetemben</a>. </div><div class="tei-line" data-facs="facs_5_region_1681906078509_1612_tl_2">Azt mondják
 				komoly sikerem volt, lehet, de </div><div class="tei-line" data-facs="facs_5_region_1681906078509_1612_tl_3">nekem nem adott élményt. Lehet, azért mert </div><div class="tei-line" data-facs="facs_5_line_1681906923532_1858">rettenetes szavalásokat
 				hallgattam végig előzőleg, elő¬ </div><div class="tei-line" data-facs="facs_5_region_1681906078509_1612_tl_5">adó társnőimtől. Te erre azt gondolod, belőlem </div><div class="tei-line" data-facs="facs_5_region_1681906078509_1612_tl_6">a sárga irigység
@@ -653,8 +653,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

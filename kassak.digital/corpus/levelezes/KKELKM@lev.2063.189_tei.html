@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-04-24 után])
               </td>
             </tr>
@@ -554,8 +554,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0115":{"name":"Hernádi (Hercz) Gy�
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

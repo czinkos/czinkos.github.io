@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-04-27 után])
               </td>
             </tr>
@@ -191,7 +191,7 @@
 					<a href="../../persons.html?id=KOHA_121317" id="KOHA_121317" title="Osvát Ernő" class="entity-mention" data-type="persons" data-id="KOHA_121317">Osváth</a> már ebben a
 					<a href="../../organizations.html?id=KL_periodika_0068" id="KL_periodika_0068" title="KL_periodika_0068" class="entity-mention" data-type="orgs" data-id="KL_periodika_0068">Nyugat</a></div><div class="tei-line" data-facs="facs_5_line_1678807462286_4828">számban akarta a <cite><a href="../../works.html?id=KL_mucim_1101" id="KL_mucim_1101" title="Irodalmi Figyelő (rovat) Kassák Lajos – Tisztaság könyve" class="entity-mention" data-type="works" data-id="KL_mucim_1101">tanulmányt</a></cite> hozni, de ő
 				még nem </div></div><hr data-facs-page="facs_6"><p>[6. oldal]</p><div class="tei-p"><div class="tei-line" data-facs="facs_6_line_1678807724792_5004">tudja elhatározni magát hogy az
-					<a href="../../events.html?id=KL_esemeny_0056" id="KL_esemeny_0056" title="KL_esemeny_0056" class="entity-mention" data-type="events" data-id="KL_esemeny_0056">előadása</a>
+					<a href="../../events.html?id=KL_esemeny_0056" id="KL_esemeny_0056" title="Komlós Aladár előadása az új magyar irodalomról" class="entity-mention" data-type="events" data-id="KL_esemeny_0056">előadása</a>
 					 előtt, </div><div class="tei-line" data-facs="facs_6_line_1678807729781_5009">vagy után
 				adassa be. Én próbáltam rábeszélni, hogy </div><div class="tei-line" data-facs="facs_6_line_1678807734102_5014">előtte, most nekünk így jobb lett volna, a te megjele¬ </div><div class="tei-line" data-facs="facs_6_line_1678807738291_5019">nendő <cite><a href="../../works.html?id=KL_mucim_0008" id="KL_mucim_0008" title="Tisztaság Könyve" class="entity-mention" data-type="works" data-id="KL_mucim_0008">könyved</a></cite> szempontjából. De ő avval érvel, hogy </div><div class="tei-line" data-facs="facs_6_line_1678807742311_5024">illetlenséget követ el így a
 				hallgatóival szemben. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_6_line_1678807754131_5030">Kérlek <u><a href="../../persons.html?id=KL_szemely_0201" id="KL_szemely_0201" title="Nagy Etel" class="entity-mention" data-type="persons" data-id="KL_szemely_0201">Etelka</a></u>! Add föl
@@ -675,8 +675,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Nagy Etel","key":"KL
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

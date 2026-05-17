@@ -52,7 +52,7 @@
               <th>Feladó</th>
               <td>
                 Kassák Lajos
-                 — Paris
+                 — Párizs
                  (1926-06-03)
               </td>
             </tr>
@@ -72,7 +72,7 @@
               <th>Keltezés</th>
               <td>
                 [1926-06-03]
-                , Paris
+                , Párizs
               </td>
             </tr>
             
@@ -121,7 +121,7 @@
     <div id="tei-body">
       <h1>Kassák Lajos – Simon Jolán [1926-06-03]</h1><hr data-facs-page="facs_1"><p>[1. oldal]</p><div class="tei-p"><div class="tei-line" data-facs="facs_1_line_1676367051771_83"><a href="../../persons.html?id=KL_szemely_0256" id="KL_szemely_0256" title="Simon Jolán" class="entity-mention" data-type="persons" data-id="KL_szemely_0256">Simon Jolán</a></div></div><div class="tei-p"><div class="tei-line" data-facs="facs_1_line_1676367065868_98"><u>Hongrie</u></div></div><div class="tei-p"><div class="tei-line" data-facs="facs_1_line_1676367058756_88"><u>Budapest</u></div></div><div class="tei-p"><div class="tei-line" data-facs="facs_1_line_1676367063199_93">V. Sziget.-utca 16 I/14
 			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_1_line_1676370917194_181">Kedves <a href="../../persons.html?id=KL_szemely_0256" id="KL_szemely_0256" title="Simon Jolán" class="entity-mention" data-type="persons" data-id="KL_szemely_0256">Jolán</a>, </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_1_line_1676370922448_186">szombaton 12 én tartunk egy kis
-                    </div><div class="tei-line" data-facs="facs_1_line_1676370928047_191"><a href="../../events.html?id=KL_esemeny_0053" id="KL_esemeny_0053" title="KL_esemeny_0053" class="entity-mention" data-type="events" data-id="KL_esemeny_0053">előadást</a> 150 személyes teremben.<details class="tei-note" open><summary>Jegyzet</summary><div class="tei-note-content"><div class="tei-p"><div class="tei-line">Az elődás két nappal később, június 14-én, hétfőn lett megtartva.</div></div></div></details> Ugy mondják </div><div class="tei-line" data-facs="facs_1_line_1676370935344_196">ez itt nagy
+                    </div><div class="tei-line" data-facs="facs_1_line_1676370928047_191"><a href="../../events.html?id=KL_esemeny_0053" id="KL_esemeny_0053" title="A Ma párizsi előadóestje" class="entity-mention" data-type="events" data-id="KL_esemeny_0053">előadást</a> 150 személyes teremben.<details class="tei-note" open><summary>Jegyzet</summary><div class="tei-note-content"><div class="tei-p"><div class="tei-line">Az elődás két nappal később, június 14-én, hétfőn lett megtartva.</div></div></div></details> Ugy mondják </div><div class="tei-line" data-facs="facs_1_line_1676370935344_196">ez itt nagy
                 eredményt jelent. Különben kevés </div><div class="tei-line" data-facs="facs_1_line_1676370943588_201">itt az érdekes. Épen, hogy eredetiben láthatom </div><div class="tei-line" data-facs="facs_1_line_1676370949013_206">a dolgokat. Nem sokkal lenne több<del><abbr title="hiány">[…]</abbr></del></div><div class="tei-line" data-facs="facs_1_line_1676370954463_211">kedvem itt lakni, mint Bécsben.
                 De </div><div class="tei-line" data-facs="facs_1_line_1676370961544_216">azért kár, hogy nem vagy itt,
                 legalább </div><div class="tei-line" data-facs="facs_1_line_1676370968641_221">te is élvezhetnéd azt a
@@ -509,8 +509,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

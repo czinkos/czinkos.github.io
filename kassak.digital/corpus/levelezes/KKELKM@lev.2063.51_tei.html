@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1925-12-03 után])
               </td>
             </tr>
@@ -153,7 +153,7 @@
 				</div><div class="tei-line" data-facs="facs_6_r1l2">del csináltatni. Ha ügyesen lesz meg¬
 				</div><div class="tei-line" data-facs="facs_6_r1l3">adminisztrálva, akkor az én <abbr title="hiány">[…]</abbr></div><div class="tei-line" data-facs="facs_6_r1l4">januári <del>uti</del> ide-oda utiköltégem is fe¬
 				</div><div class="tei-line" data-facs="facs_6_r1l5">deződik. Írj véleményt.
-			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_6_r1l6">A <a href="../../events.html?id=KL_esemeny_0097" id="KL_esemeny_0097" title="KL_esemeny_0097" class="entity-mention" data-type="events" data-id="KL_esemeny_0097">Debreceni előadás</a> is aktuális lenne </div><div class="tei-line" data-facs="facs_6_r1l7">mert ha későn is
+			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_6_r1l6">A <a href="../../events.html?id=KL_esemeny_0097" id="KL_esemeny_0097" title="Ismeretlen" class="entity-mention" data-type="events" data-id="KL_esemeny_0097">Debreceni előadás</a> is aktuális lenne </div><div class="tei-line" data-facs="facs_6_r1l7">mert ha későn is
 					<del>a</del>de <a href="../../persons.html?id=KL_szemely_0295" id="KL_szemely_0295" title="Tamás Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0295">Tamás</a>, félős. hogy </div><div class="tei-line" data-facs="facs_6_r1l8">nem kaphat
 				ingyen termet. <u>Méltóztassál</u></div><div class="tei-line" data-facs="facs_6_line_1670595106060_4059">erre is válaszolni. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_6_r1l10"><a href="../../persons.html?id=KL_szemely_0295" id="KL_szemely_0295" title="Tamás Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0295">Tamásra</a> most nem lehet rá ismerni, </div><div class="tei-line" data-facs="facs_6_r1l11">olyan, mint egy kis kutya. De én azt </div><div class="tei-line" data-facs="facs_6_r1l12">soha többé nem felejtem el neki, hogy </div><div class="tei-line" data-facs="facs_6_line_1670595112779_4066">mennyi van a füle mögött. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_6_r1l14">A lapnak
 				<del>ehe</del> ehez a számához is </div><div class="tei-line" data-facs="facs_6_r1l15">jó lenne
@@ -594,8 +594,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

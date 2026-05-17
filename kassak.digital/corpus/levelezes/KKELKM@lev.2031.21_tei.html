@@ -52,7 +52,7 @@
               <th>Feladó</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1925-12-02 után])
               </td>
             </tr>
@@ -72,7 +72,7 @@
               <th>Keltezés</th>
               <td>
                 [1925-12-01–02]
-                , Vienna
+                , Bécs
               </td>
             </tr>
             
@@ -134,7 +134,7 @@
                 Egy megveszekedett vasam sincs. De hát hon¬ </div><div class="tei-line" data-facs="facs_1_line_1674488577301_5836">nan is lenne?! A
                         <em title="bizonytalan olvasat">[<a href="../../persons.html?id=KL_szemely_0349" id="KL_szemely_0349" title="Ismeretlen" class="entity-mention" data-type="persons" data-id="KL_szemely_0349">Ráczot</a>]</em> is vagy mi az Isten nyila, megszó¬ </div><div class="tei-line" data-facs="facs_1_line_1674488583061_5841">lított, hogy fizessek
                 részletet. Megígértem, hogy 1–2 napon be¬ </div><div class="tei-line" data-facs="facs_1_line_1674488587781_5846">lül fizetem. Hogy miből, nem tudom. És általában nagyon </div><div class="tei-line" data-facs="facs_1_line_1674488592721_5851">kedvetlen vagyok. Nem tudom
-                hogyan gondolod a <u><abbr title="hiány">[…]</abbr><a href="../../events.html?id=KL_esemeny_0097" id="KL_esemeny_0097" title="KL_esemeny_0097" class="entity-mention" data-type="events" data-id="KL_esemeny_0097">debreceni előadást</a></u></div><div class="tei-line" data-facs="facs_1_line_1674488598352_5856">. A részemről <u>szarok</u> minden propagandára és egye¬ </div><div class="tei-line" data-facs="facs_1_line_1674488611691_5861">bekre. Gyere minél előbb haza.
+                hogyan gondolod a <u><abbr title="hiány">[…]</abbr><a href="../../events.html?id=KL_esemeny_0097" id="KL_esemeny_0097" title="Ismeretlen" class="entity-mention" data-type="events" data-id="KL_esemeny_0097">debreceni előadást</a></u></div><div class="tei-line" data-facs="facs_1_line_1674488598352_5856">. A részemről <u>szarok</u> minden propagandára és egye¬ </div><div class="tei-line" data-facs="facs_1_line_1674488611691_5861">bekre. Gyere minél előbb haza.
                 Ha itt vagy legalább vesze¬ </div><div class="tei-line" data-facs="facs_1_line_1674488620372_5866">kedhetik az ember veled. Így egészen meghülyülök. Egyelőre sem¬ </div><div class="tei-line" data-facs="facs_1_line_1674488627592_5871">mi nem érdekel. Azt hittem amíg
                 oda vagy dolgozni fogok vala¬ </div><div class="tei-line" data-facs="facs_1_line_1674488632741_5876">mit, de ez aligha fog megtörténni. Délig alszom, aztán papri¬ </div><div class="tei-line" data-facs="facs_1_line_1674488639101_5881">kás krumlit főzök, este tejet
                 iszom és elülről. A <a href="../../persons.html?id=KL_szemely_0403" id="KL_szemely_0403" title="Ismeretlen" class="entity-mention" data-type="persons" data-id="KL_szemely_0403">házi
@@ -615,8 +615,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

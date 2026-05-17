@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-02-01 után])
               </td>
             </tr>
@@ -169,7 +169,7 @@
 				</div><div class="tei-line" data-facs="facs_5_line_1681733391773_2459">nyugtalan természetemmel, úgy se hagy¬
 				</div><div class="tei-line" data-facs="facs_5_line_1681733401083_2464">nálak, legföljebb 10 óráig aludni! Ehez
 				</div><div class="tei-line" data-facs="facs_5_line_1681733404528_2469">tartsd <del>t</del> magad!
-			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_5_line_1681733408603_2474"><a href="../../events.html?id=KL_esemeny_0103" id="KL_esemeny_0103" title="KL_esemeny_0103" class="entity-mention" data-type="events" data-id="KL_esemeny_0103">Tegnap éjjel voltam a <a href="../../persons.html?id=KL_szemely_0143" id="KL_szemely_0143" title="Kelemen Viktor" class="entity-mention" data-type="persons" data-id="KL_szemely_0143">Kelemen Viktor</a><br><cite><a href="../../works.html?id=KL_mucim_1086" id="KL_mucim_1086" title="A fejedelem" class="entity-mention" data-type="works" data-id="KL_mucim_1086">darabjánál</a></cite>.</a> 
+			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_5_line_1681733408603_2474"><a href="../../events.html?id=KL_esemeny_0103" id="KL_esemeny_0103" title="A fejedelem előadása" class="entity-mention" data-type="events" data-id="KL_esemeny_0103">Tegnap éjjel voltam a <a href="../../persons.html?id=KL_szemely_0143" id="KL_szemely_0143" title="Kelemen Viktor" class="entity-mention" data-type="persons" data-id="KL_szemely_0143">Kelemen Viktor</a><br><cite><a href="../../works.html?id=KL_mucim_1086" id="KL_mucim_1086" title="A fejedelem" class="entity-mention" data-type="works" data-id="KL_mucim_1086">darabjánál</a></cite>.</a> 
 							 A <cite><a href="../../works.html?id=KL_mucim_1086" id="KL_mucim_1086" title="A fejedelem" class="entity-mention" data-type="works" data-id="KL_mucim_1086">darab</a></cite> antiszociális, sablon<span>[¬]</span></div><div class="tei-line" data-facs="facs_5_line_1681733417313_2484">os megírásában, a rendezés
 				szintén </div><div class="tei-line" data-facs="facs_5_line_1681733421153_2489">gyönge, nagyon gyönge,
 				díszletei részben </div><div class="tei-line" data-facs="facs_5_line_1681733447953_2494">modern akar
@@ -706,8 +706,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

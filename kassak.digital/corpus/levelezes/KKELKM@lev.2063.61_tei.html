@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-02-05 után])
               </td>
             </tr>
@@ -237,7 +237,7 @@
 				mit szólsz hozzá és érdekel e úgy hogy </div><div class="tei-line" data-facs="facs_6_line_1678797316998_3225">részt vegyél benne irodalmilag. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_6_line_1678797389605_3251"><a href="../../persons.html?id=KL_szemely_0295" id="KL_szemely_0295" title="Tamás Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0295">Tamás</a> jött be az előbb avval, hogy március II
 				ik </div><div class="tei-line" data-facs="facs_6_line_1678797394219_3256">felében a zeneakadémia
 				kamara termében </div><div class="tei-line" data-facs="facs_6_line_1678797398551_3261">rendez egy
-					<a href="../../events.html?id=KL_esemeny_0072" id="KL_esemeny_0072" title="KL_esemeny_0072" class="entity-mention" data-type="events" data-id="KL_esemeny_0072">estét uj francia költők
+					<a href="../../events.html?id=KL_esemeny_0072" id="KL_esemeny_0072" title="Francia költők előadóestje" class="entity-mention" data-type="events" data-id="KL_esemeny_0072">estét uj francia költők
 							verseiből</a> egy </div><div class="tei-line" data-facs="facs_6_line_1678797402208_3266">ismertető
 				bevezetéssel és zenével (persze nem mo¬ </div><div class="tei-line" data-facs="facs_6_line_1678797405925_3271">dernektől a zene)<span>[.]</span> Kérdezte,
 				hajlandó lennék e részt </div><div class="tei-line" data-facs="facs_6_line_1678797410214_3276">venni,
@@ -789,8 +789,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

@@ -61,7 +61,7 @@
   
   <section>
     <h2>Korpuszok</h2>
-    <div class="card-grid-2x2">
+    <div class="card-grid">
       
       <a href="./corpus/levelezes/index.html" class="card">
         <div class="card-header">A Kassák Lajos és Simon Jolán közti levelezés</div>
@@ -142,8 +142,11 @@
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1924-01-27 után])
               </td>
             </tr>
@@ -161,7 +161,7 @@
                 olyan általánosabbat </div><div class="tei-line" data-facs="facs_2_line_1678445287705_526">szeretnének. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1678445292658_531">Egy-két nap múlva tisztább képet
                 kapok </div><div class="tei-line" data-facs="facs_2_line_1678445297229_536">mindenről akkor
                 részletesebben írok minden¬ </div><div class="tei-line" data-facs="facs_2_line_1678445302440_541">ről.
-                Tegnap volt az <a href="../../events.html?id=KL_esemeny_0102" id="KL_esemeny_0102" title="KL_esemeny_0102" class="entity-mention" data-type="events" data-id="KL_esemeny_0102">előadásom</a> jól sikerült. </div><div class="tei-line" data-facs="facs_2_line_1678445307720_546"><a href="../../organizations.html?id=KL_periodika_0020" id="KL_periodika_0020" title="KL_periodika_0020" class="entity-mention" data-type="orgs" data-id="KL_periodika_0020">Fáklyánál</a>
+                Tegnap volt az <a href="../../events.html?id=KL_esemeny_0102" id="KL_esemeny_0102" title="Modern irodalmi est" class="entity-mention" data-type="events" data-id="KL_esemeny_0102">előadásom</a> jól sikerült. </div><div class="tei-line" data-facs="facs_2_line_1678445307720_546"><a href="../../organizations.html?id=KL_periodika_0020" id="KL_periodika_0020" title="KL_periodika_0020" class="entity-mention" data-type="orgs" data-id="KL_periodika_0020">Fáklyánál</a>
                 10-én lesz. 3-án egy más </div><div class="tei-line" data-facs="facs_2_line_1678445309959_551">egyesületben lesz. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1678445313688_556">Most megyek <a href="../../persons.html?id=KL_szemely_0013" id="KL_szemely_0013" title="Balogh Vilma" class="entity-mention" data-type="persons" data-id="KL_szemely_0013">Baloghoz</a> nagyon könyör¬
                     </div><div class="tei-line" data-facs="facs_2_line_1678445317671_561">gött mentsem meg (nem tudom,
                 hogy </div><div class="tei-line" data-facs="facs_2_line_1678445321426_566">sikerül.) Írj te is
@@ -575,8 +575,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0295":{"name":"Tamás Aladár","key
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

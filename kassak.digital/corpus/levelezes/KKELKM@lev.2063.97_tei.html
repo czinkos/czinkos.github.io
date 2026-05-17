@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-02-08 után])
               </td>
             </tr>
@@ -128,7 +128,7 @@
     <div id="tei-body">
       <h1>Simon Jolán – Kassák Lajos [1926-02-08]</h1><hr data-facs-page="facs_1"><p>[1. oldal]</p><div class="tei-p"><div class="tei-line" data-facs="facs_1_region_1681804705019_391_tl_1">Kedves <a href="../../persons.html?id=KL_szemely_0140" id="KL_szemely_0140" title="Kassák Lajos" class="entity-mention" data-type="persons" data-id="KL_szemely_0140">Kasi</a>, </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_1_region_1681804715943_394_tl_1">amint megtudtam,
                     <a href="../../persons.html?id=KL_szemely_0444" id="KL_szemely_0444" title="Kiss Hugó" class="entity-mention" data-type="persons" data-id="KL_szemely_0444">Kiss Hugó</a> mesélte,
-                    <a href="../../persons.html?id=KL_szemely_0295" id="KL_szemely_0295" title="Tamás Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0295">Tamás</a><a href="../../persons.html?id=KL_szemely_0281" id="KL_szemely_0281" title="Szegi Pál" class="entity-mention" data-type="persons" data-id="KL_szemely_0281">Szegivel</a></div><div class="tei-line" data-facs="facs_1_region_1681804715943_394_tl_2">csinálja meg azt <a href="../../events.html?id=KL_esemeny_0072" id="KL_esemeny_0072" title="KL_esemeny_0072" class="entity-mention" data-type="events" data-id="KL_esemeny_0072">a francia estét</a>. Most össze kerestek </div><div class="tei-line" data-facs="facs_1_region_1681804715943_394_tl_3">egy pár fiatal színészt
+                    <a href="../../persons.html?id=KL_szemely_0295" id="KL_szemely_0295" title="Tamás Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0295">Tamás</a><a href="../../persons.html?id=KL_szemely_0281" id="KL_szemely_0281" title="Szegi Pál" class="entity-mention" data-type="persons" data-id="KL_szemely_0281">Szegivel</a></div><div class="tei-line" data-facs="facs_1_region_1681804715943_394_tl_2">csinálja meg azt <a href="../../events.html?id=KL_esemeny_0072" id="KL_esemeny_0072" title="Francia költők előadóestje" class="entity-mention" data-type="events" data-id="KL_esemeny_0072">a francia estét</a>. Most össze kerestek </div><div class="tei-line" data-facs="facs_1_region_1681804715943_394_tl_3">egy pár fiatal színészt
                 és <a href="../../persons.html?id=KL_szemely_0281" id="KL_szemely_0281" title="Szegi Pál" class="entity-mention" data-type="persons" data-id="KL_szemely_0281">Szeginél</a>, akinek
                 műterem </div><div class="tei-line" data-facs="facs_1_region_1681804715943_394_tl_4">lakása van,
                 fogják őket a versekre betanítani. </div><div class="tei-line" data-facs="facs_1_region_1681804715943_394_tl_5">Azonkívül <del>egy</del><a href="../../persons.html?id=KL_szemely_0113" id="KL_szemely_0113" title="Hegyi Rózsi" class="entity-mention" data-type="persons" data-id="KL_szemely_0113">Hegyi Rozsi</a>,
@@ -625,8 +625,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

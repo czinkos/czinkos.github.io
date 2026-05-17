@@ -52,7 +52,7 @@
               <th>Feladó</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-09-08-tól])
               </td>
             </tr>
@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Nagy Etel
-                 — Vienna
+                 — Bécs
                  ([1926-09-08 után])
               </td>
             </tr>
@@ -72,7 +72,7 @@
               <th>Keltezés</th>
               <td>
                 [1926-09-07–08]
-                , Vienna
+                , Bécs
               </td>
             </tr>
             
@@ -526,8 +526,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

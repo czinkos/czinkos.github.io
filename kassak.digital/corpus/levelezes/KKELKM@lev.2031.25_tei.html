@@ -72,7 +72,7 @@
               <th>Keltezés</th>
               <td>
                 [1926-04-18–19]
-                , Vienna
+                , Bécs
               </td>
             </tr>
             
@@ -151,7 +151,7 @@
                 hogy a <u>Dokumentum kiadása</u> állna rajta. Kérdezz </div><div class="tei-line" data-facs="facs_1_tr_1_tl_11">utána lehet-e ezt így. Ha azt kérdezik mi az
                 a <u>Dokumentum</u></div><div class="tei-line" data-facs="facs_1_tr_1_tl_12">az <u>te</u> vagy, vagyis
                 ezalatt a cím alatt időnként ilyen antoló¬ </div><div class="tei-line" data-facs="facs_1_tr_1_tl_13">giákat adnál ki – Ha ennek akadálya lenne akkor így: </div><div class="tei-line" data-facs="facs_1_tr_1_tl_14"><u>a szerző kiadása</u>. Az első forma <u>jobb</u> lenne. Vagy <u>háromszáz</u> da¬ </div><div class="tei-line" data-facs="facs_1_tr_1_tl_15">rabra <a href="../../persons.html?id=KL_szemely_0129" id="KL_szemely_0129" title="Gömöri Gyula" class="entity-mention" data-type="persons" data-id="KL_szemely_0129">J. Fischer</a> Verlag Wien. Ezt rögtön küldened
-                kellene </div><div class="tei-line" data-facs="facs_1_tr_1_tl_16">ide. A <u><a href="../../persons.html?id=KL_szemely_0207" id="KL_szemely_0207" title="Németh Andor" class="entity-mention" data-type="persons" data-id="KL_szemely_0207">Németh Andor</a></u><a href="../../events.html?id=KL_esemeny_0070" id="KL_esemeny_0070" title="KL_esemeny_0070" class="entity-mention" data-type="events" data-id="KL_esemeny_0070">estéje</a> szépen sikerült. Az én karikí¬ </div><div class="tei-line" data-facs="facs_1_tr_1_tl_17">rozásomnak nagy sikere volt. Általában azt mondtak, hogy most </div><div class="tei-line" data-facs="facs_1_tr_1_tl_18">láttak csak meg milyen nagy író vagyok. <u>Látod</u> megyek én föl felé. </div><div class="tei-line" data-facs="facs_1_tr_1_tl_19">De különben valóban jó, találó volt a dolog. Az egész este szombaton egy olyan </div></div><hr data-facs-page="facs_2"><p>[2. oldal]</p><div class="tei-p"><div class="tei-line" data-facs="facs_2_tr_1_tl_1">polgári szószban úszott. <u><a href="../../persons.html?id=KL_szemely_0655" id="KL_szemely_0655" title="Reinitz Béla" class="entity-mention" data-type="persons" data-id="KL_szemely_0655">Reinitz</a></u> 1 <sup>1</sup>/<span>2</span> óra
+                kellene </div><div class="tei-line" data-facs="facs_1_tr_1_tl_16">ide. A <u><a href="../../persons.html?id=KL_szemely_0207" id="KL_szemely_0207" title="Németh Andor" class="entity-mention" data-type="persons" data-id="KL_szemely_0207">Németh Andor</a></u><a href="../../events.html?id=KL_esemeny_0070" id="KL_esemeny_0070" title="Németh Andor szerzői estje " class="entity-mention" data-type="events" data-id="KL_esemeny_0070">estéje</a> szépen sikerült. Az én karikí¬ </div><div class="tei-line" data-facs="facs_1_tr_1_tl_17">rozásomnak nagy sikere volt. Általában azt mondtak, hogy most </div><div class="tei-line" data-facs="facs_1_tr_1_tl_18">láttak csak meg milyen nagy író vagyok. <u>Látod</u> megyek én föl felé. </div><div class="tei-line" data-facs="facs_1_tr_1_tl_19">De különben valóban jó, találó volt a dolog. Az egész este szombaton egy olyan </div></div><hr data-facs-page="facs_2"><p>[2. oldal]</p><div class="tei-p"><div class="tei-line" data-facs="facs_2_tr_1_tl_1">polgári szószban úszott. <u><a href="../../persons.html?id=KL_szemely_0655" id="KL_szemely_0655" title="Reinitz Béla" class="entity-mention" data-type="persons" data-id="KL_szemely_0655">Reinitz</a></u> 1 <sup>1</sup>/<span>2</span> óra
                 hosszatt énekelt és zon¬ </div><div class="tei-line" data-facs="facs_2_tr_1_tl_2">gorázott.
                 Borzasztóan meg voltak hatva a magyar izraeliták. </div><div class="tei-line" data-facs="facs_2_tr_1_tl_3">Aztán elmentünk egy kávéházba – reggel <u>hatkor</u><abbr title="hiány">[…]</abbr> vetődtünk haza. </div><div class="tei-line" data-facs="facs_2_tr_1_tl_4">A két lányod<details class="tei-note" open><summary>Jegyzet</summary><div class="tei-note-content"><div class="tei-p"><div class="tei-line"><a href="../../persons.html?id=KL_szemely_0201" id="KL_szemely_0201" title="Nagy Etel" class="entity-mention" data-type="persons" data-id="KL_szemely_0201">Nagy Etel</a> és
                             <a href="../../persons.html?id=KL_szemely_0202" id="KL_szemely_0202" title="Nagy Piroska" class="entity-mention" data-type="persons" data-id="KL_szemely_0202">Nagy
@@ -596,8 +596,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

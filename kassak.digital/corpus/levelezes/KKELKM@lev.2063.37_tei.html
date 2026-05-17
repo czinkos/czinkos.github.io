@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1924-03-08 után])
               </td>
             </tr>
@@ -138,7 +138,7 @@
                 jegyzetet amelyen </div><div class="tei-line" data-facs="facs_1_line_1675937855150_1682">a bírálati
                 példányok hová adása </div><div class="tei-line" data-facs="facs_1_line_1675937861478_1687">van írva.
                 Kérlek küld el még egyszer </div><div class="tei-line" data-facs="facs_1_line_1675937866366_1692">express. <a href="../../persons.html?id=KOHA_125193" id="KOHA_125193" title="Szabó Dezső" class="entity-mention" data-type="persons" data-id="KOHA_125193">Szabó
-                    Dezső</a><a href="../../events.html?id=KL_esemeny_0034" id="KL_esemeny_0034" title="KL_esemeny_0034" class="entity-mention" data-type="events" data-id="KL_esemeny_0034"><a href="../../events.html?id=KL_esemeny_0034" id="KL_esemeny_0034" title="KL_esemeny_0034" class="entity-mention" data-type="events" data-id="KL_esemeny_0034">előadására</a></a></div><div class="tei-line" data-facs="facs_1_line_1675937870765_1697">szerettem volna elmenni, de már
+                    Dezső</a><a href="../../events.html?id=KL_esemeny_0034" id="KL_esemeny_0034" title="Szabó Dezső előadása" class="entity-mention" data-type="events" data-id="KL_esemeny_0034"><a href="../../events.html?id=KL_esemeny_0034" id="KL_esemeny_0034" title="Szabó Dezső előadása" class="entity-mention" data-type="events" data-id="KL_esemeny_0034">előadására</a></a></div><div class="tei-line" data-facs="facs_1_line_1675937870765_1697">szerettem volna elmenni, de már
                     </div><div class="tei-line" data-facs="facs_1_line_1675937877566_1702">jóval előbb elkapkodták a
                 jegyeket </div><div class="tei-line" data-facs="facs_1_line_1675937880691_1707">és ott nem engedtek
                     be.<details class="tei-note" open><summary>Jegyzet</summary><div class="tei-note-content"><div class="tei-p"><div class="tei-line"><a href="../../persons.html?id=KOHA_125193" id="KOHA_125193" title="Szabó Dezső" class="entity-mention" data-type="persons" data-id="KOHA_125193">Szabó Dezsőnek</a>
@@ -601,8 +601,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

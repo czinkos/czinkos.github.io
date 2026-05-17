@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Paris
+                 — Párizs
                  ([1926-05-26 után])
               </td>
             </tr>
@@ -139,7 +139,7 @@
                 kockáztatom pár nap miatt a könyv </div><div class="tei-line" data-facs="facs_3_line_1677230302102_407">sorsát. Most, ha előzőleg mind bekötik </div><div class="tei-line" data-facs="facs_3_line_1677230305252_412">szombat estére készen lesz. Én ott </div><div class="tei-line" data-facs="facs_3_line_1677230311636_417">megcsinálom a pósta csomagokat,
                 hogy </div><div class="tei-line" data-facs="facs_3_line_1677230319642_424">azonnal föladhassam neked
                 és <a href="../../persons.html?id=KL_szemely_0201" id="KL_szemely_0201" title="Nagy Etel" class="entity-mention" data-type="persons" data-id="KL_szemely_0201">Etinek</a>. </div><div class="tei-line" data-facs="facs_3_line_1677230324361_429">A könyv bolti árát 6 pengő,
-                illetve </div><div class="tei-line" data-facs="facs_3_line_1677230328311_434">75.000 <abbr title="K">koronába</abbr>ba állapítottam meg. Látod, </div><div class="tei-line" data-facs="facs_3_line_1677230338232_439">az embernek evés közben jön meg az </div><div class="tei-line" data-facs="facs_3_line_1677230340670_444">étvágya! </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_3_line_1677230345032_450"><abbr title="Juni">Június</abbr> 4 én Mentornál egy kis (¾ óra) </div><div class="tei-line" data-facs="facs_3_line_1677230351085_455"><a href="../../events.html?id=KL_esemeny_0054" id="KL_esemeny_0054" title="KL_esemeny_0054" class="entity-mention" data-type="events" data-id="KL_esemeny_0054">előadó
+                illetve </div><div class="tei-line" data-facs="facs_3_line_1677230328311_434">75.000 <abbr title="K">koronába</abbr>ba állapítottam meg. Látod, </div><div class="tei-line" data-facs="facs_3_line_1677230338232_439">az embernek evés közben jön meg az </div><div class="tei-line" data-facs="facs_3_line_1677230340670_444">étvágya! </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_3_line_1677230345032_450"><abbr title="Juni">Június</abbr> 4 én Mentornál egy kis (¾ óra) </div><div class="tei-line" data-facs="facs_3_line_1677230351085_455"><a href="../../events.html?id=KL_esemeny_0054" id="KL_esemeny_0054" title="Simo Jolán előadó estje" class="entity-mention" data-type="events" data-id="KL_esemeny_0054">előadó
                             estét</a> tartok, <a href="../../persons.html?id=KL_szemely_0155" id="KL_szemely_0155" title="Komlós Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0155">Komlós</a> bevezetőjével. </div><div class="tei-line" data-facs="facs_3_line_1677230356632_460">34 ember fér a helyiségbe. Jövedelem </div></div><hr data-facs-page="facs_4"><p>[4. oldal]</p><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1677230853980_540">nem sok lesz, inkább azt
                 szeretném, </div><div class="tei-line" data-facs="facs_4_line_1677230857720_545">ha a lapok írnának
                 róla. </div><div class="tei-line" data-facs="facs_4_line_1677230862735_550">A <cite><a href="../../works.html?id=KL_mucim_0008" id="KL_mucim_0008" title="Tisztaság könyve" class="entity-mention" data-type="works" data-id="KL_mucim_0008">könyvet</a></cite> magam fogom adminisztrál¬ </div><div class="tei-line" data-facs="facs_4_line_1677230872205_555">ni. Ne félj, minden fölírok. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1677230886655_561">A kövem most van meg, meglehető¬
@@ -555,8 +555,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

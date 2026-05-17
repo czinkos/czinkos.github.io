@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1925-09-23 után])
               </td>
             </tr>
@@ -142,7 +142,7 @@
                 levágatta a </div><div class="tei-line" data-facs="facs_3_line_1681729327616_1054">haját rövidre. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_3_line_1681729335480_1059">Érdekes itt <a href="../../persons.html?id=KL_szemely_0286" id="KL_szemely_0286" title="Szélpál Árpád" class="entity-mention" data-type="persons" data-id="KL_szemely_0286">Szélpál</a> azt </div><div class="tei-line" data-facs="facs_3_line_1681729339644_1064">terjeszti, hogy <a href="../../organizations.html?id=KL_periodika_0054" id="KL_periodika_0054" title="KL_periodika_0054" class="entity-mention" data-type="orgs" data-id="KL_periodika_0054">Periszkóp</a>
                 nem </div><div class="tei-line" data-facs="facs_3_line_1681729343684_1069">halt meg. Nem tudom </div><div class="tei-line" data-facs="facs_3_line_1681729347663_1074">mi célja van vele. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_3_line_1681729351117_1079">Nagyon sajnálom, hogy nem 
 			</div></div><hr data-facs-page="facs_4"><p>[4. oldal]</p><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1681729558420_1141">sikerült vele az ügyünk. </div><div class="tei-line" data-facs="facs_4_line_1681729563286_1146">Bizony <a href="../../persons.html?id=KL_szemely_0058" id="KL_szemely_0058" title="Erg Ágoston" class="entity-mention" data-type="persons" data-id="KL_szemely_0058">Ergék</a> nem valami </div><div class="tei-line" data-facs="facs_4_line_1681729566124_1151">bizalom keltők. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1681729570064_1156">Azt hiszem a <a href="../../persons.html?id=KL_szemely_0259" id="KL_szemely_0259" title="Sinkó Ervin" class="entity-mention" data-type="persons" data-id="KL_szemely_0259">Sinkonál</a></div><div class="tei-line" data-facs="facs_4_line_1681729573604_1161">kihozott tanulmányal tu¬ </div><div class="tei-line" data-facs="facs_4_line_1681729578170_1166">dunk itt is csinálni boltot. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1681729582667_1171">Itt küldöm <a href="../../persons.html?id=KL_szemely_0307" id="KL_szemely_0307" title="Varsányi Géza " class="entity-mention" data-type="persons" data-id="KL_szemely_0307">Mentorék</a></div><div class="tei-line" data-facs="facs_4_line_1681729586577_1176">téli előadás programmját </div><div class="tei-line" data-facs="facs_4_line_1681729597205_1181"><a href="../../persons.html?id=KL_szemely_0683" id="KL_szemely_0683" title="Bokros Bierman Dezső" class="entity-mention" data-type="persons" data-id="KL_szemely_0683">Bokros-Biermannak</a>
-                van </div><div class="tei-line" data-facs="facs_4_line_1681729606458_1186">náluk <a href="../../events.html?id=KL_esemeny_0049" id="KL_esemeny_0049" title="KL_esemeny_0049" class="entity-mention" data-type="events" data-id="KL_esemeny_0049">kiállítása</a>. Nagyon </div><div class="tei-line" data-facs="facs_4_line_1681729610984_1191">szomorú
+                van </div><div class="tei-line" data-facs="facs_4_line_1681729606458_1186">náluk <a href="../../events.html?id=KL_esemeny_0049" id="KL_esemeny_0049" title="Bokros Birman kiállítás" class="entity-mention" data-type="events" data-id="KL_esemeny_0049">kiállítása</a>. Nagyon </div><div class="tei-line" data-facs="facs_4_line_1681729610984_1191">szomorú
                 látvány! </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1681729620405_1196">Írj! Írj! Írj! 
 			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1681729622432_1201"><u>Mindenről</u></div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1681729665633_1206">Csókol
 			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1681729668824_1211">Szerető 
@@ -587,8 +587,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

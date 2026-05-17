@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-05-05 után])
               </td>
             </tr>
@@ -132,7 +132,7 @@
                 valami csavargóval?! Ezért, csak </div><div class="tei-line" data-facs="facs_1_r1l12">bánj vele jól,
                 és örülj, hogy ilyen szorgalmaska. </div><div class="tei-line" data-facs="facs_1_r1l13">Én minden
                 kérdésedet megjegyzem és <del>po</del></div><div class="tei-line" data-facs="facs_1_r1l14">azokra, pontosan meg is felelek. De – amikor már
-                    </div><div class="tei-line" data-facs="facs_1_line_1670601508107_5217">elintéztem őket. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_1_r1l16">Tegnap voltam <a href="../../persons.html?id=KL_szemely_0155" id="KL_szemely_0155" title="Komlós Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0155">Komlós</a><abbr title="hiány">[…]</abbr> „Mentor” nál tartott </div><div class="tei-line" data-facs="facs_1_r1l17">első <a href="../../events.html?id=KL_esemeny_0056" id="KL_esemeny_0056" title="KL_esemeny_0056" class="entity-mention" data-type="events" data-id="KL_esemeny_0056">előadásán</a> . Nem volt túlságosan
+                    </div><div class="tei-line" data-facs="facs_1_line_1670601508107_5217">elintéztem őket. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_1_r1l16">Tegnap voltam <a href="../../persons.html?id=KL_szemely_0155" id="KL_szemely_0155" title="Komlós Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0155">Komlós</a><abbr title="hiány">[…]</abbr> „Mentor” nál tartott </div><div class="tei-line" data-facs="facs_1_r1l17">első <a href="../../events.html?id=KL_esemeny_0056" id="KL_esemeny_0056" title="Komlós Aladár előadása az új magyar irodalomról" class="entity-mention" data-type="events" data-id="KL_esemeny_0056">előadásán</a> . Nem volt túlságosan
                 érdekes. </div><div class="tei-line" data-facs="facs_1_r1l18">Az 50 es 60 as 70 es kor íróiról
                 beszélt. <a href="../../persons.html?id=KOHA_96679" id="KOHA_96679" title="Arany János" class="entity-mention" data-type="persons" data-id="KOHA_96679">Arany</a></div><div class="tei-line" data-facs="facs_1_r1l19"><a href="../../persons.html?id=KL_szemely_0663" id="KL_szemely_0663" title="Vajda János" class="entity-mention" data-type="persons" data-id="KL_szemely_0663">Vajda</a>, <a href="../../persons.html?id=KOHA_123279" id="KOHA_123279" title="Reviczky Gyula" class="entity-mention" data-type="persons" data-id="KOHA_123279">Reviczky</a>, <a href="../../persons.html?id=KL_szemely_0154" id="KL_szemely_0154" title="Komjáthy Jenő" class="entity-mention" data-type="persons" data-id="KL_szemely_0154">Komjáti Jenő</a>, akit szerinte </div><div class="tei-line" data-facs="facs_1_r1l20">érdemen felül méltattak, <a href="../../persons.html?id=KOHA_115832" id="KOHA_115832" title="Kiss József" class="entity-mention" data-type="persons" data-id="KOHA_115832">Kiss József</a>, akinek </div><div class="tei-line" data-facs="facs_1_line_1670602745984_5881">tárgytalan belső lirája volt.
                 90 es évek realistái </div><div class="tei-line" data-facs="facs_1_line_1670602749564_5886"><a href="../../persons.html?id=KOHA_104179" id="KOHA_104179" title="Bródy Sándor" class="entity-mention" data-type="persons" data-id="KOHA_104179">Bródy</a>, <a href="../../persons.html?id=KL_szemely_0079" id="KL_szemely_0079" title="Gárdonyi Géza" class="entity-mention" data-type="persons" data-id="KL_szemely_0079">Gárdonyi</a>. <a href="../../persons.html?id=KOHA_125159" id="KOHA_125159" title="Szabolcska Mihály" class="entity-mention" data-type="persons" data-id="KOHA_125159">Szabolcska</a>, aki fiatal
@@ -619,8 +619,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

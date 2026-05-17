@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-02-13 után])
               </td>
             </tr>
@@ -138,7 +138,7 @@
                 Belvárosiban Hamlet halálát.<details class="tei-note" open><summary>Jegyzet</summary><div class="tei-note-content"><div class="tei-p"><div class="tei-line">Simon nem emlékezett pontosan az előadás címére. Hamlet halála cím alatt nem
                         futott előadás Budapesten. A Belvárosi Színházban a <cite><a href="../../works.html?id=KL_mucim_1322" id="KL_mucim_1322" title="Hamlet halála (Le Mariage d'Hamlet)" class="entity-mention" data-type="works" data-id="KL_mucim_1322">Hamlet házasága</a></cite> című előadást 1926.
                         február 11-én mutatták be.</div></div></div></details></div><div class="tei-line" data-facs="facs_1_line_1675432263429_128">Rossz darab, rossz előadás,
-                rossz rendezés. </div></div><hr data-facs-page="facs_2"><p>[2. oldal]</p><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1675432538479_175"><a href="../../persons.html?id=KL_szemely_0295" id="KL_szemely_0295" title="Tamás Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0295">Tamás</a> mondja márc 28 án lesz a <a href="../../events.html?id=KL_esemeny_0072" id="KL_esemeny_0072" title="KL_esemeny_0072" class="entity-mention" data-type="events" data-id="KL_esemeny_0072">francia elő¬ <br>adó estjük</a> a
+                rossz rendezés. </div></div><hr data-facs-page="facs_2"><p>[2. oldal]</p><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1675432538479_175"><a href="../../persons.html?id=KL_szemely_0295" id="KL_szemely_0295" title="Tamás Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0295">Tamás</a> mondja márc 28 án lesz a <a href="../../events.html?id=KL_esemeny_0072" id="KL_esemeny_0072" title="Francia költők előadóestje" class="entity-mention" data-type="events" data-id="KL_esemeny_0072">francia elő¬ <br>adó estjük</a> a
                 Zeneakadémia kistermében. <a href="../../persons.html?id=KL_szemely_0281" id="KL_szemely_0281" title="Szegi Pál" class="entity-mention" data-type="persons" data-id="KL_szemely_0281">Szegi</a></div><div class="tei-line" data-facs="facs_2_line_1675432548997_185">tartja a bevezetőt. <a href="../../persons.html?id=KL_szemely_0211" id="KL_szemely_0211" title="Palasovszky Ödön" class="entity-mention" data-type="persons" data-id="KL_szemely_0211">Palasovszky</a>, mint fő
                 atrakció. Ebben </div><div class="tei-line" data-facs="facs_2_line_1675432556661_190">a szezónban
                 összesen 3 mat akar tartani. Végre </div><div class="tei-line" data-facs="facs_2_line_1675432562334_195">összetalálkoztak <a href="../../persons.html?id=KL_szemely_0281" id="KL_szemely_0281" title="Szegi Pál" class="entity-mention" data-type="persons" data-id="KL_szemely_0281">Szegivel</a>. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1675432567597_200">Utleveled után érdeklődj! Arról
@@ -525,8 +525,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

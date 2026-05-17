@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-04-20 után])
               </td>
             </tr>
@@ -190,7 +190,7 @@
 				kultúr est </div><div class="tei-line" data-facs="facs_4_line_1676022897511_742">lesz én is szavalok,
 				persze tőled.<details class="tei-note" open><summary>Jegyzet</summary><div class="tei-note-content"><div class="tei-p"><div class="tei-line">Május 4-én <a href="../../persons.html?id=KL_szemely_0256" id="KL_szemely_0256" title="Simon Jolán" class="entity-mention" data-type="persons" data-id="KL_szemely_0256">Simon
 							Jolán</a>
-						Komlós Aladár <a href="../../events.html?id=KL_esemeny_0056" id="KL_esemeny_0056" title="KL_esemeny_0056" class="entity-mention" data-type="events" data-id="KL_esemeny_0056">estjén</a>
+						Komlós Aladár <a href="../../events.html?id=KL_esemeny_0056" id="KL_esemeny_0056" title="Komlós Aladár előadása az új magyar irodalomról" class="entity-mention" data-type="events" data-id="KL_esemeny_0056">estjén</a>
 							 lépett fel.</div></div></div></details></div><div class="tei-line" data-facs="facs_4_line_1676022901256_747">Május 1i számban, állítólag a
 					<a href="../../organizations.html?id=KL_periodika_0051" id="KL_periodika_0051" title="KL_periodika_0051" class="entity-mention" data-type="orgs" data-id="KL_periodika_0051">Népszavá¬
 						<br>nál</a> jön az
@@ -676,8 +676,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

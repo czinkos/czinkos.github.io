@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-06-16 után])
               </td>
             </tr>
@@ -152,7 +152,7 @@
 				egész pósta </div><div class="tei-line" data-facs="facs_2_line_1678718190038_1064">forgalom. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1678718204546_1069">A Bécsi csomagokon is ugy oda
 				</div><div class="tei-line" data-facs="facs_2_line_1678718206821_1074">vagyok.
 			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1678718211183_1079">Még egy vigasztalásom van, az
-					</div><div class="tei-line" data-facs="facs_2_line_1678718214485_1084"><a href="../../events.html?id=KL_esemeny_0054" id="KL_esemeny_0054" title="KL_esemeny_0054" class="entity-mention" data-type="events" data-id="KL_esemeny_0054">előadó estém</a> többeknek, indife¬ </div><div class="tei-line" data-facs="facs_2_line_1678718218684_1089">renseknek nagyon tetszett. Többek </div><div class="tei-line" data-facs="facs_2_line_1678718221917_1094">között <a href="../../persons.html?id=KL_szemely_0178" id="KL_szemely_0178" title="Ligeti Pál" class="entity-mention" data-type="persons" data-id="KL_szemely_0178">Ligeti
+					</div><div class="tei-line" data-facs="facs_2_line_1678718214485_1084"><a href="../../events.html?id=KL_esemeny_0054" id="KL_esemeny_0054" title="Simo Jolán előadó estje" class="entity-mention" data-type="events" data-id="KL_esemeny_0054">előadó estém</a> többeknek, indife¬ </div><div class="tei-line" data-facs="facs_2_line_1678718218684_1089">renseknek nagyon tetszett. Többek </div><div class="tei-line" data-facs="facs_2_line_1678718221917_1094">között <a href="../../persons.html?id=KL_szemely_0178" id="KL_szemely_0178" title="Ligeti Pál" class="entity-mention" data-type="persons" data-id="KL_szemely_0178">Ligeti
 					Pál</a> üzent <a href="../../persons.html?id=KL_szemely_0307" id="KL_szemely_0307" title="Varsányi Géza " class="entity-mention" data-type="persons" data-id="KL_szemely_0307">Mentorral</a></div><div class="tei-line" data-facs="facs_2_line_1678718225241_1099">hogy el van ragadtatva! Olyan
 					</div><div class="tei-line" data-facs="facs_2_line_1678718228592_1104">krescsendókat még nem
 				hallott stb. </div><div class="tei-line" data-facs="facs_2_line_1678718231950_1109">Látod, és a
@@ -721,8 +721,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0117":{"name":"Hevesy Iván","key":
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

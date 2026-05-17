@@ -52,7 +52,7 @@
               <th>Feladó</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-08-19-től])
               </td>
             </tr>
@@ -72,7 +72,7 @@
               <th>Keltezés</th>
               <td>
                 [1926-08-19]
-                , Vienna
+                , Bécs
               </td>
             </tr>
             
@@ -599,8 +599,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

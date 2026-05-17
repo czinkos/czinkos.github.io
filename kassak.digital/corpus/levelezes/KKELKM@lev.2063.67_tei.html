@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1925-03-10 után])
               </td>
             </tr>
@@ -202,7 +202,7 @@
 				Viszont <a href="../../persons.html?id=KL_szemely_0307" id="KL_szemely_0307" title="Varsányi Géza " class="entity-mention" data-type="persons" data-id="KL_szemely_0307">Mento¬ <br>rék</a> nagyon
 				szólják őket, hogy milyen tehe<span>[¬]</span></div><div class="tei-line" data-facs="facs_4_line_1676638134897_2823">tetlenek mindnyájan, nem voltak
 				képesek </div><div class="tei-line" data-facs="facs_4_line_1676638146039_2828">még a kritikusokat sem
-				elhozni <a href="../../persons.html?id=KL_szemely_0031" id="KL_szemely_0031" title="Bortnyik Sándor" class="entity-mention" data-type="persons" data-id="KL_szemely_0031">Bortnyik</a></div><div class="tei-line" data-facs="facs_4_line_1676638154489_2833"><a href="../../events.html?id=KL_esemeny_0041" id="KL_esemeny_0041" title="KL_esemeny_0041" class="entity-mention" data-type="events" data-id="KL_esemeny_0041">kiállítására</a>. Na olyan vacak gyönge </div><div class="tei-line" data-facs="facs_4_line_1676638159615_2838">dolgokat sem láttam régen mint azok a </div><div class="tei-line" data-facs="facs_4_line_1676638162714_2843">képek! </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1676638166944_2848">Éppen most számolt le <a href="../../persons.html?id=KL_szemely_0214" id="KL_szemely_0214" title="Pápa József" class="entity-mention" data-type="persons" data-id="KL_szemely_0214">Pápa</a> egy </div><div class="tei-line" data-facs="facs_4_line_1676638173174_2853">könyvkereskedővel sajnos azt az
+				elhozni <a href="../../persons.html?id=KL_szemely_0031" id="KL_szemely_0031" title="Bortnyik Sándor" class="entity-mention" data-type="persons" data-id="KL_szemely_0031">Bortnyik</a></div><div class="tei-line" data-facs="facs_4_line_1676638154489_2833"><a href="../../events.html?id=KL_esemeny_0041" id="KL_esemeny_0041" title="Bortnyik Sándor kiállítása" class="entity-mention" data-type="events" data-id="KL_esemeny_0041">kiállítására</a>. Na olyan vacak gyönge </div><div class="tei-line" data-facs="facs_4_line_1676638159615_2838">dolgokat sem láttam régen mint azok a </div><div class="tei-line" data-facs="facs_4_line_1676638162714_2843">képek! </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1676638166944_2848">Éppen most számolt le <a href="../../persons.html?id=KL_szemely_0214" id="KL_szemely_0214" title="Pápa József" class="entity-mention" data-type="persons" data-id="KL_szemely_0214">Pápa</a> egy </div><div class="tei-line" data-facs="facs_4_line_1676638173174_2853">könyvkereskedővel sajnos azt az
 					össze<span>[¬]</span></div><div class="tei-line" data-facs="facs_4_line_1676638178845_2858">get oda köllött adni a gyűjtő
 				ív nyo¬ </div><div class="tei-line" data-facs="facs_4_line_1676638182219_2863">mására. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_4_line_1676638189529_2868">Szeretnék a <abbr title="szaksz.">szakszervezeti</abbr> előadásokon kívül </div><div class="tei-line" data-facs="facs_4_line_1676638196934_2873">egy
 				reprezentatív előadást is csinálni. </div><div class="tei-line" data-facs="facs_4_line_1676638202939_2878"><a href="../../persons.html?id=KL_szemely_0295" id="KL_szemely_0295" title="Tamás Aladár" class="entity-mention" data-type="persons" data-id="KL_szemely_0295">Tamás</a>
@@ -661,8 +661,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0140":{"name":"Kassák Lajos","key"
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

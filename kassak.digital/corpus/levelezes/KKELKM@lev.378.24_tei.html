@@ -52,7 +52,7 @@
               <th>Feladó</th>
               <td>
                 Kassák Lajos
-                 — Paris
+                 — Párizs
                  ([1926-06-04])
               </td>
             </tr>
@@ -72,7 +72,7 @@
               <th>Keltezés</th>
               <td>
                 [1926-06-04]
-                , Paris
+                , Párizs
               </td>
             </tr>
             
@@ -151,7 +151,7 @@
                 „különös” francia tyu¬ </div><div class="tei-line" data-facs="facs_2_line_1676381647245_1524">koknak.
                 Azt mondják, hogy elfogult vagyok. Lehet, de azért </div><div class="tei-line" data-facs="facs_2_line_1676381654488_1529">még is csak jobb a te lábad,
                 mint itt egyáltalán idegen lá¬ </div><div class="tei-line" data-facs="facs_2_line_1676381664806_1534">bak nélkül élni. Néha pedig már eszembe jutnak disznó dolgok </div><div class="tei-line" data-facs="facs_2_line_1676381671769_1539">is. És meg kérdezem magamtól
-                vajjon csakugyan aggszűz vagyok </div><div class="tei-line" data-facs="facs_2_line_1676381679250_1544">én??? De azért nem tudom rászanni magam, hogy kirugjak a </div><div class="tei-line" data-facs="facs_2_line_1676381685051_1549">hámból. Ne félj hát <u>lehet</u> hogy meg se teszem. Most az <del>estély</del></div><div class="tei-line" data-facs="facs_2_line_1676381689827_1554"><a href="../../events.html?id=KL_esemeny_0053" id="KL_esemeny_0053" title="KL_esemeny_0053" class="entity-mention" data-type="events" data-id="KL_esemeny_0053">estély</a>
+                vajjon csakugyan aggszűz vagyok </div><div class="tei-line" data-facs="facs_2_line_1676381679250_1544">én??? De azért nem tudom rászanni magam, hogy kirugjak a </div><div class="tei-line" data-facs="facs_2_line_1676381685051_1549">hámból. Ne félj hát <u>lehet</u> hogy meg se teszem. Most az <del>estély</del></div><div class="tei-line" data-facs="facs_2_line_1676381689827_1554"><a href="../../events.html?id=KL_esemeny_0053" id="KL_esemeny_0053" title="A Ma párizsi előadóestje" class="entity-mention" data-type="events" data-id="KL_esemeny_0053">estély</a>
                  szervezésével vagyunk elfoglalva. Hétfőn 14<sup>én</sup> fogjuk
                 tartani. <del>druk¬</del></div><div class="tei-line" data-facs="facs_2_line_1676381696584_1559">Drukolok az egész ügytől, bár
                 van itt pár diák, nagyon derek gyere¬ </div><div class="tei-line" data-facs="facs_2_line_1676381701254_1564">kek, szeretnek engem és nagyon szívesek hozzám. <a href="../../persons.html?id=KL_szemely_0197" id="KL_szemely_0197" title="Nádass József" class="entity-mention" data-type="persons" data-id="KL_szemely_0197">Nadass</a> és én egy </div><div class="tei-line" data-facs="facs_2_line_1676381707140_1569">kávéhazban ülünk most a
@@ -558,8 +558,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

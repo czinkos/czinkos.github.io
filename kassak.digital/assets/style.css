@@ -335,19 +335,6 @@ footer hr {
   margin: 3rem 0;
 }
 
-.card-grid-2x2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2.5rem;
-  margin: 3rem 0;
-}
-
-@media (max-width: 900px) {
-  .card-grid-2x2 {
-    grid-template-columns: 1fr;
-  }
-}
-
 .card {
   border: 1px solid var(--color-text);
   padding: 0;
@@ -1154,7 +1141,76 @@ hr {
   border-radius: 3px;
 }
 
+[id] {
+  scroll-margin-top: 8rem;
+}
+
+/* --- Entity Mentions in Text (Arrow Markers) --- */
+#tei-body .entity-mention {
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+  padding: 0;
+  transition: all 0.2s;
+  display: inline;
+  white-space: nowrap; /* Keep arrow with text */
+}
+
+#tei-body .entity-mention::after {
+  content: "↗";
+  font-size: 0.7em;
+  vertical-align: super;
+  margin-left: 2px;
+  opacity: 0.6;
+  color: inherit;
+  font-weight: bold;
+}
+
+#tei-body .entity-mention::before { content: none; }
+
+/* Type-specific non-color styling */
+#tei-body .entity-mention[data-type="works"] { font-style: italic; }
+
+/* Hover effects */
+#tei-body .entity-mention:hover {
+  background-color: var(--color-gray-light);
+  border-radius: 2px;
+  color: var(--color-accent);
+}
+
+#tei-body .entity-mention:hover::after {
+  opacity: 1;
+}
+
+/* Targeted Line Highlight (fades after 3s) */
+@keyframes line-flash {
+  0%   { background-color: var(--color-gray-mid); border-color: var(--color-gray-dark); }
+  100% { background-color: transparent; border-color: transparent; }
+}
+
+.tei-line.line-highlight {
+  border: 1px solid transparent; /* Prepare for animation */
+  animation: line-flash 3s ease-out forwards;
+  border-radius: 4px;
+}
+
+/* Targeted Entity Highlight (fades back to base state) */
+@keyframes entity-flash-persons { 0% { background-color: rgba(217, 33, 33, 0.2); } 100% { background-color: transparent; } }
+@keyframes entity-flash-places  { 0% { background-color: rgba(0, 86, 179, 0.15); } 100% { background-color: transparent; } }
+@keyframes entity-flash-orgs    { 0% { background-color: rgba(102, 102, 102, 0.2); } 100% { background-color: transparent; } }
+@keyframes entity-flash-works   { 0% { background-color: rgba(137, 164, 120, 0.2); } 100% { background-color: transparent; } }
+@keyframes entity-flash-events  { 0% { background-color: rgba(115, 154, 199, 0.2); } 100% { background-color: transparent; } }
+
+#tei-body .entity-mention.index-highlight { animation: none; } /* Override default yellow flash */
+
+#tei-body .entity-mention[data-type="persons"].index-highlight { animation: entity-flash-persons 3s ease-out forwards; }
+#tei-body .entity-mention[data-type="places"].index-highlight  { animation: entity-flash-places 3s ease-out forwards; }
+#tei-body .entity-mention[data-type="orgs"].index-highlight    { animation: entity-flash-orgs 3s ease-out forwards; }
+#tei-body .entity-mention[data-type="works"].index-highlight   { animation: entity-flash-works 3s ease-out forwards; }
+#tei-body .entity-mention[data-type="events"].index-highlight  { animation: entity-flash-events 3s ease-out forwards; }
+
 /* Popup tooltip for image-only mode */
+
 #facs-popup {
   display: none;
   position: fixed;

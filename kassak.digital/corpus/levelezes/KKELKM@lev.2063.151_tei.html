@@ -52,7 +52,7 @@
               <th>Feladó</th>
               <td>
                 Simon Jolán
-                 — Budapest
+                 — BudapestSimon Jolán
                  ([1926-08-07-től])
               </td>
             </tr>
@@ -62,7 +62,7 @@
               <th>Címzett</th>
               <td>
                 Kassák Lajos
-                 — Vienna
+                 — Bécs
                  ([1926-08-07 után])
               </td>
             </tr>
@@ -149,7 +149,7 @@
 				reklámokat szokta fölvenni. </div><div class="tei-line" data-facs="facs_4_region_1679390065273_163_tl_3">Mellékesen <cite><a href="../../works.html?id=KL_mucim_0064" id="KL_mucim_0064" title="Tó mozi plakát" class="entity-mention" data-type="works" data-id="KL_mucim_0064">a <em title="bizonytalan olvasat">[T]</em>ó. <abbr title="m.">mozi</abbr> reklámod</a></cite> nagyon </div><div class="tei-line" data-facs="facs_4_region_1679390065273_163_tl_4">tetszik. Úgy gondolom
 				talán eredményesebb </div><div class="tei-line" data-facs="facs_4_region_1679390065273_163_tl_5">lesz
 				ha ilyen emberrel kezdek először tár¬ </div><div class="tei-line" data-facs="facs_4_region_1679390065273_163_tl_6">gyalni. <a href="../../persons.html?id=KL_szemely_0087" id="KL_szemely_0087" title="Gerő György" class="entity-mention" data-type="persons" data-id="KL_szemely_0087">Gerő</a> is összehoz az
-					„<a href="../../events.html?id=KL_esemeny_0109" id="KL_esemeny_0109" title="KL_esemeny_0109" class="entity-mention" data-type="events" data-id="KL_esemeny_0109">Embervédelmi <br>kiállítás
+					„<a href="../../events.html?id=KL_esemeny_0109" id="KL_esemeny_0109" title="Országos Embervédelmi Kiállítás" class="entity-mention" data-type="events" data-id="KL_esemeny_0109">Embervédelmi <br>kiállítás
 						</a>reklámozójával, akinek nagyon </div><div class="tei-line" data-facs="facs_4_region_1679390065273_163_tl_8">tetszett a <cite><a href="../../works.html?id=KL_mucim_0060" id="KL_mucim_0060" title="Magyar Hírlap plakát" class="entity-mention" data-type="works" data-id="KL_mucim_0060"><abbr title="M.H.">Magyar Hírlap</abbr> plakátod</a></cite>. Szerinte Bpest </div><div class="tei-line" data-facs="facs_4_region_1679390065273_163_tl_9">legjobb plakátja. Hátha,
 				hátha sikerül </div><div class="tei-line" data-facs="facs_4_region_1679390065273_163_tl_10">valami! Ez
 				mind rendben volna, de az </div><div class="tei-line" data-facs="facs_4_region_1679390065273_163_tl_11"><u>istenért</u> hogy utazom Romániába?!<details class="tei-note" open><summary>Jegyzet</summary><div class="tei-note-content"><div class="tei-p"><div class="tei-line">Simon Jolán feltételezhetően <a href="../../persons.html?id=KL_szemely_0140" id="KL_szemely_0140" title="Kassák Lajos" class="entity-mention" data-type="persons" data-id="KL_szemely_0140">Kassák</a> tervezett erdélyi előadókörútja miatt szeretett volna
@@ -653,8 +653,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0201":{"name":"Nagy Etel","key":"KL
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   

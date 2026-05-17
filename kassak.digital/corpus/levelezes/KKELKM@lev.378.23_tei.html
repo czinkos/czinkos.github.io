@@ -52,7 +52,7 @@
               <th>Feladó</th>
               <td>
                 Kassák Lajos
-                 — Paris
+                 — Párizs
                  ([1926-06-06])
               </td>
             </tr>
@@ -72,7 +72,7 @@
               <th>Keltezés</th>
               <td>
                 [1926-06-06]
-                , Paris
+                , Párizs
               </td>
             </tr>
             
@@ -171,7 +171,7 @@
                 nem írtad meg </div><div class="tei-line" data-facs="facs_2_line_1676377564596_903">hogy milyen ügy ez
                 a <a href="../../persons.html?id=KL_szemely_0031" id="KL_szemely_0031" title="Bortnyik Sándor" class="entity-mention" data-type="persons" data-id="KL_szemely_0031">Bortnyikkal</a>.
                     <a href="../../persons.html?id=KL_szemely_0201" id="KL_szemely_0201" title="Nagy Etel" class="entity-mention" data-type="persons" data-id="KL_szemely_0201">Etinek</a> megírom </div><div class="tei-line" data-facs="facs_2_line_1676377570571_908">hogy küldjön rajzokat. – Mért
-                nem írtál az Uj </div><div class="tei-line" data-facs="facs_2_line_1676377576257_913">Föld <a href="../../events.html?id=KL_esemeny_0055" id="KL_esemeny_0055" title="KL_esemeny_0055" class="entity-mention" data-type="events" data-id="KL_esemeny_0055">estéjéről</a>
+                nem írtál az Uj </div><div class="tei-line" data-facs="facs_2_line_1676377576257_913">Föld <a href="../../events.html?id=KL_esemeny_0055" id="KL_esemeny_0055" title="Öt világrész költészete - Az Új föld előadóestélye" class="entity-mention" data-type="events" data-id="KL_esemeny_0055">estéjéről</a>
                 , én a <u><a href="../../organizations.html?id=KL_periodika_0068" id="KL_periodika_0068" title="KL_periodika_0068" class="entity-mention" data-type="orgs" data-id="KL_periodika_0068">Nyugatot</a></u> nem látom. </div></div><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1676377584026_918">Írj
 			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1676377587316_923">ÍRJ
 			</div></div><div class="tei-p"><div class="tei-line" data-facs="facs_2_line_1676377589897_928">ÍRJ
@@ -624,8 +624,11 @@ window.ENTITY_DATA = {"persons":{"KL_szemely_0256":{"name":"Simon Jolán","key":
       if (!el) return;
       
       // Jump immediately to the element and highlight
-      el.scrollIntoView({ behavior: 'auto', block: 'center' });
+      el.scrollIntoView({ behavior: 'auto', block: 'start' });
       el.classList.add('index-highlight');
+
+      const line = el.closest('.tei-line');
+      if (line) line.classList.add('line-highlight');
     });
   </script>
   
